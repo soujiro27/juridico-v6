@@ -1,0 +1,155 @@
+
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Sistema Integral de Auditoría</title>
+    <link rel="stylesheet" href="/SIA/juridico/public/css/main.css"/>
+
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                <div class="col-xs-12"></div>
+                <div class="col-xs-2"><a href="/SIA/"><img src="/SIA/juridico/public/img/logo-top.png"/></a></div>
+                <div class="col-xs-2">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#" id="CuentaPublica"><i class="fa fa-th-list"></i>
+                                {{ sesiones.sCuentaActual }}
+                            </a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-3">
+                    <h2 id="tipo">Dashboard</h2>
+                </div>
+                <div class="col-xs-2">
+                    <ul class="nav navbar-nav">
+                        <li><a href="./notificaciones"><i class="fa fa-envelope-o"></i> Tiene <span>
+                  <input id="txtNoti" type="text" class="noti"/></span> Mensaje(s).</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-3">
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="dropdown pull-right"><a data-toggle="dropdown" href="/SIA/" class="dropdown-toggle"><i class="fa fa-user"></i><b id="usuario">{{sesiones.sUsuario}}</b><b class="caret"></b></a></li>
+                        <ul class="dropdown-menu">
+                            <li><a href="/perfil"><i class="fa fa-user"></i> Perfil</a></li>
+                            <li><a href="/cerrar"><i class="fa fa-sign-out"></i> Salir</a></li>
+                        </ul>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </nav>
+</header>
+
+<div class="sidebar">
+    <div class="buttonHide">
+        <p><i class="fa fa-arrow-circle-left"></i></p>
+    </div>
+    <div class="sidebar-dropdown"><a href="/">Navigation</a></div>
+    <ul id="nav">
+        <li class="has_sub"><a href="/"><i class="fa fa-home"></i> Inicio</a></li>
+        <li id="GESTION" style="display:none;" class="has_sub"><a href=""><i class="fa fa-pencil-square-o"></i> Gestión<span class="pull-right"><i class="fa fa-chevron-right"></i></span></a>
+            <ul id="GESTION-UL"></ul>
+        </li>
+        <li id="PROGRAMA" style="display:none;" class="has_sub"><a href=""><i class="fa fa-bars"></i> Programas<span class="pull-right"><i class="fa fa-chevron-right"></i></span></a>
+            <ul id="PROGRAMA-UL"></ul>
+        </li>
+        <li id="AUDITORIA" style="display:none;" class="has_sub"><a href=""><i class="fa fa-search"></i> Auditorías<span class="pull-right"><i class="fa fa-chevron-right"></i></span></a>
+            <ul id="AUDITORIA-UL"></ul>
+        </li>
+        <li id="OBSERVACIONES" style="display:none;" class="has_sub"><a href=""><i class="fa fa-cogs"></i> Acciones<span class="pull-right"><i class="fa fa-chevron-right"></i></span></a>
+            <ul id="OBSERVACIONES-UL"></ul>
+        </li>
+        <li id="CONFIGURACION" style="display:none;" class="has_sub"><a href=""><i class="fa fa-pencil-square-o"></i> Catálogos<span class="pull-right"><i class="fa fa-chevron-right"></i></span></a>
+            <ul id="CONFIGURACION-UL"></ul>
+        </li>
+        <li id="REPORTEADOR" style="display:none;" class="has_sub"><a href=""><i class="fa fa-file-text-o"></i> Informes<span class="pull-right"><i class="fa fa-chevron-right"></i></span></a>
+            <ul id="REPORTEADOR-UL"></ul>
+        </li>
+        <li id="NORMATIVIDAD" style="display:none;" class="has_sub"><a href=""><i class="fa fa-pencil-square-o"></i> Normatividad<span class="pull-right"><i class="fa fa-chevron-right"></i></span></a>
+            <ul id="NORMATIVIDAD-UL"></ul>
+        </li>
+        <li class="has_sub"><a href="/cerrar"><i class="fa fa-sign-out"></i> Salir</a></li>
+    </ul>
+</div>
+
+<div class="row">
+    <div id="tableLarge" class="col-md-9 col-md-offset-2">
+        <div class="widget">
+            <div class="widget-head">
+                <div id="headerText" class="pull-left">Lista de Registros
+                    <div class="order"></div>
+                    <div class="selectColumns"></div>
+                </div>
+                <div class="widget-icons pull-right"><a id="addRegister" href="./Caracteres/add" class="btn btn-info">Añadir Registro</a></div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="main-content" class="widget-content">
+<form class="form-inline" method="post" action="/SIA/jurdico/DocumentosDiversos/add" data-ruta="DocumentosDiversos">
+    <div class="form-group numFolio">
+        <label for="numFolio">Numero de Folio</label>
+       <input type="text" name="numFolio" placeholder="Numero de Folio" id="numFolio">
+    </div>
+    <div class="form-group asunto">
+        <label for="asunto">Asunto</label>
+        <input type="text" name="asunto" placeholder="Asunto" id="asunto">
+    </div>
+    <div class="form-group fOficio">
+        <label for="fOficio">Fecha Documento</label>
+        <input type="text" name="fOficio" placeholder="Fecha Oficio" id="fOficio" class="fechaInput">
+    </div>
+    <div class="form-group siglas">
+        <label for="siglas">Siglas</label>
+        <input type="text" name="siglas" placeholder="siglas" id="siglas">
+    </div>
+    <div class="form-group texto">
+        <label for="numFolio">Texto</label>
+        <textarea name="texto" id="texto" placeholder="Texto"></textarea>
+        <input type="hidden" name="idRemitente" value="{{ idRemitente }}">
+        <input type="hidden" name="idVolante" value="{{ idVolante }}">
+        <input type="hidden" name="copias" value="1-3">
+    </div>
+    <div class="form-group send">
+        <input class="btn btn-primary btn-sm" type="submit" value="Guardar"/>
+        <button class="btn btn-danger btn-sm" id="cancelar">Cancelar</button>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/SIA/juridico/public/js/ckeditor/main.js"></script>
+
+<script>
+    initSample();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

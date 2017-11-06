@@ -1,0 +1,41 @@
+{% extends 'layoutTable.twig' %}
+
+
+
+{% block btnHeader %}
+    <a id="addRegister" href="/SIA/juridico/CedulaIrac/add/{{ idVolante }}" class="btn btn-warning btn-add" role="button">
+        Generar Cedula
+    </a>
+    <a id="addRegister" href="/SIA/juridico/observacionesIrac/add/{{ idVolante }}" class="btn btn-info btn-add" role="button">
+        Añadir Registro
+    </a>
+{% endblock %}
+
+{% block table %}
+    <table class="table table-hover" data-ruta="Irac" id="main-table-observaciones">
+        <thead>
+
+        <tr>
+            <th class="hidden">id</th>
+            <th scope="col">Pagina</th>
+            <th scope="col">Parrafo</th>
+            <th scope="col">Observacion</th>
+            <th scope="">Estatus</th>
+
+        </tr>
+        </thead>
+        {% for observacion in observaciones %}
+            <tr>
+
+                <td class="hidden">{{ observacion.idObservacionDoctoJuridico }}</td>
+                <td>{{ observacion.pagina }}</td>
+                <td>{{ observacion.parrafo }}</td>
+                <td>{{ observacion.observacion }}</td>
+                <td>{{ observacion.estatus }}</td>
+
+
+
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

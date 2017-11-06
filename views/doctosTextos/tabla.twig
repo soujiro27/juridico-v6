@@ -1,0 +1,31 @@
+{% extends 'layoutTable.twig' %}
+
+{% block btnHeader %}
+    <a id="addRegister" href="/SIA/juridico/DoctosTextos/add" class="btn btn-info btn-add" role="button">
+        Añadir Registro
+    </a>
+{% endblock %}
+
+{% block table %}
+    <table class="table table-hover" id="main-table">
+        <thead>
+        <tr>
+            <th class="hidden">id</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Texto</th>
+            <th scope="col">Estatus</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for doctosTexto in doctosTextos %}
+            <tr data-ruta="DoctosTextos">
+
+                <td class="hidden">{{ doctosTexto.idDocumentoTexto }}</td>
+                <td>{{ doctosTexto.idTipoDocto }}</td>
+                <td>{{ doctosTexto.texto }}</td>
+                <td>{{ doctosTexto.estatus }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

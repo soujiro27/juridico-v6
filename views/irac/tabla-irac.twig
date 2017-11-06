@@ -1,0 +1,40 @@
+{% extends 'layoutTable.twig' %}
+
+
+
+{% block table %}
+    <table class="table table-hover " id="main-table-irac" data-ruta="Irac">
+        <thead>
+        <th class="hidden">id</th>
+        <th>Folio</th>
+        <th>Documento</th>
+        <th>Remitente</th>
+        <th>Fecha Recepcion</th>
+        <th>Asunto</th>
+        <th>Caracter</th>
+        <th>Accion</th>
+        <th>Auditoria</th>
+        <th>Ext.</th>
+        <th>Estado</th>
+
+        </thead>
+        {% for irac in iracs %}
+            <tr data-ruta="Irac">
+
+                <td class="hidden">{{ irac.idVolante }}</td>
+                <td>{{ irac.folio }}</td>
+                <td>{{ irac.numDocumento }}</td>
+                <td>{{ irac.idRemitente }}</td>
+                <td>{{ irac.fRecepcion }}</td>
+                <td>{{ irac.asunto }}</td>
+                <td>{{ irac.caracter }}</td>
+                <td>{{ irac.accion }}</td>
+                <td>{{ irac.clave }}</td>
+                <td>{{ irac.extemporaneo }}</td>
+                <td>{{ irac.estadoProceso }}</td>
+
+
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

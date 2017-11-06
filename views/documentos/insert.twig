@@ -1,0 +1,41 @@
+{% extends 'layoutForm.twig' %}
+{% block title %}Subir Archivo{% endblock %}
+{% block form %}
+    <form id="documentosJur" enctype="multipart/form-data" method="post" action="/SIA/juridico/DocumentosGral/update" data-ruta="DocumentosGral">
+        <div class="inputs">
+            <div class="form-group folio">
+                <label class="form-control-label" for="documento">Numero de Folio</label>
+                <input class="form-control" id="folio-documentos" type="number" placeholder="Numero de Folio" required="required" />
+                <input type="hidden" name="idVolante" id="idVolante">
+            </div>
+            <div class="form-group file">
+                <input type="file" name="anexoDoc" id="imagen" required="required"/>
+                <div><span><i class="fa fa-upload" aria-hidden="true"></i></span><span class="titulo">Selecciona Archivo</span></div>
+            </div>
+        </div>
+        <div class="documento">
+            <div>
+                <p>Documento Asignado</p>
+            </div>
+            <div class="documento-datos">
+                <div class="icon"><img src="../img/file.png"/></div>
+                <div class="nombre">
+                    <p>Sin Documentos</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group send">
+            <input class="btn btn-info" type="submit" value="Guardar"/>
+            <button class="btn btn-danger btn-sm" id="cancelar">Cancelar</button>
+        </div>
+    </form>
+
+    {% if err %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error!</strong> {{ err }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+{% endblock %}
