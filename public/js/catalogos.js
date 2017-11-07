@@ -236,7 +236,7 @@ function firmas() {
                             td = '';
 
                             $.each(firmas, function (index, el) {
-                                td += '<tr><td>' + firmas[index].saludo + ' ' + firmas[index].nombre + ' ' + firmas[index].paterno + ' ' + firmas[index].materno + '</td>\n                <td>' + firmas[index].puesto + '</td><td><input type="checkbox" name="firmas" value="' + firmas[index].idPuestoJuridico + '"></td></tr>';
+                                td += '<tr><td>' + firmas[index].saludo + ' ' + firmas[index].nombre + ' ' + firmas[index].paterno + ' ' + firmas[index].materno + '</td>\n                <td>' + firmas[index].puesto + '</td><td><input type="checkbox" name="firmas" id="firmas" value="' + firmas[index].idPuestoJuridico + '"></td></tr>';
                             });
                             template = template + td + '</tbody></tables>';
                             modals.firmas(template);
@@ -673,22 +673,27 @@ function remitentes(template) {
 
 function firmas(template) {
     $.alert({
-        title: 'Personal que firmas',
+        title: 'Personal que Firma',
         theme: 'modern',
         content: template,
         buttons: {
             confirm: {
                 btnClass: 'btn-primary',
-                text: 'SI',
+                text: 'Aceptar',
                 action: function action() {
-                    $('input#notaConfronta').val('SI');
-                } },
+                    var categorias = '';
+                    $("input[name='firmas']:checked").each(function () {
+                        categorias += $(this).val() + ',';
+                    });
+                    $('input#idPuestosJuridico').val(categorias);
+                }
+            },
             cancel: {
                 btnClass: 'btn-danger',
-                text: 'NO',
-                action: function action() {
-                    $('input#notaConfronta').val('NO');
-                } } } });
+                text: 'Cancelar'
+            }
+        }
+    });
 }
 
 module.exports = modals;

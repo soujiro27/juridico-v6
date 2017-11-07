@@ -37,7 +37,7 @@ function firmas(){
             let td = ''
             $.each(firmas,function(index,el){
                 td += `<tr><td>${firmas[index].saludo} ${firmas[index].nombre} ${firmas[index].paterno} ${firmas[index].materno}</td>
-                <td>${firmas[index].puesto}</td><td><input type="checkbox" name="firmas" value="${firmas[index].idPuestoJuridico}"></td></tr>`
+                <td>${firmas[index].puesto}</td><td><input type="checkbox" name="firmas" id="firmas" value="${firmas[index].idPuestoJuridico}"></td></tr>`
             })
             template = template + td + `</tbody></tables>`
             modals.firmas(template)

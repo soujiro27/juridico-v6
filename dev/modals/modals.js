@@ -176,22 +176,27 @@ function tableTurnados(datos){
 
  function firmas(template){
     $.alert({
-        title: 'Personal que firmas',
+        title: 'Personal que Firma',
         theme:'modern',
         content:template,
         buttons:{
             confirm:{
                 btnClass:'btn-primary',
-                text: 'SI',
+                text: 'Aceptar',
                 action:function(){
-                    $('input#notaConfronta').val('SI')
-                }},
+                    var categorias = ''
+                    $("input[name='firmas']:checked").each(function() {
+                        categorias += $(this).val() + ','
+                    });
+                    $('input#idPuestosJuridico').val(categorias)
+                }
+               },
             cancel:{
                 btnClass:'btn-danger',
-                text:'NO',
-                action:function(){
-                    $('input#notaConfronta').val('NO')
-                }}}})
+                text:'Cancelar',
+                }
+            },
+        })
 }
 
 module.exports = modals

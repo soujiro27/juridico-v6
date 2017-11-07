@@ -14,20 +14,18 @@
                 <label class="form-control-label col-lg-2" for="fecha">Fecha Documento</label>
                 <input class="form-control fechaInput col-lg-2" id="fOficio" type="text" name="fOficio" required="" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
             </div>
+            <div class="form-group firmas row">
+                <label class="form-control-label col-lg-2" for="numFolio">Añadir Firmas</label>
+                <button class="btn btn-info col-lg-2" id="modalFirmas">Firmas</button>
+                <input type="hidden" name="idPuestosJuridico" id="idPuestosJuridico">
+            </div>
             <div class="form-group numFolio row">
                 <label class="form-control-label col-lg-2" for="numFolio">Numero Folio</label>
                 <input class="form-control col-lg-2" id="numFolio" type="text" name="numFolio" required=""/>
             </div>
-            <div class="form-group firmas row">
-                <label class="form-control-label col-lg-2" for="numFolio">Añadir Firmas</label>
-               <button class="btn btn-info col-lg-2" id="modalFirmas">Firmas</button>
-            </div>
+
         </div>
-        <div class="form-group row">
-            <p class="form-control-label col-lg-2">Personal que Firma</p>
-            <ul class="form-control col-lg-2"></ul>
-            <input type="hidden" name="idPuestosJuridico" value="3,4">
-        </div>
+
 
         <div class="form-group send">
             <input class="btn btn-primary btn-sm" type="submit" value="Guardar"/>
