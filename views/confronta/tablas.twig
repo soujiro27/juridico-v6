@@ -1,0 +1,42 @@
+{% extends 'layoutTable.twig' %}
+
+
+
+{% block table %}
+    <table class="table table-hover" id="main-table-confronta" data-ruta="confrontasJuridico">
+        <thead>
+    <tr>
+        <th class="hidden">id</th>
+        <th>Folio</th>
+        <th>Documento</th>
+        <th>Remitente</th>
+        <th>Fecha</th>
+        <th>Asunto</th>
+        <th>Caracter</th>
+        <th>Accion</th>
+        <th>Auditoria</th>
+        <th>Ext.</th>
+
+    </tr>
+        </thead>
+        <tbody>
+    {% for irac in iracs %}
+        <tr  data-ruta="confrontasJuridico">
+
+            <td class="hidden">{{ irac.idVolante }}</td>
+            <td>{{ irac.folio }}</td>
+            <td>{{ irac.numDocumento }}</td>
+            <td>{{ irac.idRemitente }}</td>
+            <td>{{ irac.fRecepcion }}</td>
+            <td>{{ irac.asunto }}</td>
+            <td>{{ irac.caracter }}</td>
+            <td>{{ irac.accion }}</td>
+            <td>{{ irac.clave }}</td>
+            <td>{{ irac.extemporaneo }}</td>
+
+
+        </tr>
+        </tbody>
+    {% endfor %}
+    </table>
+{% endblock %}

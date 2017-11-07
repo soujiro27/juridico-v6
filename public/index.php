@@ -9,8 +9,8 @@ include_once  '/../app/routes/rutasVolantes.php';
 include_once  '/../app/routes/rutasVolantesDiversos.php';
 include_once  '/../app/routes/rutasDocumentos.php';
 include_once  '/../app/routes/rutasIrac.php';
-include_once  '/../app/routes/ifa/rutasIfa.php';
-include_once  '/../app/routes/confronta/rutasConfronta.php';
+include_once  '/../app/routes/rutasIfa.php';
+include_once  '/../app/routes/rutasConfronta.php';
 include_once  '/../app/routes/rutasPlantillas.php';
 include_once  '/../app/routes/datosApi/rutasDatosApi.php';
 

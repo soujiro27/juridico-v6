@@ -1,6 +1,6 @@
 <?php
 
-use  App\Controllers\Documentos\Confronta\ConfrontaController;
+use  App\Controllers\Documentos\ConfrontaController;
 
 $app->get('/juridico/confrontasJuridico',function(){
     $get = new ConfrontaController();
@@ -10,7 +10,6 @@ $app->get('/juridico/confrontasJuridico',function(){
 
 
 $app->get('/juridico/confrontasJuridico/add/:id',function($id){
-    $id = '3212';
     $get = new ConfrontaController();
     echo $get->getCreate($id);
 });

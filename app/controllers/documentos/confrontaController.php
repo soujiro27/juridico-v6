@@ -1,7 +1,7 @@
 <?php
-namespace App\Controllers\Documentos\Confronta;
+namespace App\Controllers\Documentos;
 
-use App\Controllers\Catalogs\BaseController;
+use App\Controllers\BaseController;
 use App\Models\ConfrontasJuridico;
 use App\Models\DocumentosSiglas;
 use App\Models\ObservacionesDoctosJuridico;
@@ -30,7 +30,7 @@ class confrontaController extends BaseController {
             ->get();
 
 
-        return $this->render('/confronta/confronta.twig',['iracs' => $iracs,'sesiones'=> $_SESSION]);
+        return $this->render('confronta/tablas.twig',['iracs' => $iracs,'sesiones'=> $_SESSION]);
     }
 
     public function getCreate($idVolante) {
@@ -41,12 +41,12 @@ class confrontaController extends BaseController {
 
         if(empty($confrontas)){
 
-            return $this->render('/confronta/insert-confronta.twig',[
+            return $this->render('/confronta/insert.twig',[
                 'sesiones'=> $_SESSION,
                 'nota' => $nota,
                 'idVolante' => $idVolante]);
         }else{
-            return $this->render('/confronta/update-confronta.twig',[
+            return $this->render('/confronta/update.twig',[
                 'sesiones'=> $_SESSION,
                 'nota' => $nota,
                 'confrontas' => $confrontas]);
@@ -75,7 +75,7 @@ class confrontaController extends BaseController {
         }else{
             $confrontas = new ConfrontasJuridico([
                 'notaInformativa' => $post['notaInformativa'],
-                'idVolante'=> post['idVolante'],
+                'idVolante'=> $post['idVolante'],
                 'nombreResponsable' => $post['nombreResponsable'],
                 'cargoResponsable' => $post['cargoResponsable'],
                 'siglas' => $post['siglas'],

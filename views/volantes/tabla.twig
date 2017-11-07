@@ -1,7 +1,9 @@
 {% extends 'layoutTable.twig' %}
-{% block add %} /SIA/juridico/Volantes/add {% endblock %}
-
-
+{% block btnHeader %}
+    <a id="addRegister" href="/SIA/juridico/Volantes/add" class="btn btn-info btn-add" role="button">
+        Añadir Registro
+    </a>
+{% endblock %}
 {% block table %}
     <table class="table table-hover" id="main-table" data-ruta="Volantes">
         <tr>

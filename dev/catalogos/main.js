@@ -6,6 +6,7 @@ const volantes = require('./volantes')
 const documentos = require('./documentosGral')
 const plantilla = require('./plantillas')
 const irac = require('./irac')
+const confronta = require('./confronta')
 utils.update()
 utils.cancel()
 utils.getSub()
@@ -38,3 +39,9 @@ plantilla.getInsert()
 irac.panelObservaciones()
 irac.updateObservacion()
 irac.firmas()
+
+
+
+/*--------------confrontas ----------*/
+
+confronta.cedula()

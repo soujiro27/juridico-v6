@@ -1,7 +1,7 @@
 <?php
-namespace App\Controllers\Documentos\Ifa;
+namespace App\Controllers\Documentos;
 
-use App\Controllers\Catalogs\BaseController;
+use App\Controllers\BaseController;
 use App\Models\DocumentosSiglas;
 use App\Models\ObservacionesDoctosJuridico;
 use App\Models\Volantes;
@@ -29,7 +29,7 @@ class IfaController extends BaseController {
             ->get();
 
 
-        return $this->render('/ifa/ifa.twig',['iracs' => $iracs,'sesiones'=> $_SESSION]);
+        return $this->render('/ifa/tabla-ifa.twig',['iracs' => $iracs,'sesiones'=> $_SESSION]);
     }
 
     public function getObservaciones($idVolante)

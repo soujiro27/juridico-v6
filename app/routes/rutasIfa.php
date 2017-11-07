@@ -1,6 +1,6 @@
 <?php
 
-use  App\Controllers\Documentos\Ifa\IfaController;
+use  App\Controllers\Documentos\IfaController;
 
 $app->get('/juridico/Ifa',function(){
     $get = new IfaController();
