@@ -12,6 +12,7 @@ use App\Models\Volantes;
 use \App\Models\Caracteres;
 use App\Models\VolantesDocumentos;
 use App\Models\PuestosJuridico;
+use App\Models\Remitentes;
 
 class PlantillaController extends BaseController {
     public function getIndex() {
@@ -36,6 +37,7 @@ class PlantillaController extends BaseController {
     public function getCreate($idVolante) {
         $plantillas = PlantillasJuridico::where('idVolante','=',"$idVolante")->get();
         foreach ($plantillas as $plantilla){$vacio = $plantilla['idPlantillaJuridico'];}
+        foreach ($plantillas as $plantilla){$copías = $plantilla['copias'];}
 
         $remitentes = Volantes::where('idVolante','=',"$idVolante")->get();
         foreach ($remitentes as $remitente){$idRemitente = $remitente['idRemitente'];}
@@ -46,12 +48,18 @@ class PlantillaController extends BaseController {
                 'idRemitente' => $idRemitente
             ]);
         }else {
+            $datos = explode(",",$copías);
+            foreach ($datos as $llave => $valor){
+                $id = $valor;
+                $tipo = Remitentes::where('idRemitenteJuridico','=',"$id")->get();
 
-            return $this->render('/plantillas/update-plantillas.twig',[
+            }
+            var_dump($tipo);
+           /* return $this->render('/plantillas/update-plantillas.twig',[
                 'sesiones' => $_SESSION,
                 'idVolante' => $idVolante,
                 'plantillas' => $plantillas
-            ]);
+            ]);*/
         }
 
     }
@@ -59,6 +67,8 @@ class PlantillaController extends BaseController {
 
     public function create($post) {
         $fecha=strftime( "%Y-%d-%m", time() );
+        $copias = $post['internos'] . $post['externos'];
+        $copias = substr($copias,0,-1);
         $plantillas = new PlantillasJuridico([
             'idVolante' =>$post['idVolante'],
             'numFolio' => $post['numFolio'],
@@ -67,7 +77,7 @@ class PlantillaController extends BaseController {
             'idRemitente' => $post['idRemitente'],
             'texto' => $post['texto'],
             'siglas' => $post['siglas'],
-            'copias' => $post['copias'],
+            'copias' => $copias,
             'usrAlta' => $_SESSION['idUsuario'],
             'fAlta' => $fecha
         ]);

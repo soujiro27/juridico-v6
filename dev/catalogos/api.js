@@ -8,7 +8,9 @@ const api = {
     remitentes,
     subDocumentosNoAuditoria,
     volanteDocumentos,
-    firmas
+    firmas,
+    doctosTextos,
+    remitentesPlantillas
 
 }
 
@@ -108,6 +110,31 @@ function firmas(){
     let datos = new Promise(resolve =>{
         $.get({
             url:`/SIA/juridico/datos/firmas`,
+            success: function(json){
+                resolve(JSON.parse(json))
+            }
+        })
+    })
+    return datos
+}
+
+function doctosTextos(){
+    let datos = new Promise(resolve =>{
+        $.get({
+            url:`/SIA/juridico/datos/doctosTextos`,
+            success: function(json){
+                resolve(JSON.parse(json))
+            }
+        })
+    })
+    return datos
+}
+
+function remitentesPlantillas(data){
+    let datos = new Promise(resolve =>{
+        $.get({
+            url:`/SIA/juridico/datos/remitentesPlantilla`,
+            data:data,
             success: function(json){
                 resolve(JSON.parse(json))
             }

@@ -11,7 +11,10 @@ const modals = {
     TableDatosAuditoria,
     tableTurnados,
     remitentes,
-    firmas
+    firmas,
+    promocion,
+    internos,
+    externos
 }
 
 function nota(){
@@ -63,6 +66,8 @@ function auditoria(){
                 }
             },
             onOpenBefore:function(){
+                $('div.jconfirm-box-container').removeClass('col-md-4')
+                $('div.jconfirm-box-container').addClass('col-md-12')
                     $('input#auditoria').keyup(function(){
                         let cve = `ASCM/${$(this).val()}/16`
                         if(cve != ''){
@@ -169,7 +174,14 @@ function tableTurnados(datos){
                 text:'Cancelar',
                 action:function(){
                    
-                }}}})
+                }},
+                
+            },
+            onOpenBefore:function(){
+                $('div.jconfirm-box-container').removeClass('col-md-4')
+                $('div.jconfirm-box-container').addClass('col-md-12')
+            }
+        })
  }
 
 
@@ -196,7 +208,135 @@ function tableTurnados(datos){
                 text:'Cancelar',
                 }
             },
+            onOpenBefore:function(){
+                $('div.jconfirm-box-container').removeClass('col-md-4')
+                $('div.jconfirm-box-container').addClass('col-md-12')
+                let val = $('input#idPuestosJuridico').val()
+                if(val){
+                    var puestosArray = val.split(',')
+                    for(let x in puestosArray){
+                        $(`input[value="${puestosArray[x]}"]#firmas`).prop('checked',true)
+                    }
+                }
+                
+            }
         })
 }
+
+
+
+function promocion(template){
+    $.alert({
+        title: 'Texto Promocion de Acciones',
+        theme:'modern',
+        content:template,
+        buttons:{
+            confirm:{
+                btnClass:'btn-primary',
+                text: 'Aceptar',
+                action:function(){
+                    let val = $('input:radio[name=texto]:checked').val()
+                    $('input#idDocumentoTexto').val(val)
+
+                }
+               },
+            cancel:{
+                btnClass:'btn-danger',
+                text:'Cancelar',
+                }
+            },
+            onOpenBefore:function(){
+                $('div.jconfirm-box-container').removeClass('col-md-4')
+                $('div.jconfirm-box-container').addClass('col-md-12')
+               let id = $('input#idDocumentoTexto').val()
+               $(`input[value="${id}"]#textoPromocion`).prop('checked',true)
+                
+            }
+        })
+}
+
+
+
+
+function internos(template){
+    $.alert({
+        title: 'Personal que Firma',
+        theme:'modern',
+        content:template,
+        buttons:{
+            confirm:{
+                btnClass:'btn-primary',
+                text: 'Aceptar',
+                action:function(){
+                    var categorias = ''
+                    $("input[name='ccpInternos']#ccpInternos:checked").each(function() {
+                        categorias += $(this).val() + ','
+                    });
+                    $('input#internos').val(categorias)
+                    
+                }
+               },
+            cancel:{
+                btnClass:'btn-danger',
+                text:'Cancelar',
+                }
+            },
+            onOpenBefore:function(){
+                $('div.jconfirm-box-container').removeClass('col-md-4')
+                $('div.jconfirm-box-container').addClass('col-md-12')
+                /*let val = $('input#idPuestosJuridico').val()
+                if(val){
+                    var puestosArray = val.split(',')
+                    for(let x in puestosArray){
+                        $(`input[value="${puestosArray[x]}"]#firmas`).prop('checked',true)
+                    }
+                }*/
+                
+            }
+        })
+}
+
+
+
+
+function externos(template){
+    $.alert({
+        title: 'Personal que Firma',
+        theme:'modern',
+        content:template,
+        buttons:{
+            confirm:{
+                btnClass:'btn-primary',
+                text: 'Aceptar',
+                action:function(){
+                    var categorias = ''
+                    $("input[name='ccpExternos']#ccpExternos:checked").each(function() {
+                        categorias += $(this).val() + ','
+                    });
+                    $('input#externos').val(categorias)
+                    
+                }
+               },
+            cancel:{
+                btnClass:'btn-danger',
+                text:'Cancelar',
+                }
+            },
+            onOpenBefore:function(){
+                $('div.jconfirm-box-container').removeClass('col-md-4')
+                $('div.jconfirm-box-container').addClass('col-md-12')
+                /*let val = $('input#idPuestosJuridico').val()
+                if(val){
+                    var puestosArray = val.split(',')
+                    for(let x in puestosArray){
+                        $(`input[value="${puestosArray[x]}"]#firmas`).prop('checked',true)
+                    }
+                }*/
+                
+            }
+        })
+}
+
+
 
 module.exports = modals

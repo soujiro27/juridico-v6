@@ -7,8 +7,7 @@ $app->get('/juridico/Ifa',function(){
     echo $get->getIndex();
 });
 
-$app->get('/juridico/observacionesIfa',function(){
-    $id='3211';
+$app->get('/juridico/observacionesIfa/:id',function($id){
     $get = new IfaController();
     echo $get->getObservaciones($id);
 });
@@ -24,8 +23,8 @@ $app->post('/juridico/observacionesIfa/add',function() use ($app){
     $get->observacionesCreate($app->request->post());
 });
 
-$app->get('/juridico/observacionesIfa/update',function() use ($app){
-    $id='41';
+$app->get('/juridico/observacionesIfa/update/:id',function($id) use ($app){
+
     $get = new IfaController();
     echo $get->getUpdateObservacion($id,false);
 });

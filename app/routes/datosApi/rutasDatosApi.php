@@ -57,3 +57,13 @@ $app->get('/juridico/datos/firmas',function() use($app){
     $get = new ApiController();
     $get->firmas();
 });
+
+$app->get('/juridico/datos/doctosTextos',function() use($app){
+    $get = new ApiController();
+    $get->doctosTextos();
+});
+
+$app->get('/juridico/datos/remitentesPlantilla',function() use($app){
+    $get = new ApiController();
+    $get->remitentesPlantilla($app->request->get());
+});

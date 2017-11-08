@@ -20,7 +20,7 @@ function panelObservaciones(){
 }
 
 function updateObservacion(){
-    $('table#main-table-observaciones tbody tr').click(function(){
+    $('table#main-table-observaciones-irac tbody tr').click(function(){
         let val = $(this).children().first().text()
         location.href='/SIA/juridico/observacionesIrac/update/'+val;
     })

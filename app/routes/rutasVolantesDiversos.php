@@ -9,12 +9,12 @@ $app->get('/juridico/VolantesDiversos',function(){
 
 $app->get('/juridico/VolantesDiversos/add',function(){
     $get = new VolantesDiversosController();
-    echo $get->getCreate();
+    echo $get->getCreate(false);
 });
 
 $app->post('/juridico/VolantesDiversos/add',function() use ($app){
      $get = new VolantesDiversosController();
-    echo $get->volantesCreate($app->request->post());
+    echo $get->volantesCreate($app->request->post(),$app);
 });
 
 
@@ -26,5 +26,5 @@ $app->get('/juridico/VolantesDiversos/update/:id',function($id) use ($app){
 
 $app->post('/juridico/VolantesDiversos/update',function() use ($app){
      $get = new VolantesDiversosController();
-    echo $get->volantesUpdate($app->request->post());
+    echo $get->volantesUpdate($app->request->post(),$app);
 });

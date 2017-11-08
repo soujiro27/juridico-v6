@@ -44,7 +44,7 @@ class IfaController extends BaseController {
         $volantesDoc = VolantesDocumentos::all()->where('idVolante','=',"$idVolante");
         foreach ($volantesDoc as $volantes) {$cveAuditoria=$volantes['cveAuditoria']; $idSubTipoDocumento = $volantes['idSubTipoDocumento']; }
 
-        return $this->render('/irac/insert-Observaciones.twig',['sesiones'=> $_SESSION,
+        return $this->render('/ifa/insert-Observaciones.twig',['sesiones'=> $_SESSION,
             'cveAuditoria' =>$cveAuditoria,
             'idSubTipoDocumento' => $idSubTipoDocumento,
             'idVolante' => $idVolante]);
@@ -59,7 +59,6 @@ class IfaController extends BaseController {
             'pagina' => $post['pagina'],
             'parrafo' => $post['parrafo'],
             'observacion' => $post['observacion'],
-            'idDocumentoTexto' => $post['idDocumentoTexto'],
             'usrAlta' => $_SESSION['idUsuario'],
             'fAlta' => $fecha
         ]);
@@ -86,7 +85,6 @@ class IfaController extends BaseController {
                 'parrafo' => $post['parrafo'],
                 'observacion' => $post['observacion'],
                 'usrModificacion' => $_SESSION['idUsuario'],
-                'idDocumentoTexto' => $post['idDocumentoTexto'],
                 'fModificacion' => $fecha,
                 'estatus' => $post['estatus']
             ]);

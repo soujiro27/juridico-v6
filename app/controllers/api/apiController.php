@@ -8,6 +8,7 @@ use App\Models\Auditorias;
 use App\Models\Remitentes;
 use App\Models\Volantes;
 use App\Models\PuestosJuridico;
+use App\Models\DoctosTextos;
 
 class ApiController extends BaseController {
     public function getSubDocumentos($valor) {
@@ -85,6 +86,14 @@ inner join sia_unidades u on u.idUnidad = au.idUnidad
         echo json_encode($remitentes);
     }
 
+    public function remitentesPlantilla ($data) {
+        $tipo = $data['tipo'];
+        $remitentes  = Remitentes::where('estatus','=','ACTIVO')
+            ->where('tipoRemitente','=',"$tipo")
+            ->get();
+        echo json_encode($remitentes);
+    }
+
     public function volantesByFolio($id){
         $folio = $id['folio'];
         $volantes = Volantes::where('folio','=',"$folio")->get();
@@ -98,5 +107,10 @@ inner join sia_unidades u on u.idUnidad = au.idUnidad
         $puestos = PuestosJuridico::where('idArea','=',"$idArea")
             ->where('titular','=','NO')->get();
         echo json_encode($puestos);
+    }
+
+    public function doctosTextos(){
+        $doctos = DoctosTextos::where('estatus','=','ACTIVO')->get();
+        echo json_encode($doctos);
     }
 }

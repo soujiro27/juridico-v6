@@ -125,12 +125,13 @@ class IracController extends BaseController {
     }
 
     public function cedulaCreate($post){
+        $puestos = substr($post['idPuestosJuridico'],0,-1);
         $fecha=strftime( "%Y-%d-%m", time() );
         $cedula = new DocumentosSiglas([
             'idVolante' => $post['idVolante'],
             'idSubTipoDocumento' => $post['idSubTipoDocumento'],
             'siglas' => $post['siglas'],
-            'idPuestosJuridico' => $post['idPuestosJuridico'],
+            'idPuestosJuridico' => $puestos,
             'fOficio' => $post['fOficio'],
             'numFolio' => $post['numFolio'],
             'usrAlta' => $_SESSION['idUsuario'],
@@ -143,13 +144,14 @@ class IracController extends BaseController {
 
     public function cedulaUpdate($post){
         $fecha=strftime( "%Y-%d-%m", time() );
+        $puestos = substr($post['idPuestosJuridico'],0,-1);
         DocumentosSiglas::where('idDocumentoSiglas',$post['idDocumentoSiglas'])
             ->update(['siglas' => $post['siglas'],
                 'fOficio' => $post['fOficio'],
                 'numFolio' => $post['numFolio'],
                 'usrModificacion' => $_SESSION['idUsuario'],
                 'fModificacion' => $fecha,
-                'idPuestosJuridico' => $post['idPuestosJuridico']
+                'idPuestosJuridico' => $puestos
             ]);
         echo $this->getIndex();
     }

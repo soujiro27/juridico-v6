@@ -55,7 +55,7 @@ class confrontaController extends BaseController {
     }
 
 
-    public function create($post) {
+    public function create($post,$app) {
         $fecha=strftime( "%Y-%d-%m", time() );
         if(empty($post['notaInformativa'])) {
             $confrontas = new ConfrontasJuridico([
@@ -71,7 +71,7 @@ class confrontaController extends BaseController {
                 'fAlta' => $fecha
             ]);
             $confrontas->save();
-            echo $this->getIndex();
+            $app->redirect('/SIA/juridico/confrontasJuridico');
         }else{
             $confrontas = new ConfrontasJuridico([
                 'notaInformativa' => $post['notaInformativa'],
@@ -87,7 +87,7 @@ class confrontaController extends BaseController {
                 'fAlta' => $fecha
             ]);
             $confrontas->save();
-            echo $this->getIndex();
+            $app->redirect('/SIA/juridico/confrontasJuridico');
         }
 
     }
@@ -96,7 +96,7 @@ class confrontaController extends BaseController {
 
 
 
-    public function update($post) {
+    public function update($post,$app) {
             $id = $post['idConfrontaJuridico'];
             $fecha=strftime( "%Y-%d-%m", time() );
         if(empty($post['notaInformativa'])) {
@@ -113,7 +113,7 @@ class confrontaController extends BaseController {
                 'usrModificacion' => $_SESSION['idUsuario'],
                 'fModificacion' => $fecha
             ]);
-            echo $this->getIndex();
+            $app->redirect('/SIA/juridico/confrontasJuridico');
         }else{
             ConfrontasJuridico::where('idConfrontaJuridico','=',"$id")
             ->update([
@@ -129,6 +129,7 @@ class confrontaController extends BaseController {
                 'usrModificacion' => $_SESSION['idUsuario'],
                 'fModificacion' => $fecha
             ]);
+            $app->redirect('/SIA/juridico/confrontasJuridico');
         }
 
     }

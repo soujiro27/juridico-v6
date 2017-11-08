@@ -48,7 +48,8 @@ function auditoria(){
 }
 
 function remitentes() {
-    $('button#remitente').click(function(){
+    $('button#remitente').click(function(e){
+        e.preventDefault();
         let promesa = co (function *(){
             let remitentes =  yield api.remitentes()
             let template = `<table class="table table-hover remitentes">

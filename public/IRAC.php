@@ -411,7 +411,7 @@ $pdf->writeHTML($tbl, true, false, false, false, '');
 $ef=explode(",",$puesjud);
 $nombres=array();
 $puestos=array();
-for($i=0;$i<count($ef)-1;$i++){
+for($i=0;$i<count($ef);$i++){
     $usrf=$ef[$i];
     $sql="select concat(saludo,' ',nombre,' ',paterno,' ',materno) as nombre,puesto from sia_PuestosJuridico where idPuestoJuridico='$usrf'";
     $nombre=consultaRetorno($sql,$db);

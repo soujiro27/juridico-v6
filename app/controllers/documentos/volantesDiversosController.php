@@ -24,7 +24,7 @@ class VolantesDiversosController extends BaseController {
     }
 
 
-    public function getCreate() {
+    public function getCreate($err) {
 
         $documentos = TiposDocumentos::where('estatus','ACTIVO')->where('tipo','JURIDICO')->get();
         $caracteres = Caracteres::where('estatus','ACTIVO')->get();
@@ -41,12 +41,17 @@ class VolantesDiversosController extends BaseController {
             'acciones' => $acciones,
             'turnados' => $turnados,
             'direccionGral' => $turnadoDireccion,
-            'subtipos' => $subTipos
+            'subtipos' => $subTipos,
+            'err' => $err
         ]);
     }
 
 
-    public function volantesCreate($post) {
+    public function volantesCreate($post,$app) {
+       if(empty($post['idRemitente'])){
+           echo $this->getCreate('Hay Datos Vacios tu registro NO pudo ser Guardado');
+       }else{
+
         $fecha=strftime( "%Y-%d-%m", time() );
         $volantes = new Volantes([
             'idTipoDocto' =>$post['idTipoDocto'],
@@ -80,10 +85,10 @@ class VolantesDiversosController extends BaseController {
                 'fAlta' => $fecha
             ]);
             $volantesDocumentos->save();
-            echo $this->getIndex();
+           $app->redirect('/SIA/juridico/VolantesDiversos');
         }
 
-
+       }
 
     }
 
@@ -111,7 +116,7 @@ class VolantesDiversosController extends BaseController {
 
 
 
-    public function volantesUpdate($post) {
+    public function volantesUpdate($post,$app) {
 
 
         $fecha=strftime( "%Y-%d-%m", time() );
@@ -129,7 +134,7 @@ class VolantesDiversosController extends BaseController {
             'fModificacion' => $fecha,
             'estatus' => $post['estatus']
         ]);
-        echo $this->getIndex();
+        $app->redirect('/SIA/juridico/VolantesDiversos');
 
 
     }

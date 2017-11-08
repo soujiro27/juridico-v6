@@ -7,6 +7,7 @@ const documentos = require('./documentosGral')
 const plantilla = require('./plantillas')
 const irac = require('./irac')
 const confronta = require('./confronta')
+const ifa = require('./ifa')
 utils.update()
 utils.cancel()
 utils.getSub()
@@ -30,7 +31,8 @@ documentos.download()
 /*--------Plantillas------------------*/
 
 plantilla.getInsert()
-
+plantilla.internos()
+plantilla.externos()
 
 
 
@@ -45,3 +47,10 @@ irac.firmas()
 /*--------------confrontas ----------*/
 
 confronta.cedula()
+
+
+/*-------------IFa-------------------*/
+
+ifa.panelObservaciones()
+ifa.updateObservacion()
+ifa.doctosTexto()

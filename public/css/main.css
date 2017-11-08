@@ -2957,3 +2957,9 @@ form.volantes div.bloque4,
 form.volantes div.bloque5 {
   margin-bottom: 20px;
 }
+div#cke_ckeditor {
+  width: 90%;
+}
+select {
+  height: 30px !important;
+}

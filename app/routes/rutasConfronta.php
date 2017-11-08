@@ -18,13 +18,13 @@ $app->get('/juridico/confrontasJuridico/add/:id',function($id){
 
 $app->post('/juridico/confrontasJuridico/add',function() use ($app){
     $get = new ConfrontaController();
-    $get->create($app->request->post());
+    $get->create($app->request->post(),$app);
 });
 
 
 $app->post('/juridico/confrontasJuridico/update',function() use ($app){
     $get = new ConfrontaController();
-    echo $get->update($app->request->post());
+    echo $get->update($app->request->post(),$app);
 });
 
 /*
