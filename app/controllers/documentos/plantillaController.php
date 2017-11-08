@@ -49,17 +49,27 @@ class PlantillaController extends BaseController {
             ]);
         }else {
             $datos = explode(",",$copías);
+            $internos = '';
+            $externos = '';
             foreach ($datos as $llave => $valor){
                 $id = $valor;
                 $tipo = Remitentes::where('idRemitenteJuridico','=',"$id")->get();
-
+                if($tipo[0]['tipoRemitente'] == 'I'){
+                    $internos .= $tipo[0]['idRemitenteJuridico'] . ',';
+                }else{
+                    $externos .= $tipo[0]['idRemitenteJuridico'] . ',';
+                }
             }
-            var_dump($tipo);
-           /* return $this->render('/plantillas/update-plantillas.twig',[
+
+            $idInternos = substr($internos,0,-1);
+            $idExternos = substr($externos,0,-1);
+           return $this->render('/plantillas/update-plantillas.twig',[
                 'sesiones' => $_SESSION,
                 'idVolante' => $idVolante,
-                'plantillas' => $plantillas
-            ]);*/
+                'plantillas' => $plantillas,
+                'internos' => $idInternos,
+                'externos' => $idExternos
+            ]);
         }
 
     }

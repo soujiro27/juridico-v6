@@ -40,8 +40,8 @@
                 <textarea name="texto" id="ckeditor" placeholder="Texto">{{ plantillas[0].texto }}</textarea>
                 <input type="hidden" name="idRemitente" value="1">
                 <input type="hidden" name="idPlantillaJuridico" value="{{ plantillas[0].idPlantillaJuridico }}">
-                <input type="hidden" name="internos" id="internos">
-                <input type="hidden" name="externos" id="externos">
+                <input type="hidden" name="internos" id="internos" value="{{ internos }}">
+                <input type="hidden" name="externos" id="externos" value="{{ externos }}">
             </div>
             <div class="form-group send">
                 <input class="btn btn-primary btn-sm" type="submit" value="Guardar"/>
