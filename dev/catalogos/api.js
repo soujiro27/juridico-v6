@@ -10,7 +10,8 @@ const api = {
     volanteDocumentos,
     firmas,
     doctosTextos,
-    remitentesPlantillas
+    remitentesPlantillas,
+    closeVolante
 
 }
 
@@ -142,5 +143,20 @@ function remitentesPlantillas(data){
     })
     return datos
 }
+
+
+function closeVolante(data){
+    let datos = new Promise(resolve =>{
+        $.post({
+            url:`/SIA/juridico/datos/closeVolante`,
+            data:data,
+            success: function(json){
+                location.href = "/SIA/juridico/"+data['ruta'];
+            }
+        })
+    })
+    return datos
+}
+
 
 module.exports = api

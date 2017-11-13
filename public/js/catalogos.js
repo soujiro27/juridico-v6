@@ -13,7 +13,8 @@ var api = {
     volanteDocumentos: volanteDocumentos,
     firmas: firmas,
     doctosTextos: doctosTextos,
-    remitentesPlantillas: remitentesPlantillas
+    remitentesPlantillas: remitentesPlantillas,
+    closeVolante: closeVolante
 
 };
 
@@ -144,6 +145,19 @@ function remitentesPlantillas(data) {
     return datos;
 }
 
+function closeVolante(data) {
+    var datos = new Promise(function (resolve) {
+        $.post({
+            url: '/SIA/juridico/datos/closeVolante',
+            data: data,
+            success: function success(json) {
+                location.href = "/SIA/juridico/" + data['ruta'];
+            }
+        });
+    });
+    return datos;
+}
+
 module.exports = api;
 
 },{"jquery":175}],2:[function(require,module,exports){
@@ -184,23 +198,31 @@ var documentosGral = {
 };
 
 function volantesByFolio() {
-    $('input#folio-documentos').keyup(function () {
-        var val = $(this).val();
+    $('input#subFolio-documentos').keyup(function () {
+        var val = $('input#folio-documentos').val();
+        var sub = $(this).val();
         var promesa = co( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            var volantes;
+            var volantes, file;
             return regeneratorRuntime.wrap(function _callee$(_context) {
                 while (1) {
                     switch (_context.prev = _context.next) {
                         case 0:
                             _context.next = 2;
-                            return api.volanteDocumentos({ folio: val });
+                            return api.volanteDocumentos({ folio: val, subFolio: sub });
 
                         case 2:
                             volantes = _context.sent;
 
                             $('input#idVolante').val(volantes[0].idVolante);
+                            file = volantes[0].anexoDoc;
 
-                        case 4:
+                            if (file != null) {
+                                $('input#archivo').val(file);
+                            } else {
+                                $('input#archivo').val('Sin Asignar');
+                            }
+
+                        case 6:
                         case 'end':
                             return _context.stop();
                     }
@@ -212,6 +234,7 @@ function volantesByFolio() {
 function download() {
     $('table#main-table-files tbody tr').click(function () {
         var val = $(this).children().first().next().text();
+        var sub = $(this).children().first().next().next().text();
         var promesa = co( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
             var volantes;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
@@ -219,13 +242,15 @@ function download() {
                     switch (_context2.prev = _context2.next) {
                         case 0:
                             _context2.next = 2;
-                            return api.volanteDocumentos({ folio: val });
+                            return api.volanteDocumentos({ folio: val, subFolio: sub });
 
                         case 2:
                             volantes = _context2.sent;
 
                             $('input#idVolante').val(volantes[0].idVolante);
-                            window.open('/SIA/juridico/public/files/' + volantes[0].anexoDoc);
+                            if (volantes[0].anexoDoc != null) {
+                                window.open('/SIA/juridico/public/files/' + volantes[0].anexoDoc);
+                            }
 
                         case 5:
                         case 'end':
@@ -393,6 +418,8 @@ volantes.nota();
 volantes.auditoria();
 volantes.remitentes();
 volantes.getSubDocumentosSinAuditoria();
+volantes.order();
+volantes.cerrarVolante();
 
 /*------------Documentos upload-------*/
 
@@ -577,7 +604,10 @@ function getSub() {
 function ckeditorLoad() {
     try {
         CKEDITOR.disableAutoInline = true;
-        CKEDITOR.replace('ckeditor');
+        CKEDITOR.replace('ckeditor', {
+            language: 'es',
+            uiColor: '#afafaf'
+        });
     } catch (err) {
         console.log(err);
     }
@@ -599,7 +629,9 @@ var utils = {
     nota: nota,
     auditoria: auditoria,
     remitentes: remitentes,
-    getSubDocumentosSinAuditoria: getSubDocumentosSinAuditoria
+    getSubDocumentosSinAuditoria: getSubDocumentosSinAuditoria,
+    order: order,
+    cerrarVolante: cerrarVolante
 };
 
 function getSubDocumentos() {
@@ -664,11 +696,11 @@ function remitentes() {
 
                         case 2:
                             remitentes = _context2.sent;
-                            template = '<table class="table table-hover remitentes">\n            <thead><tr><th>Tipo</th><th>Nombre</th><th>Puesto</th><th>Escoger</th></thead>\n            <tbody>';
+                            template = '<table class="table table-hover remitentes">\n            <thead><tr><th>Escoger</th><th>Tipo</th><th>Nombre</th><th>Puesto</th></thead>\n            <tbody>';
                             td = '';
 
                             $.each(remitentes, function (index, el) {
-                                td += '<tr><td>' + remitentes[index].tipoRemitente + '</td>\n                <td>' + remitentes[index].nombre + '</td>\n                <td>' + remitentes[index].puesto + '</td>\n                <td><input type="radio" name="remitente" value="' + remitentes[index].idRemitenteJuridico + '"></td>\n                </tr>';
+                                td += '<tr> <td><input type="radio" name="remitente" data-nombre="' + remitentes[index].nombre + '"\n                data-puesto="' + remitentes[index].puesto + '" \n                value="' + remitentes[index].siglasArea + '" data-id="' + remitentes[index].idRemitenteJuridico + '"></td>\n                <td>' + remitentes[index].tipoRemitente + '</td>\n                <td>' + remitentes[index].nombre + '</td>\n                <td>' + remitentes[index].puesto + '</td>\n                </tr>';
                             });
                             template = template + td + '</tbody></table>';
                             modals.remitentes(template);
@@ -714,6 +746,21 @@ function getSubDocumentosSinAuditoria() {
     });
 }
 
+function order() {
+    $('button#btn-order').click(function () {
+        $('form#form-order').toggle();
+    });
+}
+
+function cerrarVolante() {
+    $('a#btn-close-volante').click(function (e) {
+        e.preventDefault();
+        var val = $(this).data('id');
+        var ruta = $(this).data('ruta');
+        modals.closeVolante(val, ruta);
+    });
+}
+
 module.exports = utils;
 
 },{"./../modals/modals":10,"./api":1,"bluebird":13,"co":15,"jquery":175}],10:[function(require,module,exports){
@@ -735,7 +782,8 @@ var modals = {
     firmas: firmas,
     promocion: promocion,
     internos: internos,
-    externos: externos
+    externos: externos,
+    closeVolante: closeVolante
 };
 
 function nota() {
@@ -763,7 +811,7 @@ function auditoria() {
     $.confirm({
         title: 'Seleccione el Numero de Auditoria',
         theme: 'modern',
-        content: '<div class="auditoria-container">\n            <div class="auditoria">\n              <div class="cuenta">\n                <p class="cuenta">CUENTA PUBLICA 2016</p>\n              </div>\n              <div class="search"><span>ASCM/</span>\n                <input id="auditoria" type="text" name="auditoria"/><span>16</span>\n              </div>\n            </div>\n            <div class="datosAuditoria"></div>\n            <div class="asignacion"></div>\n          </div>',
+        content: '<div class="auditoria-container">\n            <div class="auditoria">\n              <div class="cuenta">\n                <p class="cuenta">CUENTA PUBLICA 2016</p>\n              </div>\n              <div class="search"><span>ASCM/</span>\n                <input id="auditoria" type="text" name="auditoria"/><span>/16</span>\n              </div>\n            </div>\n            <div class="datosAuditoria"></div>\n            <div class="asignacion"></div>\n          </div>',
         buttons: {
             confirm: {
                 text: 'Aceptar',
@@ -802,11 +850,11 @@ function auditoria() {
 
                                         $('div.datosAuditoria').html(table);
 
-                                        tableTurnado = self.tableTurnados(datos);
+                                        tableTurnado = self.tableTurnados(turnado);
 
                                         $('div.asignacion').html(tableTurnado);
 
-                                        $('p#textoCveAuditoria').text(cve);
+                                        $('span#auditoria').text(cve);
                                         $('input#cveAuditoria').val(datos[0].idAuditoria);
                                         $('input#idRemitente').val(datos[0].idArea);
 
@@ -824,7 +872,7 @@ function auditoria() {
 }
 
 function TableDatosAuditoria(datos) {
-    var template = '\n    <table class="datosAuditoria">\n      <thead>\n        <tr>\n          <th>Sujeto</th>\n          <th>Rubros</th>\n          <th>Tipo</th>\n        </tr>\n      </thead>\n      <tbody>:datos</tbody>\n    </table>';
+    var template = '\n    <table class="datosAuditoria table table-hover">\n      <thead>\n        <tr>\n          <th>Sujeto</th>\n          <th>Rubros</th>\n          <th>Tipo</th>\n        </tr>\n      </thead>\n      <tbody>:datos</tbody>\n    </table>';
     var campos = '<tr><td>' + datos[0].sujeto + '</td><td>' + datos[0].rubros + '</td><td>' + datos[0].tipo + '</td></tr>';
     var res = template.replace(':datos', campos);
     return res;
@@ -847,9 +895,9 @@ function tableTurnados(datos) {
         }
         body += '</tr>';
     } else {
-        body = '<tr><td>No Asignado</td><td>No Asignado</td><td>No Asignado</td></tr>';
+        body = '<tr>\n        <td>No Asignado</td>\n        <td>No Asignado</td>\n        <td>No Asignado</td>\n        </tr>';
     }
-    var template = '\n    <table class="datosTurnado">\n      <thead>\n        <tr>\n          <th>Irac</th>\n          <th>Confronta</th>\n          <th>Ifa</th>\n        </tr>\n      </thead>\n      <tbody>:datos</tbody>\n    </table>';
+    var template = '\n    <table class="datosTurnado table table-hover">\n      <thead>\n        <tr>\n          <th>Irac</th>\n          <th>Confronta</th>\n          <th>Ifa</th>\n        </tr>\n      </thead>\n      <tbody>:datos</tbody>\n    </table>';
     var res = template.replace(':datos', body);
     return res;
 }
@@ -865,7 +913,13 @@ function remitentes(template) {
                 text: 'Aceptar',
                 action: function action() {
                     var val = $('input:radio[name=remitente]:checked').val();
+                    var id = $('input:radio[name=remitente]:checked').data('id');
                     $('input#idRemitente').val(val);
+                    $('input#idRemitenteJuridico').val(id);
+                    var nombre = $('input:radio[name=remitente]:checked').data('nombre');
+                    var puesto = $('input:radio[name=remitente]:checked').data('puesto');
+                    $('input#nombreRemitente').val(nombre);
+                    $('input#puestoRemitente').val(puesto);
                 } },
             cancel: {
                 btnClass: 'btn-danger',
@@ -969,13 +1023,13 @@ function internos(template) {
         onOpenBefore: function onOpenBefore() {
             $('div.jconfirm-box-container').removeClass('col-md-4');
             $('div.jconfirm-box-container').addClass('col-md-12');
-            /*let val = $('input#idPuestosJuridico').val()
-            if(val){
-                var puestosArray = val.split(',')
-                for(let x in puestosArray){
-                    $(`input[value="${puestosArray[x]}"]#firmas`).prop('checked',true)
+            var val = $('input#internos').val();
+            if (val) {
+                var puestosArray = val.split(',');
+                for (var x in puestosArray) {
+                    $('input[value="' + puestosArray[x] + '"]#ccpInternos').prop('checked', true);
                 }
-            }*/
+            }
         }
     });
 }
@@ -1005,13 +1059,36 @@ function externos(template) {
         onOpenBefore: function onOpenBefore() {
             $('div.jconfirm-box-container').removeClass('col-md-4');
             $('div.jconfirm-box-container').addClass('col-md-12');
-            /*let val = $('input#idPuestosJuridico').val()
-            if(val){
-                var puestosArray = val.split(',')
-                for(let x in puestosArray){
-                    $(`input[value="${puestosArray[x]}"]#firmas`).prop('checked',true)
+            var val = $('input#externos').val();
+            if (val) {
+                var puestosArray = val.split(',');
+                for (var x in puestosArray) {
+                    $('input[value="' + puestosArray[x] + '"]#ccpExternos').prop('checked', true);
                 }
-            }*/
+            }
+        }
+    });
+}
+
+function closeVolante(idVolante, ruta) {
+    $.confirm({
+        title: 'Cerrar Volante!',
+        content: '¿Desea Cerrar el Volante?',
+        buttons: {
+            confirm: {
+                text: 'Aceptar',
+                btnClass: 'btn-info',
+                action: function action() {
+                    api.closeVolante({
+                        idVolante: idVolante,
+                        ruta: ruta
+                    });
+                }
+            },
+            cancel: {
+                text: 'Cancelar',
+                btnClass: 'btn-danger'
+            }
         }
     });
 }

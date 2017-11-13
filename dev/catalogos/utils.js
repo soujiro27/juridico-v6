@@ -44,7 +44,10 @@ function getSub(){
 function ckeditorLoad(){
     try{
         CKEDITOR.disableAutoInline=true
-        CKEDITOR.replace('ckeditor')
+        CKEDITOR.replace('ckeditor',{
+            language: 'es',
+            uiColor: '#afafaf'
+        })
     }
     catch(err){
         console.log(err)

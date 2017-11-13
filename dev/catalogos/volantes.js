@@ -10,7 +10,9 @@ const utils = {
     nota,
     auditoria,
     remitentes,
-    getSubDocumentosSinAuditoria
+    getSubDocumentosSinAuditoria,
+    order,
+    cerrarVolante
 }
 
 function getSubDocumentos(){
@@ -53,14 +55,16 @@ function remitentes() {
         let promesa = co (function *(){
             let remitentes =  yield api.remitentes()
             let template = `<table class="table table-hover remitentes">
-            <thead><tr><th>Tipo</th><th>Nombre</th><th>Puesto</th><th>Escoger</th></thead>
+            <thead><tr><th>Escoger</th><th>Tipo</th><th>Nombre</th><th>Puesto</th></thead>
             <tbody>`
             let td = ''
             $.each(remitentes,function(index,el){
-                td += `<tr><td>${remitentes[index].tipoRemitente}</td>
+                td += `<tr> <td><input type="radio" name="remitente" data-nombre="${remitentes[index].nombre}"
+                data-puesto="${remitentes[index].puesto}" 
+                value="${remitentes[index].siglasArea}" data-id="${remitentes[index].idRemitenteJuridico}"></td>
+                <td>${remitentes[index].tipoRemitente}</td>
                 <td>${remitentes[index].nombre}</td>
                 <td>${remitentes[index].puesto}</td>
-                <td><input type="radio" name="remitente" value="${remitentes[index].idRemitenteJuridico}"></td>
                 </tr>`
             })
             template = template + td + '</tbody></table>'
@@ -81,6 +85,23 @@ function getSubDocumentosSinAuditoria(){
               $('select#subDocumento').html(opt)  
         })     
         })
+}
+
+
+function order(){
+    $('button#btn-order').click(function(){
+        $('form#form-order').toggle();
+    })
+}
+
+
+function cerrarVolante(){
+    $('a#btn-close-volante').click(function(e){
+        e.preventDefault()
+        let val = $(this).data('id')
+        let ruta = $(this).data('ruta')
+        modals.closeVolante(val,ruta)
+    })
 }
 
 module.exports = utils

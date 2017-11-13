@@ -14,12 +14,12 @@ $app->get('/juridico/DocumentosDiversos/add/:id',function($id){
 
 $app->post('/juridico/DocumentosDiversos/add',function() use ($app){
     $get = new PlantillaController();
-    $get->create($app->request->post());
+    $get->create($app->request->post(),$app);
 });
 
 $app->post('/juridico/DocumentosDiversos/update',function() use ($app){
     $get = new PlantillaController();
-    echo $get->update($app->request->post());
+    echo $get->update($app->request->post(),$app);
 });
 /*
 

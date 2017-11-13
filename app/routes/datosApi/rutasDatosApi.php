@@ -67,3 +67,8 @@ $app->get('/juridico/datos/remitentesPlantilla',function() use($app){
     $get = new ApiController();
     $get->remitentesPlantilla($app->request->get());
 });
+
+$app->post('/juridico/datos/closeVolante',function() use($app){
+    $get = new ApiController();
+    $get->closeVolante($app->request->post(),$app);
+});

@@ -1,5 +1,17 @@
 {% extends 'layoutForm.twig' %}
-{% block title %}Añadir Registro{% endblock %}
+{% block title %}Actualizar Registro{% endblock %}
+{% block btnHeader %}
+    <a id="addRegister" href="/SIA/juridico/public/VolantesDiversos.php?param1={{ volantes.idVolante }}" target="_blank" class="btn btn-primary btn-add" role="button">
+        Generar Comprobante
+        <i class="fa fa-print" aria-hidden="true"></i>
+    </a>
+    {% if close %}
+        <a id="btn-close-volante" href="#!" class="btn btn-danger"  role="button" data-id="{{ volantes.idVolante }}" data-ruta="VolantesDiversos">
+            Cerrar Volante
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+        </a>
+    {% endif %}
+{% endblock %}
 {% block form %}
 
 
@@ -106,7 +118,9 @@
             </div>
         </div>
         <div class="form-group send">
-            <input class="btn btn-primary btn-sm" type="submit" value="Guardar"/>
+            {% if close %}
+                <input class="btn btn-primary btn-sm" type="submit" value="Guardar"/>
+            {% endif %}
             <button class="btn btn-danger btn-sm" id="cancelar">Cancelar</button>
         </div>
     </form>

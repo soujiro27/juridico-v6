@@ -2,29 +2,29 @@
 {% block title %}Actualizar Registro{% endblock %}
 {% block form %}
 
-    <form class="form-inline" id="ObservacionesDoctosJuridico" method="POST" action="/SIA/juridico/observacionesIrac/update" data-ruta="Irac">
+    <form class="form" id="ObservacionesDoctosJuridico" method="POST" action="/SIA/juridico/observacionesIrac/update" data-ruta="Irac">
         <div class="datos">
-            <div class="form-group pagina">
-                <label for="text">Hoja</label>
-                <input class="form-control" id="pagina" type="text" name="pagina" required="" value="{{ observacion.pagina }}"/>
+            <div class="form-group pagina row">
+                <label for="text" class="col-lg-2">Hoja</label>
+                <input class="form-control col-lg-2"  id="pagina" type="text" name="pagina" required="" value="{{ observacion.pagina }}"/>
                 <input id="idVolante" type="hidden" name="idVolante" value="{{ observacion.idVolante }}" />
                 <input id="cveAuditoria" type="hidden" name="cveAuditoria" value="{{ observacion.cveAuditoria }}" />
                 <input id="idSubTipoDocumento" type="hidden" name="idSubTipoDocumento" value="{{ observacion.idSubTipoDocumento }}" />
             </div>
-            <div class="form-group parrafo">
-                <label for="parrafo">Parrafo</label>
-                <input class="form-control" id="parrafo" type="text" name="parrafo" required="" value="{{ observacion.parrafo }}"/>
+            <div class="form-group parrafo row">
+                <label for="parrafo" class="col-lg-2">Parrafo</label>
+                <input class="form-control col-lg-2" id="parrafo" type="text" name="parrafo" required="" value="{{ observacion.parrafo }}"/>
             </div>
         </div>
-        <div class="form-group observacion">
-            <label for="observacion">Observacion</label>
-            <textarea class="form-control" id="ckeditor" rows="3" name="observacion">{{ observacion.observacion }}</textarea>
+        <div class="form-group observacion row">
+            <label for="observacion" class="col-lg-2">Observacion</label>
+            <textarea class="form-control col-lg-2" id="ckeditor" rows="3" name="observacion">{{ observacion.observacion }}</textarea>
 
         </div>
-        <div class="form-group estatus">
-            <label class="form-control-label" for="estatus">Estatus</label>
+        <div class="form-group estatus row">
+            <label class="form-control-label col-lg-2" for="estatus">Estatus</label>
 
-            <select name="estatus" id="estatus" class="form-control">
+            <select name="estatus" id="estatus" class="form-control col-lg-2">
                 {% if observacion.estatus=='ACTIVO' %}
                     <option value="ACTIVO" selected>ACTIVO</option>
                     <option value="INACTIVO" >INACTIVO</option>

@@ -2,13 +2,78 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8421061c-e5ff-48ae-834c-5f197b9b3794" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/juridico.iml" afterPath="$PROJECT_DIR$/.idea/juridico.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/acciones/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/caracteres/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/ckeditor/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/doctosTexto/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/irac/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/planbillas/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/plantillas/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/subDocumentos/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/volantes/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/volantesDiversos/main.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/routes/rutasDocumentos.php" afterPath="$PROJECT_DIR$/app/routes/rutasDocumentosGral.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/api/apiController.php" afterPath="$PROJECT_DIR$/app/controllers/api/apiController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/catalogs/CaracteresController.php" afterPath="$PROJECT_DIR$/app/controllers/catalogs/CaracteresController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/catalogs/DoctosTextosController.php" afterPath="$PROJECT_DIR$/app/controllers/catalogs/DoctosTextosController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/documentos/DocumentosUploadController.php" afterPath="$PROJECT_DIR$/app/controllers/documentos/DocumentosUploadController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/documentos/IfaController.php" afterPath="$PROJECT_DIR$/app/controllers/documentos/IfaController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/documentos/IracController.php" afterPath="$PROJECT_DIR$/app/controllers/documentos/IracController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/documentos/VolantesController.php" afterPath="$PROJECT_DIR$/app/controllers/documentos/VolantesController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/documentos/confrontaController.php" afterPath="$PROJECT_DIR$/app/controllers/documentos/confrontaController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/documentos/plantillaController.php" afterPath="$PROJECT_DIR$/app/controllers/documentos/plantillaController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/documentos/volantesDiversosController.php" afterPath="$PROJECT_DIR$/app/controllers/documentos/volantesDiversosController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Caracteres.php" afterPath="$PROJECT_DIR$/app/models/Caracteres.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Volantes.php" afterPath="$PROJECT_DIR$/app/models/Volantes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/VolantesDiversos.php" afterPath="$PROJECT_DIR$/app/models/VolantesDiversos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes/datosApi/rutasDatosApi.php" afterPath="$PROJECT_DIR$/app/routes/datosApi/rutasDatosApi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes/rutasAcciones.php" afterPath="$PROJECT_DIR$/app/routes/rutasAcciones.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes/rutasCaracteres.php" afterPath="$PROJECT_DIR$/app/routes/rutasCaracteres.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes/rutasDoctosTextos.php" afterPath="$PROJECT_DIR$/app/routes/rutasDoctosTextos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes/rutasIfa.php" afterPath="$PROJECT_DIR$/app/routes/rutasIfa.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes/rutasIrac.php" afterPath="$PROJECT_DIR$/app/routes/rutasIrac.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes/rutasPlantillas.php" afterPath="$PROJECT_DIR$/app/routes/rutasPlantillas.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes/rutasVolantes.php" afterPath="$PROJECT_DIR$/app/routes/rutasVolantes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes/rutasVolantesDiversos.php" afterPath="$PROJECT_DIR$/app/routes/rutasVolantesDiversos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/catalogos/api.js" afterPath="$PROJECT_DIR$/dev/catalogos/api.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/catalogos/documentosGral.js" afterPath="$PROJECT_DIR$/dev/catalogos/documentosGral.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/catalogos/main.js" afterPath="$PROJECT_DIR$/dev/catalogos/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/catalogos/utils.js" afterPath="$PROJECT_DIR$/dev/catalogos/utils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/catalogos/volantes.js" afterPath="$PROJECT_DIR$/dev/catalogos/volantes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/modals/modals.js" afterPath="$PROJECT_DIR$/dev/modals/modals.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/scss/main.styl" afterPath="$PROJECT_DIR$/dev/scss/main.styl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/IRAC.php" afterPath="$PROJECT_DIR$/public/IRAC.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/Oficiogenerico.php" afterPath="$PROJECT_DIR$/public/Oficiogenerico.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/Volantes.php" afterPath="$PROJECT_DIR$/public/Volantes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/main.css" afterPath="$PROJECT_DIR$/public/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.php" afterPath="$PROJECT_DIR$/public/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/catalogos.js" afterPath="$PROJECT_DIR$/public/js/catalogos.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/ckeditor/ckeditor.js" afterPath="$PROJECT_DIR$/public/js/ckeditor/ckeditor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/ckeditor/config.js" afterPath="$PROJECT_DIR$/public/js/ckeditor/config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/ckeditor/sample.js" afterPath="$PROJECT_DIR$/public/js/ckeditor/sample.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/caracteres/tabla.twig" afterPath="$PROJECT_DIR$/views/caracteres/tabla.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/doctosTextos/tabla.twig" afterPath="$PROJECT_DIR$/views/doctosTextos/tabla.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/documentos/insert.twig" afterPath="$PROJECT_DIR$/views/documentos/insert.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/documentos/tabla.twig" afterPath="$PROJECT_DIR$/views/documentos/tabla.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/ifa/Observaciones.twig" afterPath="$PROJECT_DIR$/views/ifa/Observaciones.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/irac/insert-Cedula.twig" afterPath="$PROJECT_DIR$/views/irac/insert-Cedula.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/irac/insert-observaciones.twig" afterPath="$PROJECT_DIR$/views/irac/insert-observaciones.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/irac/tabla-observaciones.twig" afterPath="$PROJECT_DIR$/views/irac/tabla-observaciones.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/irac/update-cedula.twig" afterPath="$PROJECT_DIR$/views/irac/update-cedula.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/irac/update-observacion.twig" afterPath="$PROJECT_DIR$/views/irac/update-observacion.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layoutForm.twig" afterPath="$PROJECT_DIR$/views/layoutForm.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layoutTable.twig" afterPath="$PROJECT_DIR$/views/layoutTable.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/plantillas/insert-plantillas.twig" afterPath="$PROJECT_DIR$/views/plantillas/insert-plantillas.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/plantillas/update-plantillas.twig" afterPath="$PROJECT_DIR$/views/plantillas/update-plantillas.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/volantes/insert.twig" afterPath="$PROJECT_DIR$/views/volantes/insert.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/volantes/tabla.twig" afterPath="$PROJECT_DIR$/views/volantes/tabla.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/volantes/update.twig" afterPath="$PROJECT_DIR$/views/volantes/update.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/volantesDiversos/insert.twig" afterPath="$PROJECT_DIR$/views/volantesDiversos/insert.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/volantesDiversos/tabla.twig" afterPath="$PROJECT_DIR$/views/volantesDiversos/tabla.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/volantesDiversos/update.twig" afterPath="$PROJECT_DIR$/views/volantesDiversos/update.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,31 +84,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="plantillaController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/documentos/plantillaController.php">
+      <file leaf-file-name="update.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/volantesDiversos/update.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="579">
-              <caret line="65" column="11" lean-forward="false" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="rutasPlantillas.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/routes/rutasPlantillas.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="47" lean-forward="false" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="update-plantillas.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/plantillas/update-plantillas.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="43" column="85" lean-forward="false" selection-start-line="43" selection-start-column="85" selection-end-line="43" selection-end-column="85" />
+            <state relative-caret-position="320">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -54,7 +99,13 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>fecha</find>
+      <find>$remitente</find>
+      <find>update</find>
+      <find>$titular</find>
     </findStrings>
+    <replaceStrings>
+      <replace>$turnado</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,57 +113,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/documentos/VolantesController.php" />
-        <option value="$PROJECT_DIR$/views/volantesDiversos/update.twig" />
         <option value="$PROJECT_DIR$/app/routes/rutasDocumentos.php" />
-        <option value="$PROJECT_DIR$/views/documentos/tabla.twig" />
-        <option value="$PROJECT_DIR$/app/controllers/documentos/DocumentosUploadController.php" />
-        <option value="$PROJECT_DIR$/views/documentos/insert.twig" />
-        <option value="$PROJECT_DIR$/app/controllers/documentos/irac/IracController.php" />
-        <option value="$PROJECT_DIR$/app/routes/rutasPlantillas.php" />
-        <option value="$PROJECT_DIR$/views/plantillas/tabla.twig" />
-        <option value="$PROJECT_DIR$/views/layoutTable.twig" />
-        <option value="$PROJECT_DIR$/views/Acciones/tabla.twig" />
-        <option value="$PROJECT_DIR$/views/layoutForm.twig" />
-        <option value="$PROJECT_DIR$/views/Acciones/update.twig" />
-        <option value="$PROJECT_DIR$/views/caracteres/tabla.twig" />
-        <option value="$PROJECT_DIR$/views/doctosTextos/tabla.twig" />
-        <option value="$PROJECT_DIR$/views/doctosTextos/update.twig" />
-        <option value="$PROJECT_DIR$/views/subTiposDocumentos/tabla.twig" />
-        <option value="$PROJECT_DIR$/views/irac/tabla-irac.twig" />
-        <option value="$PROJECT_DIR$/views/irac/insert-observac.twig" />
-        <option value="$PROJECT_DIR$/views/irac/update-observac.twig" />
-        <option value="$PROJECT_DIR$/app/routes/rutasIrac.php" />
-        <option value="$PROJECT_DIR$/views/irac/insert-Cedula.twig" />
-        <option value="$PROJECT_DIR$/views/volantes/tabla.twig" />
-        <option value="$PROJECT_DIR$/views/confronta/tablas.twig" />
+        <option value="$PROJECT_DIR$/app/controllers/documentos/DocumentosController.php" />
+        <option value="$PROJECT_DIR$/views/documentos-sub/insert.twig" />
+        <option value="$PROJECT_DIR$/views/documentos-sub/tabla.twig" />
         <option value="$PROJECT_DIR$/public/index.php" />
-        <option value="$PROJECT_DIR$/public/IRAC.php" />
-        <option value="$PROJECT_DIR$/views/irac/update-cedula.twig" />
-        <option value="$PROJECT_DIR$/app/controllers/documentos/IracController.php" />
-        <option value="$PROJECT_DIR$/views/confronta/insert.twig" />
-        <option value="$PROJECT_DIR$/views/confronta/update.twig" />
-        <option value="$PROJECT_DIR$/app/routes/rutasConfronta.php" />
-        <option value="$PROJECT_DIR$/app/controllers/documentos/confrontaController.php" />
-        <option value="$PROJECT_DIR$/views/ifa/insert-Observaciones.twig" />
-        <option value="$PROJECT_DIR$/views/ifa/tabla-ifa.twig" />
-        <option value="$PROJECT_DIR$/app/routes/rutasIfa.php" />
-        <option value="$PROJECT_DIR$/views/irac/tabla-observaciones.twig" />
-        <option value="$PROJECT_DIR$/views/ifa/update-Observaciones.twig" />
-        <option value="$PROJECT_DIR$/views/ifa/insert-cedula.twig" />
-        <option value="$PROJECT_DIR$/app/controllers/documentos/IfaController.php" />
-        <option value="$PROJECT_DIR$/views/ifa/update-cedula.twig" />
-        <option value="$PROJECT_DIR$/views/ifa/Observaciones.twig" />
-        <option value="$PROJECT_DIR$/views/volantesDiversos/tabla.twig" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
-        <option value="$PROJECT_DIR$/app/controllers/api/apiController.php" />
-        <option value="$PROJECT_DIR$/app/routes/datosApi/rutasDatosApi.php" />
+        <option value="$PROJECT_DIR$/public/Oficiogenerico.php" />
         <option value="$PROJECT_DIR$/views/plantillas/insert-plantillas.twig" />
-        <option value="$PROJECT_DIR$/views/volantesDiversos/insert.twig" />
+        <option value="$PROJECT_DIR$/views/documentos/tabla.twig" />
+        <option value="$PROJECT_DIR$/app/controllers/notifcaciones.php" />
+        <option value="$PROJECT_DIR$/app/controllers/Notifica.php" />
+        <option value="$PROJECT_DIR$/app/controllers/ValidateController.php" />
+        <option value="$PROJECT_DIR$/views/volantesDiversos/tabla.twig" />
         <option value="$PROJECT_DIR$/app/routes/rutasVolantesDiversos.php" />
-        <option value="$PROJECT_DIR$/app/controllers/documentos/volantesDiversosController.php" />
-        <option value="$PROJECT_DIR$/app/controllers/documentos/plantillaController.php" />
+        <option value="$PROJECT_DIR$/views/caracteres/tabla.twig" />
+        <option value="$PROJECT_DIR$/views/layoutTable.twig" />
+        <option value="$PROJECT_DIR$/app/routes/rutasCaracteres.php" />
+        <option value="$PROJECT_DIR$/app/models/Caracteres.php" />
+        <option value="$PROJECT_DIR$/app/controllers/catalogs/CaracteresController.php" />
+        <option value="$PROJECT_DIR$/views/doctosTextos/tabla.twig" />
+        <option value="$PROJECT_DIR$/app/controllers/catalogs/DoctosTextosController.php" />
+        <option value="$PROJECT_DIR$/app/routes/rutasDoctosTextos.php" />
+        <option value="$PROJECT_DIR$/app/routes/rutasAcciones.php" />
+        <option value="$PROJECT_DIR$/views/volantes/tabla.twig" />
+        <option value="$PROJECT_DIR$/views/volantes/insert.twig" />
+        <option value="$PROJECT_DIR$/public/Volantes.php" />
+        <option value="$PROJECT_DIR$/app/models/Turnos.php" />
+        <option value="$PROJECT_DIR$/app/routes/datosApi/rutasDatosApi.php" />
+        <option value="$PROJECT_DIR$/app/controllers/api/apiController.php" />
+        <option value="$PROJECT_DIR$/views/volantes/update.twig" />
+        <option value="$PROJECT_DIR$/app/controllers/documentos/DocumentosUploadController.php" />
+        <option value="$PROJECT_DIR$/app/models/PlantillasJuridico.php" />
         <option value="$PROJECT_DIR$/views/plantillas/update-plantillas.twig" />
+        <option value="$PROJECT_DIR$/app/routes/rutasVolantes.php" />
+        <option value="$PROJECT_DIR$/app/controllers/documentos/VolantesController.php" />
+        <option value="$PROJECT_DIR$/app/controllers/NotificaController.php" />
+        <option value="$PROJECT_DIR$/views/volantesDiversos/insert.twig" />
+        <option value="$PROJECT_DIR$/app/models/VolantesDiversos.php" />
+        <option value="$PROJECT_DIR$/app/models/Volantes.php" />
+        <option value="$PROJECT_DIR$/app/controllers/documentos/volantesDiversosController.php" />
+        <option value="$PROJECT_DIR$/views/irac/insert-Cedula.twig" />
+        <option value="$PROJECT_DIR$/public/IRAC.php" />
+        <option value="$PROJECT_DIR$/app/routes/rutasIrac.php" />
+        <option value="$PROJECT_DIR$/app/controllers/documentos/IracController.php" />
+        <option value="$PROJECT_DIR$/app/controllers/documentos/confrontaController.php" />
+        <option value="$PROJECT_DIR$/app/routes/rutasIfa.php" />
+        <option value="$PROJECT_DIR$/app/controllers/documentos/IfaController.php" />
+        <option value="$PROJECT_DIR$/views/ifa/Observaciones.twig" />
+        <option value="$PROJECT_DIR$/views/irac/update-cedula.twig" />
+        <option value="$PROJECT_DIR$/app/controllers/documentos/plantillaController.php" />
+        <option value="$PROJECT_DIR$/views/volantesDiversos/update.twig" />
       </list>
     </option>
   </component>
@@ -134,10 +185,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="91" />
+    <option name="x" value="1497" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1180" />
+    <option name="height" value="630" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -157,6 +208,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -178,9 +231,20 @@
             <path>
               <item name="juridico" type="b2602c69:ProjectViewProjectNode" />
               <item name="juridico" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="api" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="juridico" type="b2602c69:ProjectViewProjectNode" />
+              <item name="juridico" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tcpdf" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="juridico" type="b2602c69:ProjectViewProjectNode" />
+              <item name="juridico" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tcpdf" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="examples" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="juridico" type="b2602c69:ProjectViewProjectNode" />
@@ -197,8 +261,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -208,6 +270,14 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
+    <key name="OPEN_URL_DIALOG">
+      <recent name="http://172.16.6.33/SIA/juridico/VolantesDiversos" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\SIA\juridico\views" />
+      <recent name="C:\xampp\htdocs\SIA\juridico\app\controllers\documentos" />
+      <recent name="C:\xampp\htdocs\SIA\juridico\app\routes" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\SIA\juridico\app\controllers\documentos\" />
       <recent name="C:\xampp\htdocs\SIA\juridico\app\routes\" />
@@ -243,31 +313,44 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56510000" />
+    <option name="totallyTimeSpent" value="142527000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="1592" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.165" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21961933" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.165" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -281,7 +364,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16544656" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.165" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -299,324 +382,572 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/doctosTextos/update.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="27" lean-forward="false" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/subTiposDocumentos/tabla.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/irac/insert-observaciones.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="116" column="23" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="116" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/irac/update-Observaciones.twig" />
-    <entry file="file://$PROJECT_DIR$/views/confronta/confronta.twig" />
-    <entry file="file://$PROJECT_DIR$/views/Acciones/insert.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/confronta/insert-confronta.twig" />
-    <entry file="file://$PROJECT_DIR$/views/Acciones/tabla.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="5" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/confronta/update-confronta.twig" />
-    <entry file="file://$PROJECT_DIR$/public/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/ifa/ifa.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="123" column="24" lean-forward="false" selection-start-line="92" selection-start-column="14" selection-end-line="123" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/documentos/IracController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="153" column="47" lean-forward="false" selection-start-line="153" selection-start-column="47" selection-end-line="153" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/IRAC.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="410" column="26" lean-forward="false" selection-start-line="410" selection-start-column="26" selection-end-line="410" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/confronta/tablas.twig">
+    <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes/rutasConfronta.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="26" column="48" lean-forward="false" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/documentos/confrontaController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="131" column="63" lean-forward="false" selection-start-line="131" selection-start-column="63" selection-end-line="131" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/confronta/update.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="14" column="180" lean-forward="false" selection-start-line="14" selection-start-column="180" selection-end-line="14" selection-end-column="180" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/confronta/insert.twig">
+    <entry file="file://$PROJECT_DIR$/app/models/Caracteres.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
-          <caret line="8" column="56" lean-forward="false" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/irac/tabla-irac.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes/rutasIrac.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="47" column="32" lean-forward="false" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="32" />
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/ifa/tabla-ifa.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="55" lean-forward="false" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/ifa/insert-Observaciones.twig">
+    <entry file="file://$PROJECT_DIR$/app/routes/rutasCaracteres.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="11" column="57" lean-forward="false" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/irac/update-observacion.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="52" column="14" lean-forward="true" selection-start-line="44" selection-start-column="3" selection-end-line="52" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/ifa/update-Observaciones.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="37" column="48" lean-forward="false" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/ifa/update-cedula.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="34" column="77" lean-forward="false" selection-start-line="34" selection-start-column="77" selection-end-line="34" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/documentos/IfaController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="90" column="31" lean-forward="true" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
+          <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/ifa/insert-cedula.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="30" column="30" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="30" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes/rutasIfa.php">
+    <entry file="file://$PROJECT_DIR$/views/doctosTextos/tabla.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
-          <caret line="48" column="12" lean-forward="false" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="38" />
+          <caret line="29" column="88" lean-forward="false" selection-start-line="29" selection-start-column="88" selection-end-line="29" selection-end-column="88" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/ifa/Observaciones.twig">
+    <entry file="file://$PROJECT_DIR$/app/controllers/catalogs/DoctosTextosController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="69" lean-forward="false" selection-start-line="6" selection-start-column="69" selection-end-line="6" selection-end-column="69" />
+        <state relative-caret-position="180">
+          <caret line="33" column="15" lean-forward="true" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/irac/insert-observaciones.twig">
+    <entry file="file://$PROJECT_DIR$/app/routes/rutasDoctosTextos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="38" column="14" lean-forward="true" selection-start-line="30" selection-start-column="3" selection-end-line="38" selection-end-column="14" />
+        <state relative-caret-position="80">
+          <caret line="4" column="56" lean-forward="false" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/irac/insert-Cedula.twig">
+    <entry file="file://$PROJECT_DIR$/app/routes/rutasAcciones.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="34" selection-start-column="2" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/plantillas/plantillas.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1766">
-          <caret line="123" column="24" lean-forward="true" selection-start-line="92" selection-start-column="12" selection-end-line="123" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/plantillas/tabla.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/volantes/insert.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1140">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/volantes/tabla.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="5" selection-end-column="14" />
+        <state relative-caret-position="420">
+          <caret line="21" column="66" lean-forward="false" selection-start-line="21" selection-start-column="66" selection-end-line="21" selection-end-column="66" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/volantesDiversos/tabla.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="32" lean-forward="false" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
+        <state relative-caret-position="340">
+          <caret line="32" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+    <entry file="file://$PROJECT_DIR$/views/layoutForm.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="28" column="10" lean-forward="false" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
+        <state relative-caret-position="-471">
+          <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/volantes/insert.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="46" lean-forward="false" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Acciones.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Turnos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/Oficiogenerico.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="238" column="33" lean-forward="true" selection-start-line="238" selection-start-column="33" selection-end-line="238" selection-end-column="33" />
+          <folding>
+            <marker date="1510186891390" expanded="true" signature="568:634" ph="select * fro... sia_plantillasJuridico" />
+            <marker date="1510186891390" expanded="true" signature="729:797" ph="select * fro... sia_RemitentesJuridico" />
+            <marker date="1510186891390" expanded="true" signature="3503:4018" ph="..." />
+            <marker date="1510186891390" expanded="true" signature="3512:4009" ph="..." />
+            <marker date="1510186891390" expanded="true" signature="4244:4360" ph="..." />
+            <marker date="1510186891390" expanded="true" signature="4258:4351" ph="..." />
+            <marker date="1510186891390" expanded="true" signature="4560:4634" ph="..." />
+            <marker date="1510186891390" expanded="true" signature="4574:4624" ph="..." />
+            <marker date="1510186891390" expanded="true" signature="6300:6629" ph="..." />
+            <marker date="1510186891390" expanded="true" signature="6314:6443" ph="..." />
+            <marker date="1510186891390" expanded="true" signature="6452:6541" ph="..." />
+            <marker date="1510186891390" expanded="true" signature="6550:6620" ph="..." />
+            <marker date="1510186891390" expanded="true" signature="6780:6851" ph="select copia... sia_plantillasJuridico" />
+            <marker date="1510186891390" expanded="true" signature="7024:7096" ph="select * fro... sia_RemitentesJuridico" />
+            <marker date="1510186891390" expanded="true" signature="7467:7484" ph="..." />
+            <marker date="1510186891390" expanded="true" signature="7694:7768" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/routes/datosApi/rutasDatosApi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="65" column="46" lean-forward="false" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="46" />
+        <state relative-caret-position="403">
+          <caret line="70" column="10" lean-forward="false" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/api/apiController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+        <state relative-caret-position="483">
+          <caret line="127" column="36" lean-forward="false" selection-start-line="127" selection-start-column="36" selection-end-line="127" selection-end-column="36" />
           <folding>
             <element signature="e#38#73#0#PHP" expanded="true" />
+            <marker date="1510357666890" expanded="true" signature="1485:1858" ph="select a.idA... sia_auditorias" />
+            <marker date="1510357666890" expanded="true" signature="2391:2667" ph="select sub.n... sia_VolantesDocumentos" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/irac/update-cedula.twig">
+    <entry file="file://$PROJECT_DIR$/views/volantes/tabla.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="34" column="2" lean-forward="false" selection-start-line="34" selection-start-column="2" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="280">
+          <caret line="50" column="13" lean-forward="true" selection-start-line="38" selection-start-column="3" selection-end-line="50" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/irac/tabla-observaciones.twig">
+    <entry file="file://$PROJECT_DIR$/public/Volantes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="14" selection-end-column="14" />
+        <state relative-caret-position="213">
+          <caret line="103" column="24" lean-forward="false" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="24" />
+          <folding>
+            <marker date="1510354251938" expanded="true" signature="516:1113" ph="select v.idT... sia_Volantes" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/documentos/VolantesController.php">
+    <entry file="file://$PROJECT_DIR$/views/volantes/update.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1680">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="-2391">
+          <caret line="1" column="50" lean-forward="false" selection-start-line="1" selection-start-column="50" selection-end-line="13" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/documentos/DocumentosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="34" column="49" lean-forward="false" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/documentos/DocumentosUploadController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+          <folding>
+            <element signature="e#45#80#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/PlantillasJuridico.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="31" lean-forward="false" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/catalogs/CaracteresController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="35" column="80" lean-forward="true" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="80" />
+          <folding>
+            <element signature="e#43#78#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes/rutasVolantes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="24" column="48" lean-forward="false" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/NotificaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="40" column="82" lean-forward="false" selection-start-line="40" selection-start-column="82" selection-end-line="40" selection-end-column="82" />
+          <folding>
+            <element signature="e#34#64#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/VolantesDiversos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Volantes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="16" column="28" lean-forward="false" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/documentos/volantesDiversosController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="45" column="11" lean-forward="true" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
-          <folding />
+        <state relative-caret-position="354">
+          <caret line="116" column="12" lean-forward="false" selection-start-line="116" selection-start-column="12" selection-end-line="116" selection-end-column="12" />
+          <folding>
+            <element signature="e#45#93#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/volantesDiversos/insert.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="440">
+          <caret line="82" column="47" lean-forward="true" selection-start-line="82" selection-start-column="47" selection-end-line="82" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/routes/rutasVolantesDiversos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        <state relative-caret-position="320">
+          <caret line="16" column="3" lean-forward="true" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/plantillas/insert-plantillas.twig">
+    <entry file="file://$PROJECT_DIR$/views/irac/insert-Cedula.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="10" lean-forward="false" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+        <state relative-caret-position="80">
+          <caret line="4" column="112" lean-forward="false" selection-start-line="4" selection-start-column="112" selection-end-line="4" selection-end-column="112" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/remitentes.php">
+    <entry file="file://$PROJECT_DIR$/views/irac/insert-observaciones.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/irac/tabla-irac.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/irac/tabla-observaciones.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/irac/update-observacion.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="119" lean-forward="true" selection-start-line="4" selection-start-column="119" selection-end-line="4" selection-end-column="119" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes/rutasIrac.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="49" column="54" lean-forward="false" selection-start-line="49" selection-start-column="54" selection-end-line="49" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/IRAC.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="413" column="22" lean-forward="true" selection-start-line="413" selection-start-column="22" selection-end-line="413" selection-end-column="22" />
+          <folding>
+            <marker date="1510604538421" expanded="true" signature="569:1649" ph="SELECT vo.nu... sia_Volantes" />
+            <marker date="1510604538421" expanded="true" signature="4245:5195" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="4254:5186" ph="..." />
+            <marker date="1510604538421" expanded="false" signature="4589:4595" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4595:4601" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4601:4607" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4607:4613" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4613:4619" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4619:4625" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4625:4631" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4631:4637" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4637:4643" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4643:4649" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4649:4655" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4655:4661" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4661:4667" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4667:4673" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4673:4679" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4679:4685" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4685:4691" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4734:4740" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4740:4746" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4746:4752" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4752:4758" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4758:4764" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4764:4770" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4770:4776" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4776:4782" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4782:4788" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4788:4794" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4794:4800" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4800:4806" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4806:4812" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4812:4818" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4818:4824" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4824:4830" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4830:4836" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4836:4842" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4885:4891" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4891:4897" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4897:4903" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4903:4909" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4909:4915" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4915:4921" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4921:4927" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4927:4933" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4933:4939" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4939:4945" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4945:4951" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4951:4957" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4957:4963" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4963:4969" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4969:4975" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4975:4981" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4981:4987" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4987:4993" ph=" " />
+            <marker date="1510604538421" expanded="false" signature="4993:4999" ph=" " />
+            <marker date="1510604538421" expanded="true" signature="5421:5545" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="5435:5536" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="5745:6394" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="5759:6384" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="6544:7028" ph="SELECT ROW_N... sia_Volantes" />
+            <marker date="1510604538421" expanded="true" signature="7149:7514" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="7166:7191" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="7192:7509" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="7569:7812" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="8055:8384" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="8069:8198" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="8207:8296" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="8305:8375" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="8592:8949" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="8601:8940" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="9159:9232" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="9444:10233" ph="SELECT a.idA... sia_programas" />
+            <marker date="1510604538421" expanded="true" signature="10044:10120" ph="select cveAu... sia_VolantesDocumentos" />
+            <marker date="1510604538421" expanded="true" signature="10636:10920" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="10645:10911" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="11156:11181" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="11182:11761" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="11191:11309" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="11322:11410" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="11419:11534" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="11543:11639" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="11648:11750" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="11913:12139" ph="SELECT ROW_N... sia_ObservacionesDoctosJuridico" />
+            <marker date="1510604538421" expanded="true" signature="12260:12547" ph="..." />
+            <marker date="1510604538421" expanded="false" signature="12277:12302" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="12303:12542" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="12602:12816" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="12879:13495" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="13657:14076" ph="SELECT ar.id... sia_Volantes" />
+            <marker date="1510604538421" expanded="true" signature="14379:14489" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="14699:15085" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="14707:14796" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="14802:14944" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="14951:15075" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="15352:15481" ph="select conca... sia_PuestosJuridico" />
+            <marker date="1510604538421" expanded="true" signature="17060:17079" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="17222:17245" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="17457:17553" ph="..." />
+            <marker date="1510604538421" expanded="true" signature="17466:17540" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/documentos/VolantesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="110" column="84" lean-forward="true" selection-start-line="110" selection-start-column="27" selection-end-line="110" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/documentos/confrontaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="130" column="86" lean-forward="false" selection-start-line="130" selection-start-column="86" selection-end-line="130" selection-end-column="86" />
+          <folding>
+            <element signature="e#45#80#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes/rutasConfronta.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes/rutasIfa.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="50" column="54" lean-forward="false" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/documentos/IfaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="144" column="43" lean-forward="false" selection-start-line="144" selection-start-column="43" selection-end-line="144" selection-end-column="43" />
+          <folding>
+            <element signature="e#45#80#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/ifa/Observaciones.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="27" lean-forward="false" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/plantillas/update-plantillas.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes/rutasPlantillas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/documentos/IracController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="115" column="32" lean-forward="true" selection-start-line="115" selection-start-column="32" selection-end-line="115" selection-end-column="32" />
+          <folding>
+            <element signature="e#45#80#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/irac/update-cedula.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="119" lean-forward="false" selection-start-line="21" selection-start-column="119" selection-end-line="21" selection-end-column="119" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/documentos/plantillaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="44" column="90" lean-forward="false" selection-start-line="44" selection-start-column="90" selection-end-line="44" selection-end-column="90" />
+          <folding>
+            <element signature="e#46#81#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/tcpdf/examples/Ifa.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="213" column="26" lean-forward="true" selection-start-line="213" selection-start-column="26" selection-end-line="213" selection-end-column="26" />
+          <folding>
+            <marker date="1509721618000" expanded="true" signature="523:1243" ph="SELECT a.idA... sia_programas" />
+            <marker date="1509721618000" expanded="true" signature="1061:1137" ph="select cveAu... sia_VolantesDocumentos" />
+            <marker date="1509721618000" expanded="true" signature="1309:1430" ph="select pagin... sia_ObservacionesDoctosJuridico" />
+            <marker date="1509721618000" expanded="true" signature="1475:1672" ph="select ds.si... sia_DocumentosSiglas" />
+            <marker date="1509721618000" expanded="true" signature="4014:4462" ph="..." />
+            <marker date="1509721618000" expanded="true" signature="4023:4120" ph="..." />
+            <marker date="1509721618000" expanded="true" signature="4129:4209" ph="..." />
+            <marker date="1509721618000" expanded="true" signature="4218:4285" ph="..." />
+            <marker date="1509721618000" expanded="true" signature="4294:4376" ph="..." />
+            <marker date="1509721618000" expanded="true" signature="4385:4453" ph="..." />
+            <marker date="1509721618000" expanded="true" signature="5001:5291" ph="..." />
+            <marker date="1509721618000" expanded="true" signature="5010:5255" ph="..." />
+            <marker date="1509721618000" expanded="true" signature="5266:5282" ph="..." />
+            <marker date="1509721618000" expanded="true" signature="5460:5581" ph="..." />
+            <marker date="1509721618000" expanded="true" signature="6145:6229" ph="..." />
+            <marker date="1509721618000" expanded="true" signature="6344:6763" ph="SELECT ar.id... sia_Volantes" />
+            <marker date="1509721618000" expanded="true" signature="6921:7440" ph="..." />
+            <marker date="1509721618000" expanded="true" signature="6926:7208" ph="..." />
+            <marker date="1509721618000" expanded="false" signature="7011:7037" ph="..." />
+            <marker date="1509721618000" expanded="false" signature="7161:7187" ph="..." />
+            <marker date="1509721618000" expanded="true" signature="7213:7430" ph="..." />
+            <marker date="1509721618000" expanded="true" signature="7685:7816" ph="select conca... sia_PuestosJuridico" />
+            <marker date="1509721618000" expanded="true" signature="9493:9512" ph="..." />
+            <marker date="1509721618000" expanded="true" signature="9668:9691" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -626,32 +957,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/volantesDiversos/update.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-947">
-          <caret line="20" column="47" lean-forward="true" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes/rutasPlantillas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="47" lean-forward="false" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/documentos/plantillaController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="65" column="11" lean-forward="false" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/plantillas/update-plantillas.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="43" column="85" lean-forward="false" selection-start-line="43" selection-start-column="85" selection-end-line="43" selection-end-column="85" />
+        <state relative-caret-position="320">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>

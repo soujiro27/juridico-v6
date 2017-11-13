@@ -20,7 +20,7 @@ $app->get('/juridico/observacionesIfa/add/:id',function($id){
 
 $app->post('/juridico/observacionesIfa/add',function() use ($app){
     $get = new IfaController();
-    $get->observacionesCreate($app->request->post());
+    $get->observacionesCreate($app->request->post(),$app);
 });
 
 $app->get('/juridico/observacionesIfa/update/:id',function($id) use ($app){
@@ -32,7 +32,7 @@ $app->get('/juridico/observacionesIfa/update/:id',function($id) use ($app){
 
 $app->post('/juridico/observacionesIfa/update',function() use ($app){
     $get = new IfaController();
-    echo $get->observacionUpdate($app->request->post());
+    echo $get->observacionUpdate($app->request->post(),$app);
 });
 
 $app->get('/juridico/CedulaIfa/add/:id',function($id){
@@ -42,12 +42,12 @@ $app->get('/juridico/CedulaIfa/add/:id',function($id){
 
 $app->post('/juridico/CedulaIfa/add',function() use ($app){
     $get = new IfaController();
-    $get->cedulaCreate($app->request->post());
+    $get->cedulaCreate($app->request->post(),$app);
 });
 
 
 $app->post('/juridico/CedulaIfa/update',function() use ($app){
     $get = new IfaController();
-    echo $get->cedulaUpdate($app->request->post());
+    echo $get->cedulaUpdate($app->request->post(),$app);
 });
 

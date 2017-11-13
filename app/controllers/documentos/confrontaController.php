@@ -8,6 +8,7 @@ use App\Models\ObservacionesDoctosJuridico;
 use App\Models\Volantes;
 use App\Models\PuestosJuridico;
 use App\Models\VolantesDocumentos;
+use Carbon\Carbon;
 
 class confrontaController extends BaseController {
     public function getIndex()
@@ -56,7 +57,7 @@ class confrontaController extends BaseController {
 
 
     public function create($post,$app) {
-        $fecha=strftime( "%Y-%d-%m", time() );
+
         if(empty($post['notaInformativa'])) {
             $confrontas = new ConfrontasJuridico([
                 'idVolante'=> $post['idVolante'],
@@ -68,7 +69,7 @@ class confrontaController extends BaseController {
                 'fConfronta' => $post['fConfronta'],
                 'numFolio' => $post['numFolio'],
                 'usrAlta' => $_SESSION['idUsuario'],
-                'fAlta' => $fecha
+                'fAlta' => Carbon::now('America/Mexico_City')->format('Y-d-m H:i:s')
             ]);
             $confrontas->save();
             $app->redirect('/SIA/juridico/confrontasJuridico');
@@ -84,7 +85,7 @@ class confrontaController extends BaseController {
                 'fConfronta' => $post['fConfronta'],
                 'numFolio' => $post['numFolio'],
                 'usrAlta' => $_SESSION['idUsuario'],
-                'fAlta' => $fecha
+                'fAlta' => Carbon::now('America/Mexico_City')->format('Y-d-m H:i:s')
             ]);
             $confrontas->save();
             $app->redirect('/SIA/juridico/confrontasJuridico');
@@ -111,7 +112,7 @@ class confrontaController extends BaseController {
                 'fConfronta' => $post['fConfronta'],
                 'numFolio' => $post['numFolio'],
                 'usrModificacion' => $_SESSION['idUsuario'],
-                'fModificacion' => $fecha
+                'fModificacion' =>  Carbon::now('America/Mexico_City')->format('Y-m-d')
             ]);
             $app->redirect('/SIA/juridico/confrontasJuridico');
         }else{
@@ -127,7 +128,7 @@ class confrontaController extends BaseController {
                 'fConfronta' => $post['fConfronta'],
                 'numFolio' => $post['numFolio'],
                 'usrModificacion' => $_SESSION['idUsuario'],
-                'fModificacion' => $fecha
+                'fModificacion' => Carbon::now('America/Mexico_City')->format('Y-m-d')
             ]);
             $app->redirect('/SIA/juridico/confrontasJuridico');
         }

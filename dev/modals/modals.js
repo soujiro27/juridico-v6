@@ -14,7 +14,8 @@ const modals = {
     firmas,
     promocion,
     internos,
-    externos
+    externos,
+    closeVolante
 }
 
 function nota(){
@@ -48,7 +49,7 @@ function auditoria(){
                 <p class="cuenta">CUENTA PUBLICA 2016</p>
               </div>
               <div class="search"><span>ASCM/</span>
-                <input id="auditoria" type="text" name="auditoria"/><span>16</span>
+                <input id="auditoria" type="text" name="auditoria"/><span>/16</span>
               </div>
             </div>
             <div class="datosAuditoria"></div>
@@ -79,10 +80,10 @@ function auditoria(){
                                 let table = self.TableDatosAuditoria(datos)
                                 $('div.datosAuditoria').html(table)
                                 
-                                let tableTurnado = self.tableTurnados(datos)
+                                let tableTurnado = self.tableTurnados(turnado)
                                 $('div.asignacion').html(tableTurnado)
                                 
-                                $('p#textoCveAuditoria').text(cve)
+                                $('span#auditoria').text(cve)
                                 $('input#cveAuditoria').val(datos[0].idAuditoria)
                                 $('input#idRemitente').val(datos[0].idArea)
                                 
@@ -99,7 +100,7 @@ function auditoria(){
 
 function TableDatosAuditoria(datos){
     let template =`
-    <table class="datosAuditoria">
+    <table class="datosAuditoria table table-hover">
       <thead>
         <tr>
           <th>Sujeto</th>
@@ -137,10 +138,14 @@ function tableTurnados(datos){
         body += `</tr>`
     }
     else{
-        body = `<tr><td>No Asignado</td><td>No Asignado</td><td>No Asignado</td></tr>`
+        body = `<tr>
+        <td>No Asignado</td>
+        <td>No Asignado</td>
+        <td>No Asignado</td>
+        </tr>`
     }
     let template = `
-    <table class="datosTurnado">
+    <table class="datosTurnado table table-hover">
       <thead>
         <tr>
           <th>Irac</th>
@@ -166,7 +171,13 @@ function tableTurnados(datos){
                 text: 'Aceptar',
                 action:function(){
                     let val = $('input:radio[name=remitente]:checked').val()
+                    let id = $('input:radio[name=remitente]:checked').data('id')
                     $('input#idRemitente').val(val)
+                    $('input#idRemitenteJuridico').val(id)
+                    let nombre = $('input:radio[name=remitente]:checked').data('nombre')
+                    let puesto = $('input:radio[name=remitente]:checked').data('puesto')
+                    $('input#nombreRemitente').val(nombre);
+                    $('input#puestoRemitente').val(puesto)
 
                 }},
             cancel:{
@@ -284,13 +295,13 @@ function internos(template){
             onOpenBefore:function(){
                 $('div.jconfirm-box-container').removeClass('col-md-4')
                 $('div.jconfirm-box-container').addClass('col-md-12')
-                /*let val = $('input#idPuestosJuridico').val()
+                let val = $('input#internos').val()
                 if(val){
                     var puestosArray = val.split(',')
                     for(let x in puestosArray){
-                        $(`input[value="${puestosArray[x]}"]#firmas`).prop('checked',true)
+                        $(`input[value="${puestosArray[x]}"]#ccpInternos`).prop('checked',true)
                     }
-                }*/
+                }
                 
             }
         })
@@ -325,18 +336,42 @@ function externos(template){
             onOpenBefore:function(){
                 $('div.jconfirm-box-container').removeClass('col-md-4')
                 $('div.jconfirm-box-container').addClass('col-md-12')
-                /*let val = $('input#idPuestosJuridico').val()
+                let val = $('input#externos').val()
                 if(val){
                     var puestosArray = val.split(',')
                     for(let x in puestosArray){
-                        $(`input[value="${puestosArray[x]}"]#firmas`).prop('checked',true)
+                        $(`input[value="${puestosArray[x]}"]#ccpExternos`).prop('checked',true)
                     }
-                }*/
+                }
                 
             }
         })
 }
 
+
+function closeVolante(idVolante,ruta){
+    $.confirm({
+        title: 'Cerrar Volante!',
+        content: '¿Desea Cerrar el Volante?',
+        buttons: {
+            confirm:{
+                text: 'Aceptar',
+                btnClass: 'btn-info',
+                action:function () {
+                        api.closeVolante({
+                            idVolante:idVolante,
+                            ruta:ruta
+                        })
+                  }
+            },
+            cancel:{
+                text: 'Cancelar',
+                btnClass:'btn-danger'
+            }
+        }
+    });
+                                   
+}
 
 
 module.exports = modals

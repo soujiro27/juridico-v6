@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Sistema Integral de Auditoría</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
     <link rel="stylesheet" href="/SIA/juridico/public/css/main.css"/>
 
   </head>
@@ -29,14 +30,14 @@
           </div>
           <div class="col-xs-2">
             <ul class="nav navbar-nav">
-              <li><a href="./notificaciones"><i class="fa fa-envelope-o"></i> Tiene <span>
+              <li><a href="/SIA/notificaciones"><i class="fa fa-envelope-o"></i> Tiene <span>
                   <input id="txtNoti" type="text" class="noti"/></span> Mensaje(s).</a></li>
             </ul>
           </div>
           <div class="col-xs-3">
             <ul class="nav navbar-nav pull-right">
               <li class="dropdown-menu pull-right">
-                  <a data-toggle="dropdown" href="#!">
+                  <a data-toggle="dropdown" href="/SIA/">
                       <i class="fa fa-user"></i>
                       <b id="usuario">{{sesiones.sUsuario}}</b>
                       <b class="caret"></b>
@@ -87,9 +88,8 @@
     <div id="tableLarge" class="col-md-9 col-md-offset-2">
       <div class="widget">
         <div class="widget-head">
-          <div id="headerText" class="pull-left">Lista de Registros
-            <div class="order"></div>
-            <div class="selectColumns"></div>
+          <div id="headerText" class="pull-left">
+              {% block order %}{% endblock %}
           </div>
           <div class="widget-icons pull-right">
             {% block btnHeader %}{% endblock %}
@@ -104,6 +104,7 @@
       </div>
     </div>
   </div>
+
   <script src="/SIA/juridico/public/js/menu.js"></script>
   <script src="/SIA/juridico/public/js/catalogos.js"></script>
 </body>

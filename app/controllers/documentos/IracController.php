@@ -7,6 +7,7 @@ use App\Models\ObservacionesDoctosJuridico;
 use App\Models\Volantes;
 use App\Models\PuestosJuridico;
 use App\Models\VolantesDocumentos;
+use Carbon\Carbon;
 
 class IracController extends BaseController {
     public function getIndex()
@@ -36,7 +37,11 @@ class IracController extends BaseController {
     public function getObervaciones($idVolante)
     {
         $observaciones = ObservacionesDoctosJuridico::all()->where('idVolante','=',"$idVolante");
-        return $this->render('/irac/tabla-observaciones.twig',['observaciones' => $observaciones,'idVolante' => $idVolante]);
+        return $this->render('/irac/tabla-observaciones.twig',[
+            'observaciones' => $observaciones,
+            'idVolante' => $idVolante,
+            'sesiones'=> $_SESSION
+        ]);
     }
 
 
@@ -51,8 +56,8 @@ class IracController extends BaseController {
             'idVolante' => $idVolante]);
     }
 
-    public function observacionesCreate($post) {
-        $fecha=strftime( "%Y-%d-%m", time() );
+    public function observacionesCreate($post,$app) {
+
         $acciones = new ObservacionesDoctosJuridico([
             'idVolante' => $post['idVolante'],
             'idSubTipoDocumento' => $post['idSubTipoDocumento'],
@@ -61,10 +66,10 @@ class IracController extends BaseController {
             'parrafo' => $post['parrafo'],
             'observacion' => $post['observacion'],
             'usrAlta' => $_SESSION['idUsuario'],
-            'fAlta' => $fecha
+            'fAlta' => Carbon::now('America/Mexico_City')->format('Y-m-d')
         ]);
         $acciones->save();
-        echo $this->getIndex();
+        $app->redirect('/SIA/juridico/Irac');
 
     }
 
@@ -78,18 +83,18 @@ class IracController extends BaseController {
         ]);
     }
 
-    public function observacionUpdate($post) {
+    public function observacionUpdate($post,$app) {
 
-            $fecha=strftime( "%Y-%d-%m", time() );
+
             ObservacionesDoctosJuridico::where('idObservacionDoctoJuridico',$post['idObservacionDoctoJuridico'])
                 ->update(['pagina' => $post['pagina'],
                     'parrafo' => $post['parrafo'],
                     'observacion' => $post['observacion'],
                 'usrModificacion' => $_SESSION['idUsuario'],
-                'fModificacion' => $fecha,
+                'fModificacion' => Carbon::now('America/Mexico_City')->format('Y-m-d'),
                 'estatus' => $post['estatus']
             ]);
-            echo $this->getIndex();
+            $app->redirect('/SIA/juridico/Irac');
 
 
     }
@@ -124,9 +129,9 @@ class IracController extends BaseController {
         return $duplicate;
     }
 
-    public function cedulaCreate($post){
+    public function cedulaCreate($post,$app){
         $puestos = substr($post['idPuestosJuridico'],0,-1);
-        $fecha=strftime( "%Y-%d-%m", time() );
+
         $cedula = new DocumentosSiglas([
             'idVolante' => $post['idVolante'],
             'idSubTipoDocumento' => $post['idSubTipoDocumento'],
@@ -135,25 +140,25 @@ class IracController extends BaseController {
             'fOficio' => $post['fOficio'],
             'numFolio' => $post['numFolio'],
             'usrAlta' => $_SESSION['idUsuario'],
-            'fAlta' => $fecha
+            'fAlta' => Carbon::now('America/Mexico_City')->format('Y-d-m H:i:s')
         ]);
         $cedula->save();
-        echo $this->getIndex();
+        $app->redirect('/SIA/juridico/Irac');
 
     }
 
-    public function cedulaUpdate($post){
-        $fecha=strftime( "%Y-%d-%m", time() );
+    public function cedulaUpdate($post,$app){
+
         $puestos = substr($post['idPuestosJuridico'],0,-1);
         DocumentosSiglas::where('idDocumentoSiglas',$post['idDocumentoSiglas'])
             ->update(['siglas' => $post['siglas'],
                 'fOficio' => $post['fOficio'],
                 'numFolio' => $post['numFolio'],
                 'usrModificacion' => $_SESSION['idUsuario'],
-                'fModificacion' => $fecha,
+                'fModificacion' => Carbon::now('America/Mexico_City')->format('Y-d-m H:i:s'),
                 'idPuestosJuridico' => $puestos
             ]);
-        echo $this->getIndex();
+        $app->redirect('/SIA/juridico/Irac');
     }
 
 }

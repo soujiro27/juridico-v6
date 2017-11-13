@@ -19,6 +19,10 @@
     <div class="form-group siglas row">
         <label for="siglas" class="col-lg-2">Siglas</label>
         <input type="text" name="siglas" placeholder="siglas" id="siglas" class="form-control col-lg-2">
+        <input type="hidden" name="idRemitente" value="{{ idRemitente }}">
+        <input type="hidden" name="idVolante" value="{{ idVolante }}">
+        <input type="hidden" name="internos" id="internos">
+        <input type="hidden" name="externos" id="externos">
     </div>
     <div class="form-group row">
         <label for="siglas" class="col-lg-2">Copia Internos</label>
@@ -31,10 +35,7 @@
     <div class="form-group texto row">
         <label for="numFolio" class="col-lg-2">Texto</label>
         <textarea name="texto" id="ckeditor" placeholder="Texto" class="col-lg-11" rows="3"></textarea>
-        <input type="hidden" name="idRemitente" value="{{ idRemitente }}">
-        <input type="hidden" name="idVolante" value="{{ idVolante }}">
-        <input type="hidden" name="internos" id="internos">
-        <input type="hidden" name="externos" id="externos">
+
     </div>
     <div class="form-group send">
         <input class="btn btn-primary btn-sm" type="submit" value="Guardar"/>

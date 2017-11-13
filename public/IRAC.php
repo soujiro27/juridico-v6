@@ -120,7 +120,7 @@ $text1 = '
     <tr>
         <td colspan="1"><img img src="img/asamblea.png"/></td>
         <td colspan="2"></td>
-        <td colspan="4"><p><font size="10"><b> AUDITORÍA SUPERIOR DE LA CIUDAD DE MÉXICO<br><br> DIRECCIÓN GENERAL DE ASUNTOS JURÍDICOS<br><br>OFICIO NÚM: ' .$datos[0]["numFolio"] .'<br><br> ASUNTO: Se remite evaluación del Informe de <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Resultados de Auditoría para Confronta<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (IRAC) correspondiente a la Auditoría <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $clave . '.<br><br>Ciudad de México, '. $feoficio[2] . ' de ' .$mes2 . ' de ' . $feoficio[0].'</b></p></font></td>
+        <td colspan="4"><p><font size="10"><b> AUDITORÍA SUPERIOR DE LA CIUDAD DE MÉXICO<br><br> DIRECCIÓN GENERAL DE ASUNTOS JURÍDICOS<br><br>OFICIO NÚM: ' .$datos[0]["numFolio"] .'<br><br> ASUNTO: Se remite evaluación del Informe de <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Resultados de Auditoría para Confronta<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (IRAC) correspondiente a la Auditoría <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $clave . '.<br><br>Ciudad de México, '. $feoficio[2] . ' de ' .$mes2 . ' de ' . $feoficio[0].'<br><br> "Fiscalizar con Integridad para Prevenir y Mejorar"</b></p></font></td>
     </tr>
 </table>';
 
@@ -485,7 +485,7 @@ EOD;
 $pdf->writeHTML($tbl, true, false, false, false, '');
 // -----------------------------------------------------------------------------
 //Close and output PDF document
-$pdf->Output('IRAC', 'I');
+$pdf->Output('IRAC.pdf', 'I');
 
 //============================================================+
 // END OF FILE

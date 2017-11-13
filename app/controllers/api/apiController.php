@@ -9,6 +9,7 @@ use App\Models\Remitentes;
 use App\Models\Volantes;
 use App\Models\PuestosJuridico;
 use App\Models\DoctosTextos;
+use App\Models\Turnos;
 
 class ApiController extends BaseController {
     public function getSubDocumentos($valor) {
@@ -96,7 +97,10 @@ inner join sia_unidades u on u.idUnidad = au.idUnidad
 
     public function volantesByFolio($id){
         $folio = $id['folio'];
-        $volantes = Volantes::where('folio','=',"$folio")->get();
+        $sub = $id['subFolio'];
+        $volantes = Volantes::where('folio','=',"$folio")
+            ->where('subFolio','=',"$sub")
+            ->get();
         echo json_encode($volantes);
     }
 
@@ -112,5 +116,15 @@ inner join sia_unidades u on u.idUnidad = au.idUnidad
     public function doctosTextos(){
         $doctos = DoctosTextos::where('estatus','=','ACTIVO')->get();
         echo json_encode($doctos);
+    }
+
+    public function closeVolante($post,$app){
+        $idVolante = $post['idVolante'];
+        $ruta = $post['ruta'];
+        Turnos::where('idVolante','=',"$idVolante")->update([
+                'estadoProceso' => 'CERRADO'
+        ]);
+        $response = array ('response' => 'success');
+        echo json_encode($response);
     }
 }

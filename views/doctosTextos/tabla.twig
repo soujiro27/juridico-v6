@@ -5,6 +5,10 @@
         Añadir Registro
     </a>
 {% endblock %}
+{% block order %}
+    Lista de Registros
+{% endblock %}
+
 
 {% block table %}
     <table class="table table-hover" id="main-table">
@@ -22,7 +26,9 @@
 
                 <td class="hidden">{{ doctosTexto.idDocumentoTexto }}</td>
                 <td>{{ doctosTexto.idTipoDocto }}</td>
-                <td>{{ doctosTexto.texto }}</td>
+
+                    <td>{{ doctosTexto.texto |striptags | convert_encoding('UTF-8','ISO-8859-1')}}</td>
+
                 <td>{{ doctosTexto.estatus }}</td>
             </tr>
         {% endfor %}

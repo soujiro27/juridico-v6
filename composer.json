@@ -10,6 +10,7 @@
     },
     "require": {
         "twig/twig": "~1.0",
-        "illuminate/database": "^5.4"
+        "illuminate/database": "^5.4",
+        "nesbot/carbon": "^1.22"
     }
 }

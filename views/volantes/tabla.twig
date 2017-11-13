@@ -4,28 +4,56 @@
         Añadir Registro
     </a>
 {% endblock %}
+
+{% block order %}
+    <div class="order">
+        <button class="btn btn-warning" id="btn-order">Ordernar Registros</button>
+        <form action="/SIA/juridico/Volantes" class="form-order form-inline" id="form-order">
+
+            <select name="campo" id="campo" required class="form-control">
+                <option value="">Campo</option>
+                <option value="folio">Folio</option>
+                <option value="numDocumento">Documento</option>
+                <option value="idRemitente">Remitente</option>
+                <option value="idTurnado">Turnado</option>
+                <option value="fRecepcion">Fecha</option>
+                <option value="extemporaneo">Extemporaneo</option>
+                <option value="nombre">Oficio</option>
+                <option value="estadoProceso">Estado</option>
+            </select>
+            <select name="tipo" id="tipo" required class="form-control">
+                <option value="">Tipo</option>
+                <option value="asc">Ascendente</option>
+                <option value="desc">Descendente</option>
+            </select>
+            <input type="submit" value="Ordenar" class="btn btn-info">
+        </form>
+    </div>
+{% endblock %}
+
+
+
+
+
 {% block table %}
     <table class="table table-hover" id="main-table" data-ruta="Volantes">
         <tr>
             <th class="hidden">id</th>
             <th scope="col">Folio</th>
-            <th scope="col">Sub Folio</th>
             <th scope="col">Documento</th>
             <th scope="col">Remitente</th>
             <th scope="col">Turnado</th>
-            <th scope="col">Fecha Recepcio</th>
+            <th scope="col">Fecha Recepcion</th>
             <th scope="col">Ext.</th>
             <th scope="col">Auditoria</th>
             <th scope="col">Oficio</th>
             <th scope="col">Estado</th>
-            <th scope="col">Estatus</th>
         </tr>
         {% for volante in volantes %}
             <tr data-ruta="Volantes">
 
                 <td class="hidden">{{ volante.idVolante }}</td>
-                <td>{{ volante.folio }}</td>
-                <td>{{ volante.subfolio }}</td>
+                <td>{{ volante.folio }} - {{ volante.subfolio }}</td>
                 <td>{{ volante.numDocumento }}</td>
                 <td>{{ volante.idRemitente }}</td>
                 <td>{{ volante.idTurnado }}</td>
@@ -34,7 +62,6 @@
                 <td>{{ volante.clave }}</td>
                 <td>{{ volante.nombre }}</td>
                 <td>{{ volante.estadoProceso }}</td>
-                <td>{{ volante.estatus }}</td>
 
             </tr>
         {% endfor %}

@@ -7,6 +7,7 @@ use App\Models\ObservacionesDoctosJuridico;
 use App\Models\Volantes;
 use App\Models\PuestosJuridico;
 use App\Models\VolantesDocumentos;
+use Carbon\Carbon;
 
 class IfaController extends BaseController {
     public function getIndex()
@@ -50,8 +51,8 @@ class IfaController extends BaseController {
             'idVolante' => $idVolante]);
     }
 
-    public function observacionesCreate($post) {
-        $fecha=strftime( "%Y-%d-%m", time() );
+    public function observacionesCreate($post,$app) {
+
         $acciones = new ObservacionesDoctosJuridico([
             'idVolante' => $post['idVolante'],
             'idSubTipoDocumento' => $post['idSubTipoDocumento'],
@@ -60,10 +61,10 @@ class IfaController extends BaseController {
             'parrafo' => $post['parrafo'],
             'observacion' => $post['observacion'],
             'usrAlta' => $_SESSION['idUsuario'],
-            'fAlta' => $fecha
+            'fAlta' => Carbon::now('America/Mexico_City')->format('Y-m-d')
         ]);
         $acciones->save();
-        echo $this->getIndex();
+       $app->redirect('/SIA/juridico/Ifa');
 
     }
 
@@ -77,18 +78,18 @@ class IfaController extends BaseController {
         ]);
     }
 
-    public function observacionUpdate($post) {
+    public function observacionUpdate($post,$app) {
 
-        $fecha=strftime( "%Y-%d-%m", time() );
+
         ObservacionesDoctosJuridico::where('idObservacionDoctoJuridico',$post['idObservacionDoctoJuridico'])
             ->update(['pagina' => $post['pagina'],
                 'parrafo' => $post['parrafo'],
                 'observacion' => $post['observacion'],
                 'usrModificacion' => $_SESSION['idUsuario'],
-                'fModificacion' => $fecha,
+                'fModificacion' => Carbon::now('America/Mexico_City')->format('Y-m-d'),
                 'estatus' => $post['estatus']
             ]);
-        echo $this->getIndex();
+        $app->redirect('/SIA/juridico/Ifa');
 
 
     }
@@ -123,8 +124,8 @@ class IfaController extends BaseController {
         return $duplicate;
     }
 
-    public function cedulaCreate($post){
-        $fecha=strftime( "%Y-%d-%m", time() );
+    public function cedulaCreate($post,$app){
+
         $cedula = new DocumentosSiglas([
             'idVolante' => $post['idVolante'],
             'idSubTipoDocumento' => $post['idSubTipoDocumento'],
@@ -134,25 +135,25 @@ class IfaController extends BaseController {
             'numFolio' => $post['numFolio'],
             'idDocumentoTexto' => $post['idDocumentoTexto'],
             'usrAlta' => $_SESSION['idUsuario'],
-            'fAlta' => $fecha
+            'fAlta' => Carbon::now('America/Mexico_City')->format('Y-d-m H:i:s')
         ]);
         $cedula->save();
-        echo $this->getIndex();
+        $app->redirect('/SIA/juridico/Ifa');
 
     }
 
-    public function cedulaUpdate($post){
+    public function cedulaUpdate($post,$app){
         $fecha=strftime( "%Y-%d-%m", time() );
         DocumentosSiglas::where('idDocumentoSiglas',$post['idDocumentoSiglas'])
             ->update(['siglas' => $post['siglas'],
                 'fOficio' => $post['fOficio'],
                 'numFolio' => $post['numFolio'],
                 'usrModificacion' => $_SESSION['idUsuario'],
-                'fModificacion' => $fecha,
+                'fModificacion' => Carbon::now('America/Mexico_City')->format('Y-d-m H:i:s'),
                 'idPuestosJuridico' => $post['idPuestosJuridico'],
                 'idDocumentoTexto' => $post['idDocumentoTexto']
             ]);
-        echo $this->getIndex();
+        $app->redirect('/SIA/juridico/Ifa');
     }
 
 }

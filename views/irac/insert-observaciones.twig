@@ -2,23 +2,23 @@
 {% block title %}Añadir Registro{% endblock %}
 {% block form %}
 
-    <form class="form-inline" id="ObservacionesDoctosJuridico" method="POST" action="/SIA/juridico/observacionesIrac/add" data-ruta="Irac">
+    <form class="form" id="ObservacionesDoctosJuridico" method="POST" action="/SIA/juridico/observacionesIrac/add" data-ruta="Irac">
         <div class="datos">
-            <div class="form-group pagina">
-                <label for="text">Hoja</label>
-                <input class="form-control" id="pagina" type="text" name="pagina" required=""/>
+            <div class="form-group pagina row">
+                <label for="text" class="col-lg-2">Hoja</label>
+                <input class="form-control col-lg-2" id="pagina" type="text" name="pagina" required=""/>
                 <input id="idVolante" type="hidden" name="idVolante" value="{{ idVolante }}" />
                 <input id="cveAuditoria" type="hidden" name="cveAuditoria" value="{{ cveAuditoria }}" />
                 <input id="idSubTipoDocumento" type="hidden" name="idSubTipoDocumento" value="{{ idSubTipoDocumento }}" />
             </div>
-            <div class="form-group parrafo">
-                <label for="parrafo">Parrafo</label>
-                <input class="form-control" id="parrafo" type="text" name="parrafo" required=""/>
+            <div class="form-group parrafo row">
+                <label for="parrafo" class="col-lg-2">Parrafo</label>
+                <input class="form-control col-lg-2" id="parrafo" type="text" name="parrafo" required=""/>
             </div>
         </div>
-        <div class="form-group observacion">
-            <label for="observacion">Observacion</label>
-            <textarea class="form-control" id="ckeditor" rows="3" name="observacion"></textarea>
+        <div class="form-group observacion row">
+            <label for="observacion" class="col-lg-2">Observacion</label>
+            <textarea class="form-control col-lg-2" id="ckeditor" rows="3" name="observacion"></textarea>
 
         </div>
         <div class="envio">

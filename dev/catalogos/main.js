@@ -14,6 +14,7 @@ utils.getSub()
 utils.ckeditorLoad()
 $('input.fechaInput').datepicker({ dateFormat: "yy-mm-dd" });
 
+
 /*--------------volantes------------*/
 
 volantes.getSubDocumentos()
@@ -21,6 +22,8 @@ volantes.nota()
 volantes.auditoria()
 volantes.remitentes()
 volantes.getSubDocumentosSinAuditoria()
+volantes.order()
+volantes.cerrarVolante()
 
 /*------------Documentos upload-------*/
 

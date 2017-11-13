@@ -1,0 +1,44 @@
+{% extends 'layoutForm.twig' %}
+{% block title %}Subir Archivo{% endblock %}
+{% block form %}
+    <form id="documentosJur" class="form" enctype="multipart/form-data" method="post" action="/SIA/juridico/Documentos/update" data-ruta="Documentos">
+
+            <div class="form-group folio row">
+                <label class="form-control-label col-lg-2" for="documento">Numero de Folio</label>
+                <input class="form-control col-lg-2" id="folio-documentos" type="number" placeholder="Numero de Folio" required="required" />
+
+            </div>
+
+        <div class="form-group row">
+            <label class="form-control-label col-lg-2" for="documento">Numero de Sub Folio</label>
+            <input class="form-control col-lg-2" id="subFolio-documentos" type="number" placeholder="Numero de Sub Folio" required="required" />
+            <input type="hidden" name="idVolante" id="idVolante">
+        </div>
+
+
+        <div class="form-group row">
+            <label class="form-control-label col-lg-2" for="documento">Arhivos Asignados</label>
+            <input class="form-control col-lg-2" id="archivo"  placeholder="Sin Asignar" readonly />
+
+        </div>
+
+        <div class="form-group file row">
+            <label class="form-control-label col-lg-2" for="documento">Archivo</label>
+            <input type="file" class="col-lg-5" name="anexoDoc" id="imagen" required="required"/>
+        </div>
+
+        <div class="form-group send">
+            <input class="btn btn-info" type="submit" value="Guardar"/>
+            <button class="btn btn-danger btn-sm" id="cancelar">Cancelar</button>
+        </div>
+    </form>
+
+    {% if err %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error!</strong> {{ err }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -36,7 +36,7 @@ $datosNombre=consultaRetorno($sql, $db);
 $saludo=$datosNombre[0]['saludo'];
 $nombrel = $datosNombre[0]['nombre'];
 $name = $saludo.' '.$nombrel;
-$puesto = $datosNombre[0]['puesto'];
+$puesto = strtoupper($datosNombre[0]['puesto']);
 $texto = $datos[0]['texto'];
 $siglas = $datos[0]['siglas'];
 //var_dump($datos);
@@ -226,14 +226,25 @@ EOD;
 
 $pdf->writeHTML($tbl, true, false, false, false, '');
 // -----------------------------------------------------------------------------
-
+$sql = "select copias from sia_plantillasJuridico where idVolante ='$idVolante'";
+$db=conecta();
+$datos=consultaRetorno($sql, $db);
+$arreglo = explode(",",$datos[0]['copias']);
+//var_dump($arreglo);
+$tr = '';
+foreach ($arreglo  as $valor){
+    $sql = "select * from sia_RemitentesJuridico where idRemitenteJuridico ='$valor'";
+    $db=conecta();
+    $datos=consultaRetorno($sql, $db);
+    $puesto = $datos[0]['puesto'];
+    $nombre = $datos[0]['nombre'];
+    $tr .= ' <tr> <td colspan="1">c.c.p.</td>';
+    $tr .=  ' <td colspan="5"><b>'. $nombre.'. '.'</b> ' . ucwords($puesto) .' .- Presente.- Para su conocimiento</td></tr>';
+}
 
 $tbl = <<<EOD
 <table cellspacing="0" cellpadding="0" border="0">
-    <tr>
-        <td colspan="1">c.c.p.</td>  
-        <td colspan="5"><b>DR. DAVID MANUEL VEGA VERA,</b> Auditor Superior.- Presente.- Para su conocimiento.<br><b>DR. ARTURO VÁZQUEZ ESPINOSA,</b> Titular de la Unidad Técnica Sustantiva de Fiscalización Especializada y de Asuntos Jurídicos.- Presente.- Para su conocimiento.</td>
-    </tr>
+    $tr
 </table>
 EOD;
 
@@ -251,7 +262,7 @@ $pdf->writeHTML($tbl, true, false, false, false, '');
 // -----------------------------------------------------------------------------
 
 //Close and output PDF document
-$pdf->Output('Oficio Generico', 'I');
+$pdf->Output('Oficio Generico.pdf', 'I');
 
 //============================================================+
 // END OF FILE

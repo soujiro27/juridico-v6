@@ -47,7 +47,7 @@ class DoctosTextosController extends BaseController {
             'fAlta' => $fecha
         ]);
         $caracter->save();
-       $app->redirect('/SIA/juridico/DoctosTextos');
+      // $app->redirect('/SIA/juridico/DoctosTextos');
 
    }
 

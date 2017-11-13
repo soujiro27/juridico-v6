@@ -14,7 +14,6 @@ class Volantes extends Model {
         'fDocumento',
         'fRecepcion',
         'hRecepcion',
-        'hRecepcion',
         'idRemitente',
         'destinatario',
         'asunto',
@@ -23,6 +22,7 @@ class Volantes extends Model {
         'idAccion',
         'usrAlta',
         'fAlta',
+        'idRemitenteJuridico',
         'estatus'];
 
 

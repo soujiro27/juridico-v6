@@ -1,24 +1,19 @@
 <?php
 
-use  App\Controllers\Documentos\DocumentosUploadController;
+use  App\Controllers\Documentos\DocumentosController;
 
-$app->get('/juridico/DocumentosGral',function(){
-    $get = new DocumentosUploadController();
-    echo $get->getIndex();
+$app->get('/juridico/Documentos/update',function(){
+     $get = new DocumentosController();
+    echo $get->getCreate(false);
 });
 
-$app->get('/juridico/DocumentosGral/update',function(){
-     $get = new DocumentosUploadController();
-    echo $get->getCreate();
-});
-
-$app->post('/juridico/DocumentosGral/update',function() use ($app){
-    $get = new DocumentosUploadController();
-    echo $get->update($app->request->post(),$_FILES);
+$app->post('/juridico/Documentos/update',function() use ($app){
+    $get = new DocumentosController();
+    echo $get->update($app->request->post(),$_FILES,$app);
 });
 
 $app->get('/juridico/Documentos',function(){
-    $get = new DocumentosUploadController();
+    $get = new DocumentosController();
     echo $get->getIndexDocumentos();
 });
 

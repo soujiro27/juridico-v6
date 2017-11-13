@@ -3,6 +3,8 @@ namespace App\Controllers\Documentos;
 
 
 use App\Controllers\BaseController;
+use App\Controllers\NotificaController;
+use Carbon\Carbon;
 use App\Models\Acciones;
 use App\Models\Areas;
 use App\Models\PuestosJuridico;
@@ -12,9 +14,19 @@ use App\Models\Volantes;
 use \App\Models\Caracteres;
 use App\Models\VolantesDocumentos;
 use App\Models\Notificaciones;
+use App\Models\Turnos;
 
 class VolantesController extends BaseController {
-    public function getIndex() {
+    public function getIndex($app) {
+        if(empty($app->request->get()))
+        {
+            $campo = 'folio';
+            $tipo = 'desc';
+        }else{
+            $get = $app->request->get();
+            $campo = $get['campo'];
+            $tipo = $get['tipo'];
+        }
 
         $volantes = VolantesDocumentos::select('v.idVolante','v.folio','v.subfolio','v.numDocumento','v.idRemitente'
             ,'v.idTurnado','v.fRecepcion','v.extemporaneo','a.clave','sub.nombre','t.estadoProceso','v.estatus')
@@ -22,7 +34,9 @@ class VolantesController extends BaseController {
             ->join('sia_turnosJuridico as t','t.idVolante','=','v.idVolante'  )
             ->join('sia_auditorias as a','a.idAuditoria','=','sia_volantesDocumentos.cveAuditoria')
             ->join('sia_catSubTiposDocumentos as sub','sub.idSubTipoDocumento','=','sia_volantesDocumentos.idSubTipoDocumento')
-            ->where('sub.auditoria','SI')->get();
+            ->where('sub.auditoria','SI')
+            ->orderBy("$campo","$tipo")
+            ->get();
         return $this->render('/volantes/tabla.twig',['volantes' => $volantes,'sesiones'=> $_SESSION]);
     }
     public function getCreate($err) {
@@ -49,6 +63,8 @@ class VolantesController extends BaseController {
 
 
     public function getUpdate($id,$err) {
+
+        $close = $this->verificaVolante($id);
         $volantes = Volantes::where('idVolante',$id)->first();
 
         $caracteres = Caracteres::where('estatus','ACTIVO')->get();
@@ -64,8 +80,10 @@ class VolantesController extends BaseController {
             'acciones' => $acciones,
             'turnados' => $turnados,
             'direccionGral' => $turnadoDireccion,
-            'error' => $err
+            'error' => $err,
+            'close' => $close
         ]);
+
     }
 
     public function create($post,$app) {
@@ -90,7 +108,7 @@ class VolantesController extends BaseController {
                 'idTurnado' => $post['idTurnado'],
                 'idAccion' => $post['idAccion'],
                 'usrAlta' => $_SESSION['idUsuario'],
-                'fAlta' => $fecha
+                'fAlta' => Carbon::now('America/Mexico_City')->format('Y-d-m H:i:s')
             ]);
             if($volantes->save())
             {
@@ -106,33 +124,8 @@ class VolantesController extends BaseController {
                     'fAlta' => $fecha
                 ]);
                 $volantesDocumentos->save();
-                $remitente = $post['idRemitente'];
-                $area = PuestosJuridico::select('u.idUsuario')
-                    ->join('sia_usuarios as u','u.idEmpleado','=','sia_PuestosJuridico.rpe')
-                    ->where('sia_PuestosJuridico.idArea','=',"$remitente")
-                    ->where('sia_PuestosJuridico.titular','=','SI')->get();
-                /*$idUsuario = $area['idUsuario'];
-                $notifica = new Notificaciones([
-                    'idNotificacion' => '11',
-                    'idUsuario' => $idUsuario,
-                    'mensaje' => 'Tienes un nuevo Volante Asignado',
-                    'idPrioridad' => 'ALTA',
-                    'idImpacto' => 'MEDIO',
-                    'fLectura' => $fecha,
-                    'usrAlta' => $_SESSION['idUsuario'],
-                    'fAlta' => $fecha,
-                    'estatus' => 'ACTIVO',
-                    'situacion' => 'NUEVO',
-                    'identificador' => '1',
-                    'idCuenta' => 'CTA-2016',
-                    'idAuditoria' => '1',
-                    'idModulo' => 'Volantes',
-                    'referencia' => 'idVolante'
-
-                        $notifica->save()
-                ]);*/
-
-                    $app->redirect('/SIA/juridico/Volantes');
+                $notifica = new NotificaController();
+                $notifica->notificacionVolantes($post,$app,'Volantes');
 
             }
         }else{
@@ -140,14 +133,9 @@ class VolantesController extends BaseController {
         }
 
 
-
-
     }
 
-    public function update($post) {
-
-
-            $fecha=strftime( "%Y-%d-%m", time() );
+    public function update($post,$app) {
             Volantes::where('idVolante',$post['idVolante'])->update([
                 'numDocumento' => $post['numDocumento'],
                 'anexos' => $post['anexos'],
@@ -159,10 +147,10 @@ class VolantesController extends BaseController {
                 'idTurnado' => $post['idTurnado'],
                 'idAccion' => $post['idAccion'],
                 'usrModificacion' => $_SESSION['idUsuario'],
-                'fModificacion' => $fecha,
+                'fModificacion' => Carbon::now('America/Mexico_City')->format('Y-d-m H:i:s'),
                 'estatus' => $post['estatus']
             ]);
-            echo $this->getIndex();
+           $app->redirect('/SIA/juridico/Volantes');
 
 
     }
@@ -183,4 +171,15 @@ class VolantesController extends BaseController {
         return $duplicate;
     }
 
+
+    public function verificaVolante($id){
+
+        $datos = Turnos::where('idVolante','=',$id)->get();
+        $turno =  $datos[0]['estadoProceso'];
+        if($turno == 'CERRADO' ){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }

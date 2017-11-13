@@ -10,7 +10,7 @@
         Generar Cedula
     </a>
     <a id="addRegister" href="/SIA/juridico/observacionesIrac/add/{{ idVolante }}" class="btn btn-info btn-add" role="button">
-        Añadir Registro
+        Añadir Observacion
     </a>
 {% endblock %}
 
@@ -33,7 +33,9 @@
                 <td class="hidden">{{ observacion.idObservacionDoctoJuridico }}</td>
                 <td>{{ observacion.pagina }}</td>
                 <td>{{ observacion.parrafo }}</td>
+
                 <td>{{ observacion.observacion }}</td>
+
                 <td>{{ observacion.estatus }}</td>
 
 

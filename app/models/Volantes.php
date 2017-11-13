@@ -14,7 +14,7 @@ class Volantes extends Model {
         'anexos',
         'fDocumento',
         'fRecepcion',
-        'hRecepcion',
+        'idRemitenteJuridico',
         'hRecepcion',
         'idRemitente',
         'destinatario',

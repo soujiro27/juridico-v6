@@ -2,7 +2,7 @@
 require './fpdf.php';
 //require './../models/get.php';
 
-$idVolante = $_GET['param1'];
+$idVolante = $_GET['param'];
 
 function conecta(){
     try{

@@ -1,7 +1,14 @@
 {% extends 'layoutForm.twig' %}
 {% block title %}Añadir Registro{% endblock %}
 {% block form %}
-
+    {% if err %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error!</strong> {{ err }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
 
 
     <form class="form-inline volantes" id="Volantes" method="POST" data-ruta="VolantesDiversos" >
@@ -69,8 +76,18 @@
             <div class="bloque3">
                 <div class="form-group idRemitente">
                     <label for="idRemitente">Remitente</label>
-                    <input class="form-control" id="idRemitente" type="text" name="idRemitente" required  readonly />
+                    <input class="form-control" id="idRemitente" type="hidden" name="idRemitente"    />
+                    <input class="form-control" id="idRemitenteJuridico" type="hidden" name="idRemitenteJuridico"    />
                     <button id="remitente" class="btn btn-info">Remitente</button>
+                </div>
+                <div class="form-group nombre">
+                    <label for="idRemitente">Nombre</label>
+                    <input class="form-control"  type="text" id="nombreRemitente"   readonly />
+                </div>
+                <div class="form-group puesto">
+                    <label for="idRemitente">Puesto</label>
+                    <input class="form-control" id="puestoRemitente" type="text"   readonly />
+
                 </div>
                 <div class="form-group destinatario">
                     <label for="Destinatario">Destinatario</label>
@@ -120,12 +137,5 @@
         </div>
     </form>
 
-    {% if err %}
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Error!</strong> {{ err }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    {% endif %}
+
 {% endblock %}

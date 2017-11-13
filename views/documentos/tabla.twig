@@ -1,12 +1,17 @@
 {% extends 'layoutTable.twig' %}
-{% block add %} /SIA/juridico/DocumentosGral/update {% endblock %}
-
+{% block add %}  {% endblock %}
+{% block btnHeader %}
+    <a id="addRegister" href="/SIA/juridico/DocumentosGral/update" class="btn btn-info btn-add" role="button">
+        Asignar Documento
+    </a>
+{% endblock %}
 
 {% block table %}
     <table class="table table-hover" id="main-table-files" data-ruta="DocumentosGral">
         <tr>
             <th class="hidden">id</th>
             <th scope="col">Folio</th>
+            <th scope="col">Sub Folio</th>
             <th scope="col">Documento</th>
             <th scope="col">Tipo</th>
             <th scope="col">Remitente</th>
@@ -19,11 +24,12 @@
 
                 <td class="hidden">{{ documento.idVolante }}</td>
                 <td>{{ documento.folio }}</td>
+                <td>{{ documento.subFolio }}</td>
                 <td>{{ documento.numDocumento }}</td>
                 <td>{{ documento.nombre }}</td>
                 <td>{{ documento.idRemitente }}</td>
                 {% if documento.anexoDoc | length < 1 %}
-                    <td>Sin Asignar</td>
+                    <td class="sa">Sin Asignar</td>
                 {% else %}
                     <td>{{ documento.anexoDoc }}</td>
                 {% endif %}

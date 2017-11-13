@@ -1,9 +1,11 @@
 <?php
 namespace App\Controllers\Documentos;
 
-use App\Controllers\Catalogs\AccionesController;
+
 use App\Controllers\BaseController;
+use Carbon\Carbon;
 use App\Models\Acciones;
+use App\Models\Turnos;
 use App\Models\Areas;
 use App\Models\PlantillasJuridico;
 use App\Models\SubTiposDocumentos;
@@ -40,7 +42,7 @@ class PlantillaController extends BaseController {
         foreach ($plantillas as $plantilla){$copías = $plantilla['copias'];}
 
         $remitentes = Volantes::where('idVolante','=',"$idVolante")->get();
-        foreach ($remitentes as $remitente){$idRemitente = $remitente['idRemitente'];}
+        foreach ($remitentes as $remitente){$idRemitente = $remitente['idRemitenteJuridico'];}
         if(empty($vacio)){
             return $this->render('plantillas/insert-plantillas.twig',[
                 'sesiones' => $_SESSION,
@@ -63,20 +65,29 @@ class PlantillaController extends BaseController {
 
             $idInternos = substr($internos,0,-1);
             $idExternos = substr($externos,0,-1);
+
+
+           $close = $this->verificaVolante($idVolante);
+           if(!$close){
+               $err = 'El volante fue CERRADO no puede Modificarse';
+           }else {
+               $err = false;
+           }
            return $this->render('/plantillas/update-plantillas.twig',[
                 'sesiones' => $_SESSION,
                 'idVolante' => $idVolante,
                 'plantillas' => $plantillas,
-                'internos' => $idInternos,
-                'externos' => $idExternos
+                'internos' => $internos,
+                'externos' => $externos,
+                'close' => $close,
+                'err' => $err
             ]);
         }
 
     }
 
 
-    public function create($post) {
-        $fecha=strftime( "%Y-%d-%m", time() );
+    public function create($post,$app) {
         $copias = $post['internos'] . $post['externos'];
         $copias = substr($copias,0,-1);
         $plantillas = new PlantillasJuridico([
@@ -89,19 +100,20 @@ class PlantillaController extends BaseController {
             'siglas' => $post['siglas'],
             'copias' => $copias,
             'usrAlta' => $_SESSION['idUsuario'],
-            'fAlta' => $fecha
+            'fAlta' => Carbon::now('America/Mexico_City')->format('Y-m-d')
         ]);
         $plantillas->save();
-        echo $this->getIndex();
+        $app->redirect('/SIA/juridico/DocumentosDiversos');
 
 
 
     }
 
-    public function update($post) {
+    public function update($post,$app) {
+        $copias = $post['internos'] . $post['externos'];
+        $copias = substr($copias,0,-1);
 
 
-        $fecha=strftime( "%Y-%d-%m", time() );
         PlantillasJuridico::where('idPlantillaJuridico',$post['idPlantillaJuridico'])->update([
             'numFolio' => $post['numFolio'],
             'asunto' => $post['asunto'],
@@ -109,66 +121,25 @@ class PlantillaController extends BaseController {
             'idRemitente' => $post['idRemitente'],
             'texto' => $post['texto'],
             'siglas' => $post['siglas'],
-            'copias' => $post['copias'],
+            'copias' => $copias,
             'usrModificacion' => $_SESSION['idUsuario'],
-            'fModificacion' => $fecha,
+            'fModificacion' => Carbon::now('America/Mexico_City')->format('Y-m-d')
 
         ]);
-        echo $this->getIndex();
+        $app->redirect('/SIA/juridico/DocumentosDiversos');
 
 
     }
 
-/*
-    public function getUpdate($id,$err) {
-        $duplicate = false;
-        $volantes = Volantes::where('idVolante',$id)->first();
 
-        $caracteres = Caracteres::where('estatus','ACTIVO')->get();
-        $acciones = Acciones::where('estatus','ACTIVO')->get();
-        $turnados  = Areas::where('idAreaSuperior','DGAJ')->where('estatus','ACTIVO')->get();
-        $turnadoDireccion = array ('idArea'=>'DGAJ','nombre' => 'DIRECCIÓN GENERAL DE ASUNTOS JURIDICOS');
+    public function verificaVolante($id){
 
-
-        return $this->render('/volantesDiversos/update-volantesDiversos.twig',[
-            'sesiones'=> $_SESSION,
-            'volantes'=> $volantes,
-            'caracteres' => $caracteres,
-            'acciones' => $acciones,
-            'turnados' => $turnados,
-            'direccionGral' => $turnadoDireccion,
-            'error' => $err
-        ]);
+        $datos = Turnos::where('idVolante','=',$id)->get();
+        $turno =  $datos[0]['estadoProceso'];
+        if($turno == 'CERRADO' ){
+            return false;
+        }else{
+            return true;
+        }
     }
-
-
-
-    public function volantesUpdate($post) {
-
-
-        $fecha=strftime( "%Y-%d-%m", time() );
-        Volantes::where('idVolante',$post['idVolante'])->update([
-            'numDocumento' => $post['numDocumento'],
-            'anexos' => $post['anexos'],
-            'fDocumento' => $post['fDocumento'],
-            'fRecepcion' => $post['fRecepcion'],
-            'hRecepcion' => $post['hRecepcion'],
-            'asunto' => $post['asunto'],
-            'idCaracter' => $post['idCaracter'],
-            'idTurnado' => $post['idTurnado'],
-            'idAccion' => $post['idAccion'],
-            'usrModificacion' => $_SESSION['idUsuario'],
-            'fModificacion' => $fecha,
-            'estatus' => $post['estatus']
-        ]);
-        echo $this->getIndex();
-
-
-    }
-
-    public function duplicate($post) {
-        $duplicate = Caracteres::where('siglas',$post['siglas'])->where('nombre' ,$post['nombre'])->where('estatus',$post['estatus'])->first();
-        return $duplicate;
-    }
-*/
 }
