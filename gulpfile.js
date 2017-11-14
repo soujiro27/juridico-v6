@@ -8,6 +8,7 @@ var buffer = require('vinyl-buffer')
 var p = require('partialify')
 var rename = require('gulp-rename')
 var uglify = require('gulp-uglify')
+var watch = require('gulp-watch');
 
 
 gulp.task('css',function(){
@@ -39,6 +40,17 @@ gulp.task('menu',function(){
         .pipe(gulp.dest('./public/js/'))
 })
 
+
+gulp.task('callback',function(){
+    return watch ('./dev/scss/main.styl',function(){
+        gulp.src('./dev/scss/main.styl')
+        .pipe(stylus(
+            {'include css':true}
+        ))
+        .pipe(gulp.dest('./public/css/'))
+        console.log('cambiando.....')
+    })
+})
 
 
 

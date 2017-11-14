@@ -2996,4 +2996,5 @@ div.order form select {
 }
 td.cerrado {
   color: #f00;
+  text-shadow: -1px -1px 3px #808080;
 }
