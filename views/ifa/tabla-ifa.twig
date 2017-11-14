@@ -16,6 +16,7 @@
             <th>Accion</th>
             <th>Auditoria</th>
             <th>Ext.</th>
+            <th>Estado</th>
 
         </tr>
         </thead>
@@ -33,7 +34,11 @@
                 <td>{{ irac.accion }}</td>
                 <td>{{ irac.clave }}</td>
                 <td>{{ irac.extemporaneo }}</td>
-
+                {% if irac.estadoProceso == 'CERRADO' %}
+                    <td class="cerrado">{{ irac.estadoProceso }}</td>
+                {% else %}
+                    <td>{{ irac.estadoProceso }}</td>
+                {% endif %}
 
             </tr>
 

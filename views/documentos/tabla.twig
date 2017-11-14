@@ -34,7 +34,12 @@
                     <td>{{ documento.anexoDoc }}</td>
                 {% endif %}
 
-                <td>{{ documento.estadoProceso }}</td>
+                {% if documento.estadoProceso == 'CERRADO' %}
+                    <td class="cerrado">{{ documento.estadoProceso }}</td>
+                {% else %}
+                    <td>{{ documento.estadoProceso }}</td>
+                {% endif %}
+
 
             </tr>
         {% endfor %}

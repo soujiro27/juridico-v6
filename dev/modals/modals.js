@@ -22,6 +22,8 @@ function nota(){
     $.alert({
         title: '¿Contiene NOTA INFORMATIVA?',
         theme:'modern',
+        draggable: true,
+        dragWindowBorder: false,
         content:'',
         buttons:{
             confirm:{
@@ -35,7 +37,9 @@ function nota(){
                 text:'NO',
                 action:function(){
                     $('input#notaConfronta').val('NO')
-                }}}})
+                }}},
+                columnClass: 'col-md-12'
+            })
 }
 
 function auditoria(){
@@ -43,6 +47,9 @@ function auditoria(){
         $.confirm({
             title: 'Seleccione el Numero de Auditoria',
             theme:'modern',
+            draggable: true,
+            dragWindowBorder: false,
+            columnClass: 'col-md-12',
             content: `<div class="auditoria-container">
             <div class="auditoria">
               <div class="cuenta">
@@ -164,6 +171,9 @@ function tableTurnados(datos){
     $.alert({
         title: 'Seleccione Remitente',
         theme:'modern',
+        draggable: true,
+        dragWindowBorder: false,
+        columnClass: 'col-md-12',
         content:template,
         buttons:{
             confirm:{
@@ -201,6 +211,9 @@ function tableTurnados(datos){
     $.alert({
         title: 'Personal que Firma',
         theme:'modern',
+        draggable: true,
+        dragWindowBorder: false,
+        columnClass: 'col-md-12',
         content:template,
         buttons:{
             confirm:{
@@ -240,6 +253,9 @@ function promocion(template){
     $.alert({
         title: 'Texto Promocion de Acciones',
         theme:'modern',
+        columnClass: 'col-md-12',
+        draggable: true,
+        dragWindowBorder: false,
         content:template,
         buttons:{
             confirm:{
@@ -273,6 +289,9 @@ function internos(template){
     $.alert({
         title: 'Personal que Firma',
         theme:'modern',
+        draggable: true,
+        dragWindowBorder: false,
+        columnClass: 'col-md-12',
         content:template,
         buttons:{
             confirm:{
@@ -314,6 +333,9 @@ function externos(template){
     $.alert({
         title: 'Personal que Firma',
         theme:'modern',
+        draggable: true,
+        dragWindowBorder: false,
+        columnClass: 'col-md-12',
         content:template,
         buttons:{
             confirm:{
@@ -352,6 +374,9 @@ function externos(template){
 function closeVolante(idVolante,ruta){
     $.confirm({
         title: 'Cerrar Volante!',
+        columnClass: 'col-md-12',
+        draggable: true,
+        dragWindowBorder: false,
         content: '¿Desea Cerrar el Volante?',
         buttons: {
             confirm:{

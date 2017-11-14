@@ -61,7 +61,12 @@
                 <td>{{ volante.extemporaneo }}</td>
                 <td>{{ volante.clave }}</td>
                 <td>{{ volante.nombre }}</td>
-                <td>{{ volante.estadoProceso }}</td>
+                {% if volante.estadoProceso == 'CERRADO' %}
+                    <td class="cerrado">{{ volante.estadoProceso }}</td>
+                {% else %}
+                    <td>{{ volante.estadoProceso }}</td>
+                {% endif %}
+
 
             </tr>
         {% endfor %}

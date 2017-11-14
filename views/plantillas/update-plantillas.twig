@@ -48,6 +48,10 @@
                 <label for="siglas" class="col-lg-2">Copia Externos</label>
                 <button class="btn btn-info col-lg-2" id="modalExternos">Añadir</button>
             </div>
+            <div class="form-group row">
+                <label for="siglas" class="col-lg-2">Espacios en Blanco</label>
+                <input type="number" class="col-lg-2 form-control" required placeholder="0" name="espacios" value="{{ plantillas[0].espacios }}">
+            </div>
             <div class="form-group texto">
                 <label for="numFolio">Texto</label>
                 <textarea name="texto" id="ckeditor" placeholder="Texto">{{ plantillas[0].texto }}</textarea>

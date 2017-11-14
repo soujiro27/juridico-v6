@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use Twig_Loader_Filesystem;
+use App\Models\Turnos;
 
 class BaseController {
     protected $templateEngine;
@@ -25,6 +26,18 @@ class BaseController {
 
     public function render($fileName, $data = []) {
         return $this->templateEngine->render($fileName, $data);
+    }
+
+
+    public function verificaVolante($id){
+
+        $datos = Turnos::where('idVolante','=',$id)->get();
+        $turno =  $datos[0]['estadoProceso'];
+        if($turno == 'CERRADO' ){
+            return false;
+        }else{
+            return true;
+        }
     }
 
 }

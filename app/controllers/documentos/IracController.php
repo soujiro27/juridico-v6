@@ -36,11 +36,15 @@ class IracController extends BaseController {
 
     public function getObervaciones($idVolante)
     {
+        if($this->verificaVolante($idVolante)){$err = false;}else{$err = 'El Irac Ha sido Cerrado';}
+
         $observaciones = ObservacionesDoctosJuridico::all()->where('idVolante','=',"$idVolante");
         return $this->render('/irac/tabla-observaciones.twig',[
             'observaciones' => $observaciones,
             'idVolante' => $idVolante,
-            'sesiones'=> $_SESSION
+            'sesiones'=> $_SESSION,
+            'close' => $this->verificaVolante($idVolante),
+            'err' => $err
         ]);
     }
 

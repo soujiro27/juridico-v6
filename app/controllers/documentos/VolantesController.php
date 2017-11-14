@@ -172,14 +172,5 @@ class VolantesController extends BaseController {
     }
 
 
-    public function verificaVolante($id){
 
-        $datos = Turnos::where('idVolante','=',$id)->get();
-        $turno =  $datos[0]['estadoProceso'];
-        if($turno == 'CERRADO' ){
-            return false;
-        }else{
-            return true;
-        }
-    }
 }

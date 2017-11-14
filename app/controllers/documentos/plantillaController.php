@@ -99,6 +99,7 @@ class PlantillaController extends BaseController {
             'texto' => $post['texto'],
             'siglas' => $post['siglas'],
             'copias' => $copias,
+            'espacios' => $post['espacios'],
             'usrAlta' => $_SESSION['idUsuario'],
             'fAlta' => Carbon::now('America/Mexico_City')->format('Y-m-d')
         ]);
@@ -122,6 +123,7 @@ class PlantillaController extends BaseController {
             'texto' => $post['texto'],
             'siglas' => $post['siglas'],
             'copias' => $copias,
+            'espacios' => $post['espacios'],
             'usrModificacion' => $_SESSION['idUsuario'],
             'fModificacion' => Carbon::now('America/Mexico_City')->format('Y-m-d')
 

@@ -15,7 +15,7 @@
         <th>Ext.</th>
         <th>Tipo</th>
         <th>Estado</th>
-        <th>Estatus</th>
+
         </thead>
         {% for volante in volantes %}
             <tr data-ruta="DocumentosDiversos">
@@ -29,8 +29,12 @@
                 <td>{{ volante.fRecepcion }}</td>
                 <td>{{ volante.extemporaneo }}</td>
                 <td>{{ volante.nombre }}</td>
-                <td>{{ volante.estadoProceso }}</td>
-                <td>{{ volante.estatus }}</td>
+                {% if volante.estadoProceso == 'CERRADO' %}
+                    <td class="cerrado">{{ volante.estadoProceso }}</td>
+                {% else %}
+                    <td>{{ volante.estadoProceso }}</td>
+                {% endif %}
+
 
             </tr>
         {% endfor %}

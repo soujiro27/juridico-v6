@@ -16,6 +16,7 @@ class PlantillasJuridico extends Model {
         'copias',
         'usrAlta',
         'fAlta',
+        'espacios',
         'estatus'];
 
 }

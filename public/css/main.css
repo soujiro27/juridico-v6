@@ -2915,14 +2915,6 @@ body[class*=jconfirm-no-scroll-] {
           transform: scale(1);
 }
 
-div.jconfirm-box-container {
-  margin: 0 !important;
-  width: 100% !important;
-}
-div.jconfirm-box {
-  margin: 0 !important;
-  width: 100% !important;
-}
 a.btn-add {
   color: #fff !important;
 }
@@ -3001,4 +2993,7 @@ div.order form {
 div.order form select {
   width: 90% !important;
   margin-bottom: 15px !important;
+}
+td.cerrado {
+  color: #f00;
 }

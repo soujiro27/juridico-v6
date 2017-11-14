@@ -19,11 +19,12 @@ class IfaController extends BaseController {
 
         $iracs = Volantes::select('sia_Volantes.idVolante','sia_Volantes.folio',
             'sia_Volantes.numDocumento','sia_Volantes.idRemitente','sia_Volantes.fRecepcion','sia_Volantes.asunto'
-            ,'c.nombre as caracter','a.nombre as accion','audi.clave','sia_Volantes.extemporaneo')
+            ,'c.nombre as caracter','a.nombre as accion','audi.clave','sia_Volantes.extemporaneo','tj.estadoProceso')
             ->join('sia_catCaracteres as c','c.idCaracter','=','sia_Volantes.idCaracter')
             ->join('sia_CatAcciones as a','a.idAccion','=','sia_Volantes.idAccion')
             ->join('sia_VolantesDocumentos as vd','vd.idVolante','=','sia_Volantes.idVolante')
             ->join('sia_auditorias as audi','audi.idAuditoria','=','vd.cveAuditoria')
+            ->join('sia_turnosJuridico as tj','tj.idVolante','sia_Volantes.idVolante')
             ->join( 'sia_catSubTiposDocumentos as sub','sub.idSubTipoDocumento','=','vd.idSubTipoDocumento')
             ->where('sub.nombre','=','IFA')
             ->where('sia_volantes.idTurnado','=',"$areaUsuario")
@@ -35,8 +36,15 @@ class IfaController extends BaseController {
 
     public function getObservaciones($idVolante)
     {
+
+        if($this->verificaVolante($idVolante)){$err = false;}else{$err = 'El Ifa Ha sido Cerrado';}
         $observaciones = ObservacionesDoctosJuridico::all()->where('idVolante','=',"$idVolante");
-        return $this->render('/ifa/Observaciones.twig',['observaciones' => $observaciones,'idVolante' => $idVolante]);
+        return $this->render('/ifa/Observaciones.twig',[
+            'observaciones' => $observaciones,
+            'idVolante' => $idVolante,
+            'close' => $this->verificaVolante($idVolante),
+            'err' => $err
+        ]);
     }
 
 

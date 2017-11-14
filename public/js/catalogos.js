@@ -790,6 +790,8 @@ function nota() {
     $.alert({
         title: '¿Contiene NOTA INFORMATIVA?',
         theme: 'modern',
+        draggable: true,
+        dragWindowBorder: false,
         content: '',
         buttons: {
             confirm: {
@@ -803,7 +805,9 @@ function nota() {
                 text: 'NO',
                 action: function action() {
                     $('input#notaConfronta').val('NO');
-                } } } });
+                } } },
+        columnClass: 'col-md-12'
+    });
 }
 
 function auditoria() {
@@ -811,6 +815,9 @@ function auditoria() {
     $.confirm({
         title: 'Seleccione el Numero de Auditoria',
         theme: 'modern',
+        draggable: true,
+        dragWindowBorder: false,
+        columnClass: 'col-md-12',
         content: '<div class="auditoria-container">\n            <div class="auditoria">\n              <div class="cuenta">\n                <p class="cuenta">CUENTA PUBLICA 2016</p>\n              </div>\n              <div class="search"><span>ASCM/</span>\n                <input id="auditoria" type="text" name="auditoria"/><span>/16</span>\n              </div>\n            </div>\n            <div class="datosAuditoria"></div>\n            <div class="asignacion"></div>\n          </div>',
         buttons: {
             confirm: {
@@ -906,6 +913,9 @@ function remitentes(template) {
     $.alert({
         title: 'Seleccione Remitente',
         theme: 'modern',
+        draggable: true,
+        dragWindowBorder: false,
+        columnClass: 'col-md-12',
         content: template,
         buttons: {
             confirm: {
@@ -938,6 +948,9 @@ function firmas(template) {
     $.alert({
         title: 'Personal que Firma',
         theme: 'modern',
+        draggable: true,
+        dragWindowBorder: false,
+        columnClass: 'col-md-12',
         content: template,
         buttons: {
             confirm: {
@@ -974,6 +987,9 @@ function promocion(template) {
     $.alert({
         title: 'Texto Promocion de Acciones',
         theme: 'modern',
+        columnClass: 'col-md-12',
+        draggable: true,
+        dragWindowBorder: false,
         content: template,
         buttons: {
             confirm: {
@@ -1002,6 +1018,9 @@ function internos(template) {
     $.alert({
         title: 'Personal que Firma',
         theme: 'modern',
+        draggable: true,
+        dragWindowBorder: false,
+        columnClass: 'col-md-12',
         content: template,
         buttons: {
             confirm: {
@@ -1038,6 +1057,9 @@ function externos(template) {
     $.alert({
         title: 'Personal que Firma',
         theme: 'modern',
+        draggable: true,
+        dragWindowBorder: false,
+        columnClass: 'col-md-12',
         content: template,
         buttons: {
             confirm: {
@@ -1073,6 +1095,9 @@ function externos(template) {
 function closeVolante(idVolante, ruta) {
     $.confirm({
         title: 'Cerrar Volante!',
+        columnClass: 'col-md-12',
+        draggable: true,
+        dragWindowBorder: false,
         content: '¿Desea Cerrar el Volante?',
         buttons: {
             confirm: {
