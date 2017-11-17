@@ -16,7 +16,6 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
-          <div class="col-xs-12"></div>
           <div class="col-xs-2"><a href="/SIA/"><img src="/SIA/juridico/public/img/logo-top.png"/></a></div>
           <div class="col-xs-2">
             <ul class="nav navbar-nav">
@@ -25,7 +24,7 @@
                 </a></li>
             </ul>
           </div>
-          <div class="col-xs-3">
+          <div class="col-xs-3 center">
               <h2 id="tipo">  <i class="fa fa-desktop" aria-hidden="true"></i> Dashboard</h2>
           </div>
           <div class="col-xs-2">
@@ -34,20 +33,9 @@
                   <input id="txtNoti" type="text" class="noti"/></span> Mensaje(s).</a></li>
             </ul>
           </div>
-          <div class="col-xs-3">
-            <ul class="nav navbar-nav pull-right">
-              <li class="dropdown-menu pull-right">
-                  <a data-toggle="dropdown" href="/SIA/">
-                      <i class="fa fa-user"></i>
-                      <b id="usuario">{{sesiones.sUsuario}}</b>
-                      <b class="caret"></b>
-                  </a>
-              </li>
-              <ul class="dropdown-menu">
-                <li><a href="/perfil"><i class="fa fa-user"></i> Perfil</a></li>
-                <li><a href="/cerrar"><i class="fa fa-sign-out"></i> Salir</a></li>
-              </ul>
-            </ul>
+          <div class="col-xs-3 align-items-center">
+            <i class="fa fa-user"></i>
+            <span id="usuario">{{sesiones.sUsuario}}</span>
           </div>
         </nav>
       </div>
