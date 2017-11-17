@@ -12,6 +12,40 @@ azul=#26bce0
 row = #f1f2f2
 
 
+
+header
+    img
+        width: 80%
+    div.logout
+        position relative
+    div.logout-user-name
+        margin-top 15px
+        cursor pointer
+    ul.logout-menu
+        display none
+        position: absolute
+        top 35px
+        left 8px
+        list-style: none
+        background: white
+        width: 250px
+        padding: 6px 5px
+        border 1px solid gray
+        box-shadow: 1px 1px 2px gray
+        li
+            padding 5px
+        li:hover
+            background-color vino 
+            color white
+        a
+            display: block
+        a:hover
+            color white
+    input.notificacion
+        background-color: #ff9933
+        box-shadow: 1px 1px 1px gray 
+
+
 a.btn-add
     color white !important
 form
@@ -77,3 +111,9 @@ div.order
 td.cerrado
     color red
     text-shadow -1px -1px 3px grey
+
+div.sidebar
+    width: 210px !important
+    ul#nav
+        border:1px solid #ccc
+        margin-top 9px !important 

@@ -2915,6 +2915,45 @@ body[class*=jconfirm-no-scroll-] {
           transform: scale(1);
 }
 
+header img {
+  width: 80%;
+}
+header div.logout {
+  position: relative;
+}
+header div.logout-user-name {
+  margin-top: 15px;
+  cursor: pointer;
+}
+header ul.logout-menu {
+  display: none;
+  position: absolute;
+  top: 35px;
+  left: 8px;
+  list-style: none;
+  background: #fff;
+  width: 250px;
+  padding: 6px 5px;
+  border: 1px solid #808080;
+  box-shadow: 1px 1px 2px #808080;
+}
+header ul.logout-menu li {
+  padding: 5px;
+}
+header ul.logout-menu li:hover {
+  background-color: #65140f;
+  color: #fff;
+}
+header ul.logout-menu a {
+  display: block;
+}
+header ul.logout-menu a:hover {
+  color: #fff;
+}
+header input.notificacion {
+  background-color: #f93;
+  box-shadow: 1px 1px 1px #808080;
+}
 a.btn-add {
   color: #fff !important;
 }
@@ -2997,4 +3036,11 @@ div.order form select {
 td.cerrado {
   color: #f00;
   text-shadow: -1px -1px 3px #808080;
+}
+div.sidebar {
+  width: 210px !important;
+}
+div.sidebar ul#nav {
+  border: 1px solid #ccc;
+  margin-top: 9px !important;
 }

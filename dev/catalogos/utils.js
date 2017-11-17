@@ -8,7 +8,8 @@ const utils = {
     update,
     cancel,
     getSub,
-    ckeditorLoad
+    ckeditorLoad,
+    logout
 }
 
 function update(){
@@ -53,5 +54,12 @@ function ckeditorLoad(){
         console.log(err)
     }
 }
+
+function logout(){
+    $('div#logout').click(function(){
+        $('ul#logout-menu').toggle();
+    })
+}
+
 
 module.exports = utils

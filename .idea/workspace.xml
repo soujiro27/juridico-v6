@@ -2,6 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8421061c-e5ff-48ae-834c-5f197b9b3794" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/BaseController.php" afterPath="$PROJECT_DIR$/app/controllers/BaseController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/catalogs/CaracteresController.php" afterPath="$PROJECT_DIR$/app/controllers/catalogs/CaracteresController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/catalogos/main.js" afterPath="$PROJECT_DIR$/dev/catalogos/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/catalogos/utils.js" afterPath="$PROJECT_DIR$/dev/catalogos/utils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/scss/main.styl" afterPath="$PROJECT_DIR$/dev/scss/main.styl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/main.css" afterPath="$PROJECT_DIR$/public/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/catalogos.js" afterPath="$PROJECT_DIR$/public/js/catalogos.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layoutTable.twig" afterPath="$PROJECT_DIR$/views/layoutTable.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +24,30 @@
       <file leaf-file-name="layoutTable.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/layoutTable.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="18" column="83" lean-forward="false" selection-start-line="18" selection-start-column="83" selection-end-line="18" selection-end-column="91" />
+            <state relative-caret-position="400">
+              <caret line="86" column="39" lean-forward="false" selection-start-line="86" selection-start-column="39" selection-end-line="86" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/BaseController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="615">
+              <caret line="50" column="27" lean-forward="false" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+              <folding>
+                <element signature="e#34#61#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CaracteresController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/catalogs/CaracteresController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -47,7 +77,6 @@
         <option value="$PROJECT_DIR$/app/routes/rutasVolantesDiversos.php" />
         <option value="$PROJECT_DIR$/app/routes/rutasCaracteres.php" />
         <option value="$PROJECT_DIR$/app/models/Caracteres.php" />
-        <option value="$PROJECT_DIR$/app/controllers/catalogs/CaracteresController.php" />
         <option value="$PROJECT_DIR$/views/doctosTextos/tabla.twig" />
         <option value="$PROJECT_DIR$/app/controllers/catalogs/DoctosTextosController.php" />
         <option value="$PROJECT_DIR$/app/routes/rutasDoctosTextos.php" />
@@ -74,7 +103,6 @@
         <option value="$PROJECT_DIR$/views/volantes/tabla.twig" />
         <option value="$PROJECT_DIR$/views/irac/tabla-irac.twig" />
         <option value="$PROJECT_DIR$/app/controllers/documentos/VolantesController.php" />
-        <option value="$PROJECT_DIR$/app/controllers/BaseController.php" />
         <option value="$PROJECT_DIR$/views/confronta/tablas.twig" />
         <option value="$PROJECT_DIR$/views/irac/tabla-observaciones.twig" />
         <option value="$PROJECT_DIR$/app/controllers/documentos/IracController.php" />
@@ -92,6 +120,8 @@
         <option value="$PROJECT_DIR$/views/documentos/tabla.twig" />
         <option value="$PROJECT_DIR$/views/ifa/update-Observaciones.twig" />
         <option value="$PROJECT_DIR$/views/caracteres/tabla.twig" />
+        <option value="$PROJECT_DIR$/app/controllers/BaseController.php" />
+        <option value="$PROJECT_DIR$/app/controllers/catalogs/CaracteresController.php" />
         <option value="$PROJECT_DIR$/views/layoutTable.twig" />
       </list>
     </option>
@@ -113,7 +143,7 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1616" />
@@ -169,17 +199,6 @@
               <item name="juridico" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="juridico" type="b2602c69:ProjectViewProjectNode" />
-              <item name="juridico" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="juridico" type="b2602c69:ProjectViewProjectNode" />
-              <item name="juridico" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="caracteres" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -196,14 +215,14 @@
     <key name="OPEN_URL_DIALOG">
       <recent name="http://172.16.6.33/SIA/juridico/VolantesDiversos" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\SIA\juridico\app\controllers\documentos\" />
+      <recent name="C:\xampp\htdocs\SIA\juridico\app\routes\" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\SIA\juridico\views" />
       <recent name="C:\xampp\htdocs\SIA\juridico\app\controllers\documentos" />
       <recent name="C:\xampp\htdocs\SIA\juridico\app\routes" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\SIA\juridico\app\controllers\documentos\" />
-      <recent name="C:\xampp\htdocs\SIA\juridico\app\routes\" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -236,10 +255,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152789000" />
+    <option name="totallyTimeSpent" value="158022000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -342,16 +361,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/catalogs/CaracteresController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="35" column="80" lean-forward="true" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="80" />
-          <folding>
-            <element signature="e#43#78#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -497,16 +506,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="88" column="40" lean-forward="true" selection-start-line="88" selection-start-column="40" selection-end-line="88" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/BaseController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding>
-            <element signature="e#34#61#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -656,11 +655,11 @@
         <state relative-caret-position="440">
           <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
           <folding>
-            <marker date="1510932411592" expanded="true" signature="79:1385" ph="{% block form ...%}" />
-            <marker date="1510932411592" expanded="true" signature="1056:1370" ph="{% if err ...%}" />
-            <marker date="1510932411592" expanded="true" signature="1145:1353" ph="..." />
-            <marker date="1510932411592" expanded="true" signature="1272:1342" ph="..." />
-            <marker date="1510932411592" expanded="false" signature="1311:1318" ph="×" />
+            <marker date="1510936368114" expanded="true" signature="79:1385" ph="{% block form ...%}" />
+            <marker date="1510936368114" expanded="true" signature="1056:1370" ph="{% if err ...%}" />
+            <marker date="1510936368114" expanded="true" signature="1145:1353" ph="..." />
+            <marker date="1510936368114" expanded="true" signature="1272:1342" ph="..." />
+            <marker date="1510936368114" expanded="false" signature="1311:1318" ph="×" />
           </folding>
         </state>
       </provider>
@@ -673,10 +672,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/BaseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="50" column="27" lean-forward="false" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+          <folding>
+            <element signature="e#34#61#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/catalogs/CaracteresController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/layoutTable.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="18" column="83" lean-forward="false" selection-start-line="18" selection-start-column="83" selection-end-line="18" selection-end-column="91" />
+        <state relative-caret-position="400">
+          <caret line="86" column="39" lean-forward="false" selection-start-line="86" selection-start-column="39" selection-end-line="86" selection-end-column="39" />
           <folding />
         </state>
       </provider>

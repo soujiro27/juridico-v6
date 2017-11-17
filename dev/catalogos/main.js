@@ -12,6 +12,7 @@ utils.update()
 utils.cancel()
 utils.getSub()
 utils.ckeditorLoad()
+utils.logout()
 $('input.fechaInput').datepicker({ dateFormat: "yy-mm-dd" });
 
 

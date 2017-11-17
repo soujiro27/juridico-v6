@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use Twig_Loader_Filesystem;
 use App\Models\Turnos;
+use App\Models\Notificaciones;
 
 class BaseController {
     protected $templateEngine;
@@ -39,5 +40,17 @@ class BaseController {
             return true;
         }
     }
+
+    public function getNotificaciones(){
+        $id = $_SESSION['idUsuario'];
+        $numero = Notificaciones::where('idUsuario','=',"$id")
+            ->where('situacion','=','NUEVO')->count();
+        if(empty($numero)){
+            return 0;
+        }else{
+            return $numero;
+        }
+    }
+
 
 }

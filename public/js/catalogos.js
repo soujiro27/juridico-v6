@@ -409,6 +409,7 @@ utils.update();
 utils.cancel();
 utils.getSub();
 utils.ckeditorLoad();
+utils.logout();
 $('input.fechaInput').datepicker({ dateFormat: "yy-mm-dd" });
 
 /*--------------volantes------------*/
@@ -551,7 +552,8 @@ var utils = {
     update: update,
     cancel: cancel,
     getSub: getSub,
-    ckeditorLoad: ckeditorLoad
+    ckeditorLoad: ckeditorLoad,
+    logout: logout
 };
 
 function update() {
@@ -611,6 +613,12 @@ function ckeditorLoad() {
     } catch (err) {
         console.log(err);
     }
+}
+
+function logout() {
+    $('div#logout').click(function () {
+        $('ul#logout-menu').toggle();
+    });
 }
 
 module.exports = utils;

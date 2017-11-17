@@ -7,9 +7,14 @@ use Carbon\Carbon;
 
 class CaracteresController extends BaseController {
    public function getIndex() {
+
         $caracteres = Caracteres::all();
-        //return $this->render('layout.twig');
-        echo $this->render('caracteres/tabla.twig',['caracteres' => $caracteres,'sesiones'=> $_SESSION]);
+        echo $this->render('caracteres/tabla.twig',[
+            'caracteres' => $caracteres,
+            'sesiones'=> $_SESSION,
+            'notifica' => $this->getNotificaciones()
+        ]);
+
    }
 
    public function getCreate() {
