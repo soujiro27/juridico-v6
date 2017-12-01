@@ -8,26 +8,35 @@ use Carbon\Carbon;
 class CaracteresController extends BaseController {
    public function getIndex() {
 
+        $this->permisoModulos('CAT-CARACTERES');
         $caracteres = Caracteres::all();
         echo $this->render('caracteres/tabla.twig',[
             'caracteres' => $caracteres,
             'sesiones'=> $_SESSION,
-            'notifica' => $this->getNotificaciones()
+            'notifica' => $this->getNotificaciones(),
+            'modulo' => 'Caracteres'
         ]);
 
    }
 
    public function getCreate() {
-        echo $this->render('/caracteres/form.twig',['sesiones'=> $_SESSION]);
+        $this->permisoModulos('CAT-CARACTERES');
+        echo $this->render('/caracteres/form.twig',[
+          'sesiones'=> $_SESSION,
+          'modulo' => 'Caracteres',
+          'notifica' => $this->getNotificaciones(),
+          ]);
    }
 
    public function getUpdate($id,$err) {
-
+        $this->permisoModulos('CAT-CARACTERES');
         $caracter = Caracteres::where('idCaracter',$id)->first();
         echo $this->render('/caracteres/update.twig',[
             'sesiones'=> $_SESSION, 
             'caracter'=> $caracter,
-            'err' =>$err
+            'err' =>$err, 
+            'modulo' => 'Caracteres',
+            'notifica' => $this->getNotificaciones()
             ]);
    }
 

@@ -3,7 +3,7 @@ session_start();
 // Include the main TCPDF library (search for installation path).
 require_once('./tcpdf/tcpdf.php');
 
-$idVolante = $_GET['param'];
+$idVolante = $_GET['param1'];
 
 
 function conecta(){
@@ -23,18 +23,18 @@ function consultaRetorno($sql,$db){
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
-$sql="select v.idTipoDocto, v.numDocumento,v.fDocumento,
+$sql="select v.idVolante, v.idTipoDocto, v.numDocumento,v.fDocumento,
  v.fRecepcion, v.hRecepcion, v.destinatario,v.folio, v.anexos,v.idTurnado,v.idRemitente, v.asunto,
 cr.nombre as caracter,
 a.nombre as accion,
-ar.nombre as area,
+rj.siglasArea as area,
 CONVERT (date, SYSDATETIMEOFFSET()) as fActual,
-CONCAT(e.nombre,' ',e.paterno,' ',e.materno) as titular
+CONCAT(rj.saludo,' ',rj.nombre ) as titular,
+rj.puesto
 from sia_Volantes v
 inner join sia_CatCaracteres cr on v.idCaracter=cr.idCaracter
 inner join sia_CatAcciones a on v.idAccion=a.idAccion
-inner join sia_areas ar on v.idRemitente=ar.idArea
-inner join sia_empleados e on ar.idEmpleadoTitular=e.idEmpleado
+inner join sia_RemitentesJuridico rj on v.idRemitenteJuridico = rj.idRemitenteJuridico and v.idRemitente=rj.siglasArea 
 where v.idVolante='$idVolante'";
 
 
@@ -55,8 +55,8 @@ $area=$datos[0]['area'];
 $dest=$datos[0]['destinatario'];
 $asunto=$datos[0]['asunto'];
 $document =$datos[0]['numDocumento'];
-$tipo= $datos[0]['idTipoDocto'];
-
+$puesto =$datos[0]['puesto'];
+$tipo = $datos[0]['idTipoDocto'];
 
 class MYPDF extends TCPDF {
         // Page footer
@@ -170,7 +170,7 @@ $pdf->Cell(15, 5,$datos[0]['idRemitente'], 1, 1, 'J', 0, '', 1);
 $pdf->SetXY(30,75);
 $pdf->Cell(62, 5,$titular, 1, 1, 'L', 0, '', 1);
 $pdf->SetXY(92,75);
-$pdf->Cell(105, 5,$area, 1, 1, 'L', 0, '', 1);
+$pdf->Cell(105, 5,$puesto, 1, 1, 'L', 0, '', 1);
 
 $pdf->Ln(13);
 $pdf->Cell(91, 5,'DEPENDENCIA', 1, 1, 'C', 0, '', 1);

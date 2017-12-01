@@ -18,29 +18,39 @@ use App\Models\Turnos;
 
 class VolantesController extends BaseController {
     public function getIndex($app) {
+        $this->permisoModulos('VOLANTES');
         if(empty($app->request->get()))
         {
             $campo = 'folio';
             $tipo = 'desc';
+            $now = Carbon::now('America/Mexico_City')->format('Y');
         }else{
             $get = $app->request->get();
             $campo = $get['campo'];
             $tipo = $get['tipo'];
+            $now = $get['year'];
         }
 
+
         $volantes = VolantesDocumentos::select('v.idVolante','v.folio','v.subfolio','v.numDocumento','v.idRemitente'
-            ,'v.idTurnado','v.fRecepcion','v.extemporaneo','a.clave','sub.nombre','t.estadoProceso','v.estatus')
+            ,'v.idTurnado','v.fRecepcion','v.extemporaneo','a.clave','sub.nombre','t.estadoProceso','v.fAlta','v.estatus')
             ->join('sia_Volantes as v','v.idVolante','=','sia_volantesDocumentos.idVolante')
             ->join('sia_turnosJuridico as t','t.idVolante','=','v.idVolante'  )
             ->join('sia_auditorias as a','a.idAuditoria','=','sia_volantesDocumentos.cveAuditoria')
             ->join('sia_catSubTiposDocumentos as sub','sub.idSubTipoDocumento','=','sia_volantesDocumentos.idSubTipoDocumento')
             ->where('sub.auditoria','SI')
+            ->whereYear('v.fAlta','=',"$now")
             ->orderBy("$campo","$tipo")
             ->get();
-        return $this->render('/volantes/tabla.twig',['volantes' => $volantes,'sesiones'=> $_SESSION]);
+        return $this->render('/volantes/tabla.twig',[
+            'volantes' => $volantes,
+            'sesiones'=> $_SESSION,
+            'modulo' => 'Volantes',
+            'notifica' => $this->getNotificaciones(),
+            ]);
     }
     public function getCreate($err) {
-
+         $this->permisoModulos('VOLANTES');
         $documentos = TiposDocumentos::where('estatus','ACTIVO')->where('tipo','JURIDICO')->get();
         $caracteres = Caracteres::where('estatus','ACTIVO')->get();
         $acciones = Acciones::where('estatus','ACTIVO')->get();
@@ -57,13 +67,16 @@ class VolantesController extends BaseController {
             'turnados' => $turnados,
             'direccionGral' => $turnadoDireccion,
             'subtipos' => $subTipos,
-            'err' => $err
+            'cuenta' =>  $_SESSION['idCuentaActual'],
+            'err' => $err,
+            'modulo' => 'Volantes',
+            'notifica' => $this->getNotificaciones(),
         ]);
     }
 
 
     public function getUpdate($id,$err) {
-
+         $this->permisoModulos('VOLANTES');
         $close = $this->verificaVolante($id);
         $volantes = Volantes::where('idVolante',$id)->first();
 
@@ -81,7 +94,9 @@ class VolantesController extends BaseController {
             'turnados' => $turnados,
             'direccionGral' => $turnadoDireccion,
             'error' => $err,
-            'close' => $close
+            'close' => $close,
+            'modulo' => 'Volantes',
+            'notifica' => $this->getNotificaciones(),
         ]);
 
     }
@@ -129,6 +144,7 @@ class VolantesController extends BaseController {
 
             }
         }else{
+
             echo $this->getCreate('EL numero de FOLIO Y/O SUBFOLIO Ya fue asignado');
         }
 
@@ -165,8 +181,10 @@ class VolantesController extends BaseController {
     public function duplicateFolio($post){
         $folio = $post['folio'];
         $subFolio = $post['subFolio'];
+        $now = Carbon::now('America/Mexico_City')->format('Y');
         $duplicate = Volantes::where('folio','=',"$folio")
             ->where('subFolio','=',"$subFolio")
+            ->whereYear('fAlta','=',"$now")
             ->first();
         return $duplicate;
     }

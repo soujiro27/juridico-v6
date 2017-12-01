@@ -7,19 +7,29 @@ use App\Models\TiposDocumentos;
 
 class SubTiposDocumentosController extends BaseController {
     public function getIndex() {
+        $this->permisoModulos('SUBTIPODOCUMENTOS');
         $subTipos = SubTiposDocumentos::all();
-        return $this->render('/subTiposDocumentos/tabla.twig',['subTipos' => $subTipos,'sesiones'=> $_SESSION]);
+        return $this->render('/subTiposDocumentos/tabla.twig',[
+            'subTipos' => $subTipos,
+            'sesiones'=> $_SESSION,
+              'modulo' => 'Documentos',
+          'notifica' => $this->getNotificaciones(),
+            ]);
     }
 
     public function getCreate() {
+        $this->permisoModulos('SUBTIPODOCUMENTOS');
         $tiposDocumentos = TiposDocumentos::where('tipo','JURIDICO')->get();
         return $this->render('/subTiposDocumentos/insert.twig',[
             'sesiones'=> $_SESSION,
-            'tiposDocumentos' => $tiposDocumentos
+            'tiposDocumentos' => $tiposDocumentos,
+             'modulo' => 'Documentos',
+          'notifica' => $this->getNotificaciones()
         ]);
     }
 
     public function getUpdate($id,$err) {
+        $this->permisoModulos('SUBTIPODOCUMENTOS');
         $subTipos = SubTiposDocumentos::where('idSubTipoDocumento',$id)->first();
         $tiposDocumentos = TiposDocumentos::where('tipo','JURIDICO')->get();
 
@@ -27,7 +37,9 @@ class SubTiposDocumentosController extends BaseController {
             'sesiones'=> $_SESSION,
             'documentos' => $tiposDocumentos,
             'subtipos' => $subTipos,
-            'err' => $err
+            'err' => $err,
+             'modulo' => 'Documentos',
+          'notifica' => $this->getNotificaciones()
         ]);
 
     }

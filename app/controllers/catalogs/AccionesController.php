@@ -6,12 +6,24 @@ use App\Models\Acciones;
 
 class AccionesController extends BaseController {
     public function getIndex() {
+
+        $this->permisoModulos('CAT-ACCIONES');
         $acciones = Acciones::all();
-        return $this->render('Acciones/tabla.twig',['acciones' => $acciones,'sesiones'=> $_SESSION]);
+        return $this->render('Acciones/tabla.twig',[
+            'acciones' => $acciones,
+            'sesiones'=> $_SESSION,
+            'modulo' => 'Acciones',
+            'notifica' => $this->getNotificaciones()
+            ]);
     }
 
-    public function getCreate() {
-            return $this->render('/Acciones/insert.twig',['sesiones'=> $_SESSION]);
+    public function getCreate($app) {
+            $this->permisoModulos('CAT-ACCIONES',$app);
+            return $this->render('/Acciones/insert.twig',[
+                'sesiones'=> $_SESSION,
+                'modulo' => 'Acciones',
+                'notifica' => $this->getNotificaciones()
+                ]);
 
     }
 
@@ -31,19 +43,24 @@ class AccionesController extends BaseController {
         }else{
             echo $this->render('/Acciones/insert.twig',[
                 'sesiones'=> $_SESSION,
-                'err' => 'No puede haber datos Duplicados']);
+                'err' => 'No puede haber datos Duplicados',
+                'modulo' => 'Acciones',
+                'notifica' => $this->getNotificaciones()
+                ]);
         }
 
     }
 
 
-    public function getUpdate($id,$err) {
-
+    public function getUpdate($id,$err,$app) {
+         $this->permisoModulos('CAT-ACCIONES',$app);
         $accion = Acciones::where('idAccion',$id)->first();
         return $this->render('/Acciones/update.twig',[
             'sesiones'=> $_SESSION,
             'accion'=> $accion,
-            'err' => $err
+            'err' => $err,
+            'modulo' => 'Acciones',
+            'notifica' => $this->getNotificaciones()
         ]);
     }
 

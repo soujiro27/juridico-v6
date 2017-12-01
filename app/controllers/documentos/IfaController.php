@@ -12,10 +12,14 @@ use Carbon\Carbon;
 class IfaController extends BaseController {
     public function getIndex()
     {
+          $this->permisoModulos('IFA');
         $id = $_SESSION['idEmpleado'];
         $areas = PuestosJuridico::all()->where('rpe','=',"$id");
         foreach ($areas as $area) {$areaUsuario=$area['idArea'];}
-
+         if(empty($areaUsuario)){
+            $app = \Slim\Slim::getInstance();
+            $app->redirect('/SIA');
+        }
 
         $iracs = Volantes::select('sia_Volantes.idVolante','sia_Volantes.folio',
             'sia_Volantes.numDocumento','sia_Volantes.idRemitente','sia_Volantes.fRecepcion','sia_Volantes.asunto'
@@ -31,11 +35,22 @@ class IfaController extends BaseController {
             ->get();
 
 
-        return $this->render('/ifa/tabla-ifa.twig',['iracs' => $iracs,'sesiones'=> $_SESSION]);
+        return $this->render('/ifa/tabla-ifa.twig',[
+            'iracs' => $iracs,
+            'sesiones'=> $_SESSION,
+             'modulo' => 'Ifa',
+            'notifica' => $this->getNotificaciones(),
+            ]);
     }
 
     public function getObservaciones($idVolante)
     {
+        $datosCedula = $this->duplicate($idVolante);
+        if(empty($datosCedula)){
+            $valor = false;
+        }else{
+            $valor = true;
+        }
 
         if($this->verificaVolante($idVolante)){$err = false;}else{$err = 'El Ifa Ha sido Cerrado';}
         $observaciones = ObservacionesDoctosJuridico::all()->where('idVolante','=',"$idVolante");
@@ -43,19 +58,24 @@ class IfaController extends BaseController {
             'observaciones' => $observaciones,
             'idVolante' => $idVolante,
             'close' => $this->verificaVolante($idVolante),
-            'err' => $err
+            'err' => $err,
+            'modulo' => 'Ifa',
+            'notifica' => $this->getNotificaciones(),
+            'button' => $valor
         ]);
     }
 
 
     public function getCreateObservacion($idVolante) {
-
+          $this->permisoModulos('IFA');
         $volantesDoc = VolantesDocumentos::all()->where('idVolante','=',"$idVolante");
         foreach ($volantesDoc as $volantes) {$cveAuditoria=$volantes['cveAuditoria']; $idSubTipoDocumento = $volantes['idSubTipoDocumento']; }
 
         return $this->render('/ifa/insert-Observaciones.twig',['sesiones'=> $_SESSION,
             'cveAuditoria' =>$cveAuditoria,
             'idSubTipoDocumento' => $idSubTipoDocumento,
+            'modulo' => 'Ifa',
+            'notifica' => $this->getNotificaciones(),
             'idVolante' => $idVolante]);
     }
 
@@ -77,7 +97,7 @@ class IfaController extends BaseController {
     }
 
     public function getUpdateObservacion($id,$err) {
-
+          $this->permisoModulos('IFA');
         $observacion = ObservacionesDoctosJuridico::where('idObservacionDoctoJuridico','=',"$id")->first();
         return $this->render('/ifa/update-observaciones.twig',[
             'sesiones'=> $_SESSION,
@@ -103,6 +123,7 @@ class IfaController extends BaseController {
     }
 
     public function  getCreateCedula($idVolante){
+        $this->permisoModulos('IFA');
         $datosCedula = $this->duplicate($idVolante);
 
 
@@ -120,10 +141,17 @@ class IfaController extends BaseController {
             return $this->render('/ifa/insert-Cedula.twig',['sesiones'=> $_SESSION,
                 'puestos' => $puestos,
                 'idVolante' => $idVolante,
+                'modulo' => 'Ifa',
+                'notifica' => $this->getNotificaciones(),
                 'idSubTipoDocumento' => $idSubTipoDocumento]);
         }
         else{
-            return $this->render('/ifa/update-cedula.twig',['datosCedula' => $datosCedula]);
+            return $this->render('/ifa/update-cedula.twig',[
+                'datosCedula' => $datosCedula,
+                'modulo' => 'Ifa',
+                'notifica' => $this->getNotificaciones(),
+                'sesiones'=> $_SESSION,
+                ]);
         }
     }
 
@@ -140,7 +168,6 @@ class IfaController extends BaseController {
             'siglas' => $post['siglas'],
             'idPuestosJuridico' => $post['idPuestosJuridico'],
             'fOficio' => $post['fOficio'],
-            'numFolio' => $post['numFolio'],
             'idDocumentoTexto' => $post['idDocumentoTexto'],
             'usrAlta' => $_SESSION['idUsuario'],
             'fAlta' => Carbon::now('America/Mexico_City')->format('Y-d-m H:i:s')
@@ -155,7 +182,6 @@ class IfaController extends BaseController {
         DocumentosSiglas::where('idDocumentoSiglas',$post['idDocumentoSiglas'])
             ->update(['siglas' => $post['siglas'],
                 'fOficio' => $post['fOficio'],
-                'numFolio' => $post['numFolio'],
                 'usrModificacion' => $_SESSION['idUsuario'],
                 'fModificacion' => Carbon::now('America/Mexico_City')->format('Y-d-m H:i:s'),
                 'idPuestosJuridico' => $post['idPuestosJuridico'],

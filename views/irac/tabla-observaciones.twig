@@ -3,9 +3,11 @@
 
 
 {% block btnHeader %}
-    <a id="addRegister" href="/SIA/juridico/public/IRAC.php/?param1={{ idVolante }}" target="_blank" class="btn btn-warning btn-add" role="button">
-        Imprimir Cedula
-    </a>
+    {% if button %}
+        <a id="addRegister" href="/SIA/juridico/public/IRAC.php/?param1={{ idVolante }}" target="_blank" class="btn btn-warning btn-add" role="button">
+            Imprimir Cedula
+        </a>
+    {% endif %}
     {% if close %}
         <a id="addRegister" href="/SIA/juridico/CedulaIrac/add/{{ idVolante }}" class="btn btn-warning btn-add" role="button">
             Generar Cedula

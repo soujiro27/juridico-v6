@@ -8,10 +8,12 @@
         <label for="numFolio" class="col-lg-2">Numero de Folio</label>
         <input  class="form-control col-lg-2" type="text" name="numFolio" placeholder="Numero de Folio" id="numFolio">
     </div>
+    {% if tipo != 'NOTA' %}
     <div class="form-group asunto row">
         <label for="asunto" class="col-lg-2">Asunto</label>
         <input class="form-control col-lg-2" type="text" name="asunto" placeholder="Asunto" id="asunto">
     </div>
+    {% endif %}
     <div class="form-group fOficio row">
         <label for="fOficio" class="col-lg-2">Fecha Documento</label>
         <input  type="text" name="fOficio" placeholder="Fecha Oficio" id="fOficio" class=" form-control fechaInput col-lg-2">
@@ -23,7 +25,15 @@
         <input type="hidden" name="idVolante" value="{{ idVolante }}">
         <input type="hidden" name="internos" id="internos">
         <input type="hidden" name="externos" id="externos">
+        <input type="hidden" name="idPuestoJuridico" id="puesto">
     </div>
+
+    {% if tipo == 'NOTA' %}
+        <div class="form-group puesto row">
+            <label for="puesto" class="col-lg-2">De:</label>
+            <button class="btn btn-info col-lg-2" id="modalPuestoJuridico">Añadir</button>
+        </div>
+    {% endif %}
     <div class="form-group row">
         <label for="siglas" class="col-lg-2">Copia Internos</label>
         <button class="btn btn-info col-lg-2" id="modalInternos">Añadir</button>

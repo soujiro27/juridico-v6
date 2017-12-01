@@ -4,9 +4,11 @@
 
 
 {% block btnHeader %}
+    {% if button %}
     <a id="addRegister" href="/SIA/juridico/public/tcpdf/examples/ifa.php/?param1={{ idVolante }}" target="_blank" class="btn btn-warning btn-add" role="button">
         Imprimir Cedula
     </a>
+{% endif %}
     {% if close %}
     <a id="addRegister" href="/SIA/juridico/CedulaIfa/add/{{ idVolante }}" class="btn btn-warning btn-add" role="button">
         Generar Cedula

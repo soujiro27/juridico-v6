@@ -3,6 +3,7 @@
     <a id="addRegister" href="/SIA/juridico/Volantes/add" class="btn btn-info btn-add" role="button">
         Añadir Registro
     </a>
+
 {% endblock %}
 
 {% block order %}
@@ -26,9 +27,16 @@
                 <option value="asc">Ascendente</option>
                 <option value="desc">Descendente</option>
             </select>
+            <select name="year" id="year">
+                <option value="">Año</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+            </select>
             <input type="submit" value="Ordenar" class="btn btn-info">
         </form>
+        <p>Listado de Volantes </p>
     </div>
+
 {% endblock %}
 
 

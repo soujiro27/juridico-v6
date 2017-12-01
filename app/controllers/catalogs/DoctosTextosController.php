@@ -9,20 +9,29 @@ use App\Models\SubTiposDocumentos;
 
 class DoctosTextosController extends BaseController {
    public function getIndex() {
+      $this->permisoModulos('CAT-DOCTOSTEXTOS');
        $doctosTextos = DoctosTextos::all();
-       return $this->render('doctosTextos/tabla.twig',['doctosTextos' => $doctosTextos,'sesiones'=> $_SESSION]);
+       return $this->render('doctosTextos/tabla.twig',[
+        'doctosTextos' => $doctosTextos,
+        'sesiones'=> $_SESSION,
+          'modulo' => 'Textos',
+          'notifica' => $this->getNotificaciones(),
+        ]);
    }
 
    public function getCreate() {
+    $this->permisoModulos('CAT-DOCTOSTEXTOS');
        $tiposDocumentos = TiposDocumentos::where('tipo','JURIDICO')->get();
         return $this->render('/doctosTextos/insert.twig',[
         'sesiones'=> $_SESSION,
-        'tiposDocumentos' => $tiposDocumentos
+        'tiposDocumentos' => $tiposDocumentos,
+         'modulo' => 'Textos',
+          'notifica' => $this->getNotificaciones(),
         ]);
    }
 
    public function getUpdate($id) {
-     
+     $this->permisoModulos('CAT-DOCTOSTEXTOS');
         $doctoTexto = DoctosTextos::where('idDocumentoTexto',$id)->first();
         $tiposDocumentos = TiposDocumentos::where('tipo','JURIDICO')->get();
         $subTipos = SubTiposDocumentos::where('idTipoDocto',$doctoTexto['idTipoDocto'])->get();
@@ -30,7 +39,9 @@ class DoctosTextosController extends BaseController {
             'sesiones'=> $_SESSION, 
             'doctoTexto' => $doctoTexto,
             'documentos' => $tiposDocumentos,
-            'subtipos' => $subTipos
+            'subtipos' => $subTipos,
+            'modulo' => 'Textos',
+            'notifica' => $this->getNotificaciones(),
             ]);
 
    }

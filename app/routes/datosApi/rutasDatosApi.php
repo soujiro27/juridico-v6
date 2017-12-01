@@ -72,3 +72,8 @@ $app->post('/juridico/datos/closeVolante',function() use($app){
     $get = new ApiController();
     $get->closeVolante($app->request->post(),$app);
 });
+
+$app->get('/juridico/datos/puestos',function() use($app){
+    $get = new ApiController();
+    $get->puestos();
+});

@@ -1,6 +1,7 @@
 <?php
 
 use  App\Controllers\Documentos\IracController;
+use App\Controllers\BaseController;
 
 $app->get('/juridico/Irac',function(){
     $get = new IracController();
@@ -49,3 +50,5 @@ $app->post('/juridico/CedulaIrac/update',function() use ($app){
     $get = new IracController();
     echo $get->cedulaUpdate($app->request->post(),$app);
 });
+
+

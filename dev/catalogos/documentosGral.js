@@ -6,7 +6,8 @@ const modals = require('./../modals/modals')
 
 const documentosGral = {
     volantesByFolio,
-    download
+    download,
+    download_sub
 }
 
 function volantesByFolio(){
@@ -25,6 +26,7 @@ function volantesByFolio(){
         })
     })
 }
+/*
 function download(){
     $('table#main-table-files tbody tr').click(function(){
         let val = $(this).children().first().next().text()
@@ -39,7 +41,21 @@ function download(){
            
         })
     })
+}*/
+
+function download(){
+    $('table#main-table-files tbody tr').click(function(){
+        let val = $(this).children().first().text()
+        location.href = `/SIA/juridico/DocumentosGral/update/${val}`
+    })
 }
 
+
+function download_sub(){
+    $('table#main-table-files-sub tbody tr').click(function(){
+        let val = $(this).children().first().text()
+        location.href = `/SIA/juridico/Documentos/update/${val}`
+    })
+}
 
 module.exports = documentosGral

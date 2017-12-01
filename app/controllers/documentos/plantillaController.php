@@ -18,10 +18,14 @@ use App\Models\Remitentes;
 
 class PlantillaController extends BaseController {
     public function getIndex() {
-
+         $this->permisoModulos('DOCUMENTOS-DIVERSOS');
         $id = $_SESSION['idEmpleado'];
         $areas = PuestosJuridico::all()->where('rpe','=',"$id");
         foreach ($areas as $area) {$areaUsuario=$area['idArea'];}
+         if(empty($areaUsuario)){
+            $app = \Slim\Slim::getInstance();
+            $app->redirect('/SIA');
+        }
 
         $volantes = VolantesDocumentos::select('v.idVolante','v.folio','v.subfolio','v.numDocumento','v.idRemitente'
             ,'v.idTurnado','v.fRecepcion','v.extemporaneo','sub.nombre','t.estadoProceso','v.estatus')
@@ -31,23 +35,37 @@ class PlantillaController extends BaseController {
             ->where('sub.auditoria','NO')
             ->where('v.idTurnado','=',"$areaUsuario")
             ->get();
-        return $this->render('/plantillas/tabla.twig',
-            ['volantes' => $volantes,'sesiones'=> $_SESSION]);
+        return $this->render('/plantillas/tabla.twig',[
+            'volantes' => $volantes,
+            'sesiones'=> $_SESSION,
+            'modulo' => 'Documentos Diversos',
+            'notifica' => $this->getNotificaciones(),
+            ]);
     }
 
 
     public function getCreate($idVolante) {
+        $this->permisoModulos('DOCUMENTOS-DIVERSOS');
         $plantillas = PlantillasJuridico::where('idVolante','=',"$idVolante")->get();
         foreach ($plantillas as $plantilla){$vacio = $plantilla['idPlantillaJuridico'];}
         foreach ($plantillas as $plantilla){$copías = $plantilla['copias'];}
 
         $remitentes = Volantes::where('idVolante','=',"$idVolante")->get();
-        foreach ($remitentes as $remitente){$idRemitente = $remitente['idRemitenteJuridico'];}
+        foreach ($remitentes as $remitente){
+            $idRemitente = $remitente['idRemitenteJuridico'];
+            $tipoDocto = $remitente['idTipoDocto'];
+            ;}
+
         if(empty($vacio)){
+
+        $id = $_SESSION['idEmpleado'];
             return $this->render('plantillas/insert-plantillas.twig',[
                 'sesiones' => $_SESSION,
                 'idVolante' => $idVolante,
-                'idRemitente' => $idRemitente
+                'idRemitente' => $idRemitente,
+                'tipo' => $tipoDocto,
+                  'modulo' => 'Documentos Diversos',
+            'notifica' => $this->getNotificaciones(),
             ]);
         }else {
             $datos = explode(",",$copías);
@@ -80,7 +98,10 @@ class PlantillaController extends BaseController {
                 'internos' => $internos,
                 'externos' => $externos,
                 'close' => $close,
-                'err' => $err
+                'tipo' => $tipoDocto,
+                'err' => $err,
+                  'modulo' => 'Documentos Diversos',
+            'notifica' => $this->getNotificaciones(),
             ]);
         }
 
@@ -90,10 +111,9 @@ class PlantillaController extends BaseController {
     public function create($post,$app) {
         $copias = $post['internos'] . $post['externos'];
         $copias = substr($copias,0,-1);
-        $plantillas = new PlantillasJuridico([
+        $datos = array(
             'idVolante' =>$post['idVolante'],
             'numFolio' => $post['numFolio'],
-            'asunto' => $post['asunto'],
             'fOficio' => $post['fOficio'],
             'idRemitente' => $post['idRemitente'],
             'texto' => $post['texto'],
@@ -102,7 +122,14 @@ class PlantillaController extends BaseController {
             'espacios' => $post['espacios'],
             'usrAlta' => $_SESSION['idUsuario'],
             'fAlta' => Carbon::now('America/Mexico_City')->format('Y-m-d')
-        ]);
+        );
+        if(isset($post['asunto'])){
+           $datos['asunto'] = $post['asunto'];
+        }else{
+            $datos['idPuestoJuridico'] = $post['idPuestoJuridico'];
+        }
+
+        $plantillas = new PlantillasJuridico($datos);
         $plantillas->save();
         $app->redirect('/SIA/juridico/DocumentosDiversos');
 
@@ -113,11 +140,8 @@ class PlantillaController extends BaseController {
     public function update($post,$app) {
         $copias = $post['internos'] . $post['externos'];
         $copias = substr($copias,0,-1);
-
-
-        PlantillasJuridico::where('idPlantillaJuridico',$post['idPlantillaJuridico'])->update([
+        $datos = array(
             'numFolio' => $post['numFolio'],
-            'asunto' => $post['asunto'],
             'fOficio' => $post['fOficio'],
             'idRemitente' => $post['idRemitente'],
             'texto' => $post['texto'],
@@ -126,8 +150,15 @@ class PlantillaController extends BaseController {
             'espacios' => $post['espacios'],
             'usrModificacion' => $_SESSION['idUsuario'],
             'fModificacion' => Carbon::now('America/Mexico_City')->format('Y-m-d')
+        );
 
-        ]);
+        if(isset($post['asunto'])){
+            $datos['asunto'] = $post['asunto'];
+        }else{
+            $datos['idPuestoJuridico'] = $post['idPuestoJuridico'];
+        }
+
+        PlantillasJuridico::where('idPlantillaJuridico',$post['idPlantillaJuridico'])->update($datos);
         $app->redirect('/SIA/juridico/DocumentosDiversos');
 
 

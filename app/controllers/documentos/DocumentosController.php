@@ -8,14 +8,18 @@ use App\Models\PuestosJuridico;
 class DocumentosController extends BaseController {
 
 
-    public function getCreate($err) {
-        $duplicate = false;
+        public function getCreate($err,$id) {
+        //$this->permisoModulos('DOCUMENTOSGRAL');
+        $nombre = Volantes::where('idVolante','=',"$id")->get();
         return $this->render('/documentos-sub/insert.twig',[
             'sesiones'=> $_SESSION,
-            'err' => $err
+            'err' => $err,
+            'nombre' => $nombre[0]['anexoDoc'],
+            'idVolante' => $id,
+              'modulo' => 'Archivos',
+            'notifica' => $this->getNotificaciones()
         ]);
     }
-
 
     public function update($post,$file,$app) {
         $nombre=$file['anexoDoc']['name'];
@@ -44,7 +48,20 @@ class DocumentosController extends BaseController {
         return $duplicate;
     }
 
-    public function getIndexDocumentos() {
+    public function getIndexDocumentos($app) {
+
+          $this->permisoModulos('DOCUMENTOSJUR');
+
+ if(empty($app->request->get()))
+            {
+                $campo = 'folio';
+                $tipo = 'desc';
+            }else{
+                $get = $app->request->get();
+                $campo = $get['campo'];
+                $tipo = $get['tipo'];
+            }
+
 
         $id = $_SESSION['idEmpleado'];
         $areas = PuestosJuridico::all()->where('rpe','=',"$id");
@@ -57,6 +74,7 @@ class DocumentosController extends BaseController {
             ->join('sia_catSubTiposDocumentos as sub','sub.idSubTipoDocumento','=','vd.idSubTipoDocumento')
             ->join('sia_turnosJuridico as t','t.idVolante','=','sia_volantes.idVolante')
             ->where('sia_Volantes.idTurnado','=',"$areaUsuario")
+            ->orderBy("$campo","$tipo")
             ->get();
 
         return $this->render('/documentos-sub/tabla.twig',['documentos' => $documentos,'sesiones'=> $_SESSION]);

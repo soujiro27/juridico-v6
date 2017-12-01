@@ -12,10 +12,14 @@ use Carbon\Carbon;
 class IracController extends BaseController {
     public function getIndex()
     {
+        $this->permisoModulos('IRAC');
         $id = $_SESSION['idEmpleado'];
         $areas = PuestosJuridico::all()->where('rpe','=',"$id");
         foreach ($areas as $area) {$areaUsuario=$area['idArea'];}
-
+        if(empty($areaUsuario)){
+            $app = \Slim\Slim::getInstance();
+            $app->redirect('/SIA');
+        }
 
         $iracs = Volantes::select('sia_Volantes.idVolante','sia_Volantes.folio',
             'sia_Volantes.numDocumento','sia_Volantes.idRemitente','sia_Volantes.fRecepcion','sia_Volantes.asunto'
@@ -31,11 +35,22 @@ class IracController extends BaseController {
             ->get();
 
 
-        return $this->render('/irac/tabla-irac.twig',['iracs' => $iracs,'sesiones'=> $_SESSION]);
+        return $this->render('/irac/tabla-irac.twig',[
+            'iracs' => $iracs,
+            'sesiones'=> $_SESSION,
+            'modulo' => 'Irac',
+            'notifica' => $this->getNotificaciones()
+            ]);
     }
 
     public function getObervaciones($idVolante)
     {
+        $datosCedula = $this->duplicate($idVolante);
+        if(empty($datosCedula)){
+            $valor = false;
+        }else{
+            $valor = true;
+        }
         if($this->verificaVolante($idVolante)){$err = false;}else{$err = 'El Irac Ha sido Cerrado';}
 
         $observaciones = ObservacionesDoctosJuridico::all()->where('idVolante','=',"$idVolante");
@@ -44,20 +59,29 @@ class IracController extends BaseController {
             'idVolante' => $idVolante,
             'sesiones'=> $_SESSION,
             'close' => $this->verificaVolante($idVolante),
-            'err' => $err
+            'err' => $err,
+            'modulo' => 'Irac',
+            'notifica' => $this->getNotificaciones(),
+             'button' => $valor
         ]);
     }
 
 
     public function getCreateObservacion($idVolante) {
+        
 
+         $this->permisoModulos('IRAC');
         $volantesDoc = VolantesDocumentos::all()->where('idVolante','=',"$idVolante");
         foreach ($volantesDoc as $volantes) {$cveAuditoria=$volantes['cveAuditoria']; $idSubTipoDocumento = $volantes['idSubTipoDocumento']; }
 
         return $this->render('/irac/insert-Observaciones.twig',['sesiones'=> $_SESSION,
             'cveAuditoria' =>$cveAuditoria,
             'idSubTipoDocumento' => $idSubTipoDocumento,
-            'idVolante' => $idVolante]);
+            'idVolante' => $idVolante,
+              'modulo' => 'Irac',
+            'notifica' => $this->getNotificaciones(),
+           
+            ]);
     }
 
     public function observacionesCreate($post,$app) {
@@ -78,12 +102,15 @@ class IracController extends BaseController {
     }
 
     public function getUpdateObservacion($id,$err) {
+         $this->permisoModulos('IRAC');
 
         $observacion = ObservacionesDoctosJuridico::where('idObservacionDoctoJuridico','=',"$id")->first();
         return $this->render('/irac/update-observacion.twig',[
             'sesiones'=> $_SESSION,
             'observacion'=> $observacion,
-            'error' => $err
+            'error' => $err,
+              'modulo' => 'Irac',
+            'notifica' => $this->getNotificaciones()
         ]);
     }
 
@@ -104,6 +131,7 @@ class IracController extends BaseController {
     }
 
     public function  getCreateCedula($idVolante){
+         $this->permisoModulos('IRAC');
         $datosCedula = $this->duplicate($idVolante);
 
 
@@ -121,10 +149,18 @@ class IracController extends BaseController {
             return $this->render('/irac/insert-Cedula.twig',['sesiones'=> $_SESSION,
                 'puestos' => $puestos,
                 'idVolante' => $idVolante,
-                'idSubTipoDocumento' => $idSubTipoDocumento]);
+                'idSubTipoDocumento' => $idSubTipoDocumento,
+                'modulo' => 'Irac',
+                'notifica' => $this->getNotificaciones()
+                ]);
         }
         else{
-                return $this->render('/irac/update-cedula.twig',['datosCedula' => $datosCedula]);
+                return $this->render('/irac/update-cedula.twig',[
+                    'datosCedula' => $datosCedula,
+                    'modulo' => 'Irac',
+                    'notifica' => $this->getNotificaciones(),
+                      'sesiones'=> $_SESSION,
+                    ]);
         }
     }
 

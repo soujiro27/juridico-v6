@@ -1,9 +1,27 @@
 {% extends 'layoutTable.twig' %}
-{% block add %}  {% endblock %}
-{% block btnHeader %}
-    <a id="addRegister" href="/SIA/juridico/DocumentosGral/update" class="btn btn-info btn-add" role="button">
-        Asignar Documento
-    </a>
+
+
+{% block order %}
+    <div class="order">
+        <button class="btn btn-warning" id="btn-order">Ordernar Registros</button>
+        <form action="/SIA/juridico/DocumentosGral" class="form-order form-inline" id="form-order">
+
+            <select name="campo" id="campo" required class="form-control">
+                <option value="">Campo</option>
+                <option value="folio">Folio</option>
+                <option value="nombre">Tipo</option>
+                <option value="idRemitente">Remitente</option>
+                <option value="estadoProceso">Estado</option>
+            </select>
+            <select name="tipo" id="tipo" required class="form-control">
+                <option value="">Tipo</option>
+                <option value="asc">Ascendente</option>
+                <option value="desc">Descendente</option>
+            </select>
+            
+            <input type="submit" value="Ordenar" class="btn btn-info">
+        </form>
+    </div>
 {% endblock %}
 
 {% block table %}

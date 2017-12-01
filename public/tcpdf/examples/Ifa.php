@@ -291,7 +291,10 @@ $nombres=array();
 $puestos=array();
 $saludo=array();
 for($i=0;$i<count($ef)-1;$i++){
-    $usrf=$ef[$i];
+    if(!empty($ef[$i])){
+      $usrf=$ef[$i];
+      //var_dump($ef[$i]);
+    }
     $sql="select concat(saludo,' ',nombre,' ',paterno,' ',materno) as nombre,puesto  
 from sia_PuestosJuridico
 where idPuestoJuridico='$usrf'";
@@ -307,16 +310,16 @@ $elaboro='';
 
 $firmaSecond='';
 $elementos=count($nombres);
+//var_dump($elementos);
 
-
-  if($elementos==1){
+  if($elementos == 1){
      $elaboro=$elaboro.'<br><tr><td align="center"><p>ELABORÓ</p><br><br>'. $nombres[$elementos-1].'<br>'.$puestos[$elementos-1].'</td><td></td></tr>';
      
   }elseif ($elementos==2) {
     $elaboro='<tr>';
     foreach ($nombres as $llave => $valor) {
       
-        $elaboro=$elaboro.'<td align="center"><p>ELABORÓ</p><br><br><br><br>'.$nombres[$llave]. $valor.'<br>'.$puestos[$llave].'</td>';
+        $elaboro=$elaboro.'<td align="center"><p>ELABORÓ</p><br><br><br><br>'.$nombres[$llave].'<br>'.$puestos[$llave].'</td>';
       } 
     $elaboro=$elaboro.'</tr>';
   }elseif ($elementos==3) {
@@ -348,7 +351,7 @@ foreach ($puestos as $key => $value) {
   $lineaPuestos=$lineaPuestos.'<td align="center" colspan="1"  >'.$value.'</td>';
 }
 //echo $linea;
-$pdf->Ln(40);
+$pdf->Ln(20);
 
 $html = <<<EOD
 <table cellspacing="0" cellpadding="1" border="0" >

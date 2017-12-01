@@ -13,9 +13,15 @@ use Carbon\Carbon;
 class confrontaController extends BaseController {
     public function getIndex()
     {
+         $this->permisoModulos('NOTA');
         $id = $_SESSION['idEmpleado'];
         $areas = PuestosJuridico::all()->where('rpe','=',"$id");
         foreach ($areas as $area) {$areaUsuario=$area['idArea'];}
+        if(empty($areaUsuario)){
+            $app = \Slim\Slim::getInstance();
+            $app->redirect('/SIA');
+        }
+
 
 
         $iracs = Volantes::select('sia_Volantes.idVolante','sia_Volantes.folio',
@@ -32,10 +38,16 @@ class confrontaController extends BaseController {
             ->get();
 
 
-        return $this->render('confronta/tablas.twig',['iracs' => $iracs,'sesiones'=> $_SESSION]);
+        return $this->render('confronta/tablas.twig',[
+            'iracs' => $iracs,
+            'sesiones'=> $_SESSION,
+             'modulo' => 'Confronta',
+            'notifica' => $this->getNotificaciones(),
+            ]);
     }
 
     public function getCreate($idVolante) {
+        $this->permisoModulos('NOTA');
         $notas = VolantesDocumentos::all()->where('idVolante','=',"$idVolante");
         foreach ($notas as $valor) {$nota = $valor['notaConfronta'];}
 
@@ -46,14 +58,19 @@ class confrontaController extends BaseController {
             return $this->render('/confronta/insert.twig',[
                 'sesiones'=> $_SESSION,
                 'nota' => $nota,
-                'idVolante' => $idVolante]);
+                'idVolante' => $idVolante,
+                'modulo' => 'Confronta',
+                'notifica' => $this->getNotificaciones(),
+                ]);
         }else{
             return $this->render('/confronta/update.twig',[
                 'sesiones'=> $_SESSION,
                 'nota' => $nota,
                 'confrontas' => $confrontas,
                 'close' => $this->verificaVolante($idVolante),
-                'err' => $err
+                'err' => $err,
+                'modulo' => 'Confronta',
+            'notifica' => $this->getNotificaciones(),
                 ]);
         }
 

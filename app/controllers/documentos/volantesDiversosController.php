@@ -20,6 +20,7 @@ use App\Models\Turnos;
 
 class VolantesDiversosController extends BaseController {
     public function getIndex($app) {
+          $this->permisoModulos('VOLANTES-DIVERSOS');
         if(empty($app->request->get()))
         {
             $campo = 'folio';
@@ -40,13 +41,18 @@ class VolantesDiversosController extends BaseController {
             ->get();
 
 
-    return $this->render('/volantesDiversos/tabla.twig',['volantes' => $volantes,'sesiones'=> $_SESSION]);
+    return $this->render('/volantesDiversos/tabla.twig',[
+        'volantes' => $volantes,
+        'sesiones'=> $_SESSION,
+        'modulo' => 'Volantes Diversos',
+        'notifica' => $this->getNotificaciones(),
+        ]);
 
     }
 
 
     public function getCreate($err) {
-
+        $this->permisoModulos('VOLANTES-DIVERSOS');
         $documentos = TiposDocumentos::where('estatus','ACTIVO')->where('tipo','JURIDICO')->get();
         $caracteres = Caracteres::where('estatus','ACTIVO')->get();
         $acciones = Acciones::where('estatus','ACTIVO')->get();
@@ -63,7 +69,9 @@ class VolantesDiversosController extends BaseController {
             'turnados' => $turnados,
             'direccionGral' => $turnadoDireccion,
             'subtipos' => $subTipos,
-            'err' => $err
+            'err' => $err,
+            'modulo' => 'Volantes Diversos',
+            'notifica' => $this->getNotificaciones(),
         ]);
     }
 
@@ -126,6 +134,7 @@ class VolantesDiversosController extends BaseController {
 
 
     public function getUpdate($id,$err) {
+        $this->permisoModulos('VOLANTES-DIVERSOS');
         $close = $this->verificaVolante($id);
         $volantes = Volantes::where('idVolante',$id)->first();
         $duplicate = false;
@@ -145,7 +154,9 @@ class VolantesDiversosController extends BaseController {
             'turnados' => $turnados,
             'direccionGral' => $turnadoDireccion,
             'error' => $err,
-            'close' => $close
+            'close' => $close,
+            'modulo' => 'Volantes Diversos',
+            'notifica' => $this->getNotificaciones(),
         ]);
     }
 

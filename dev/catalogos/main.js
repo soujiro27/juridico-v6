@@ -1,6 +1,7 @@
 require('babelify-es6-polyfill')
 window.CKEDITOR_BASEPATH = '/SIA/juridico/node_modules/ckeditor/'
 const $ = require('jquery')
+
 const utils = require('./utils')
 const volantes = require('./volantes') 
 const documentos = require('./documentosGral')
@@ -8,6 +9,8 @@ const plantilla = require('./plantillas')
 const irac = require('./irac')
 const confronta = require('./confronta')
 const ifa = require('./ifa')
+
+
 utils.update()
 utils.cancel()
 utils.getSub()
@@ -30,6 +33,7 @@ volantes.cerrarVolante()
 
 documentos.volantesByFolio()
 documentos.download()
+documentos.download_sub()
 
 
 /*--------Plantillas------------------*/
@@ -37,6 +41,7 @@ documentos.download()
 plantilla.getInsert()
 plantilla.internos()
 plantilla.externos()
+plantilla.puestos()
 
 
 

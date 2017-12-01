@@ -4,7 +4,8 @@ namespace App\Controllers;
 use Twig_Loader_Filesystem;
 use App\Models\Turnos;
 use App\Models\Notificaciones;
-
+use App\Models\Roles;
+use App\Models\UsuariosRoles;
 class BaseController {
     protected $templateEngine;
     public function __construct() {
@@ -52,5 +53,27 @@ class BaseController {
         }
     }
 
+    public function permisoModulos($modulo){
+        $user = $_SESSION['idUsuario'];
+        $app = \Slim\Slim::getInstance();
+
+        if(empty($user)){
+                $app->redirect('/SIA');
+        }
+        
+        $usuario = UsuariosRoles::where('idUsuario','=',"$user")->get();
+        $rolUsuario = $usuario[0]['idRol'];
+        $rol = Roles::where('idModulo','=',"$modulo")->get();
+        $val = false;
+        foreach ($rol as $key => $value) {
+             if($rol[$key]['idRol'] == $rolUsuario){
+                    $val = true;
+             }
+        }
+        if(!$val){
+             $app->redirect('/SIA');
+             exit();
+        }
+    }
 
 }

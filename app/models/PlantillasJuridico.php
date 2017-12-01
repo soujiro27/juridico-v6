@@ -17,6 +17,7 @@ class PlantillasJuridico extends Model {
         'usrAlta',
         'fAlta',
         'espacios',
+        'idPuestoJuridico',
         'estatus'];
 
 }

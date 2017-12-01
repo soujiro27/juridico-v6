@@ -8,6 +8,7 @@ const volantes = require('./../catalogos/volantes')
 const modals = {
     nota,
     auditoria,
+    dictamen,
     TableDatosAuditoria,
     tableTurnados,
     remitentes,
@@ -15,7 +16,8 @@ const modals = {
     promocion,
     internos,
     externos,
-    closeVolante
+    closeVolante,
+    puestos
 }
 
 function nota(){
@@ -42,8 +44,43 @@ function nota(){
             })
 }
 
+
+function dictamen(){
+    $.alert({
+        title: 'Seleccione la Cuenta Publica',
+        theme:'modern',
+        draggable: true,
+        dragWindowBorder: false,
+        content:`<select id="cta-publica">
+            <option value="">Seleccione Cuenta Publica </option>
+            <option value="CTA-2015">CTA-2015</option>
+            <option value="CTA-2016">CTA-2016</option>
+        `,
+        buttons:{
+            confirm:{
+                btnClass:'btn-primary',
+                text: 'ACEPTAR',
+                action:function(){
+                    let cta = $('select#cta-publica :selected').val()
+                    $('input#cta-publica').val(cta)
+                }},
+            cancel:{
+                btnClass:'btn-danger',
+                text:'CANCELAR',
+                action:function(){
+                   
+                }}},
+                columnClass: 'col-md-16'
+            })
+}
+
+
+
 function auditoria(){
     let self = this
+    let cta = $('input#cta-publica').val()
+    let year = cta.substring(6)
+    let anio = cta.substring(4)
         $.confirm({
             title: 'Seleccione el Numero de Auditoria',
             theme:'modern',
@@ -53,10 +90,10 @@ function auditoria(){
             content: `<div class="auditoria-container">
             <div class="auditoria">
               <div class="cuenta">
-                <p class="cuenta">CUENTA PUBLICA 2016</p>
+                <p class="cuenta">CUENTA PUBLICA ${anio}</p>
               </div>
               <div class="search"><span>ASCM/</span>
-                <input id="auditoria" type="text" name="auditoria"/><span>/16</span>
+                <input id="auditoria" type="text" name="auditoria"/><span>/${year}</span>
               </div>
             </div>
             <div class="datosAuditoria"></div>
@@ -74,10 +111,10 @@ function auditoria(){
                 }
             },
             onOpenBefore:function(){
-                $('div.jconfirm-box-container').removeClass('col-md-4')
-                $('div.jconfirm-box-container').addClass('col-md-12')
+                let cta = $('input#cta-publica').val()
+                let year = cta.substring(6)
                     $('input#auditoria').keyup(function(){
-                        let cve = `ASCM/${$(this).val()}/16`
+                        let cve = `ASCM/${$(this).val()}/${year}`
                         if(cve != ''){
 
                             let datosAuditoria = co(function *(){
@@ -199,8 +236,7 @@ function tableTurnados(datos){
                 
             },
             onOpenBefore:function(){
-                $('div.jconfirm-box-container').removeClass('col-md-4')
-                $('div.jconfirm-box-container').addClass('col-md-12')
+                $('div.jconfirm-holder').addClass('firmasModal')
             }
         })
  }
@@ -209,7 +245,7 @@ function tableTurnados(datos){
 
  function firmas(template){
     $.alert({
-        title: 'Personal que Firma',
+        title: 'Personal que Firma la Cedula',
         theme:'modern',
         draggable: true,
         dragWindowBorder: false,
@@ -233,17 +269,17 @@ function tableTurnados(datos){
                 }
             },
             onOpenBefore:function(){
-                $('div.jconfirm-box-container').removeClass('col-md-4')
-                $('div.jconfirm-box-container').addClass('col-md-12')
+                $('div.jconfirm-holder').addClass('firmasModal')
+            
                 let val = $('input#idPuestosJuridico').val()
                 if(val){
                     var puestosArray = val.split(',')
                     for(let x in puestosArray){
                         $(`input[value="${puestosArray[x]}"]#firmas`).prop('checked',true)
                     }
-                }
-                
+                }                
             }
+              
         })
 }
 
@@ -273,8 +309,7 @@ function promocion(template){
                 }
             },
             onOpenBefore:function(){
-                $('div.jconfirm-box-container').removeClass('col-md-4')
-                $('div.jconfirm-box-container').addClass('col-md-12')
+            $('div.jconfirm-holder').addClass('firmasModal')
                let id = $('input#idDocumentoTexto').val()
                $(`input[value="${id}"]#textoPromocion`).prop('checked',true)
                 
@@ -397,6 +432,41 @@ function closeVolante(idVolante,ruta){
     });
                                    
 }
+
+function puestos(template){
+    $.alert({
+        title: 'Seleccione Puesto',
+        theme:'modern',
+        draggable: true,
+        dragWindowBorder: false,
+        columnClass: 'col-md-12',
+        content:template,
+        buttons:{
+            confirm:{
+                btnClass:'btn-primary',
+                text: 'Aceptar',
+                action:function(){
+                    let val = $('input:radio[name=puesto]:checked').val()
+                    let id = $('input:radio[name=remitente]:checked').data('id')
+                    $('input#puesto').val(val)
+                   /* $('input#idRemitenteJuridico').val(id)
+                    let nombre = $('input:radio[name=remitente]:checked').data('nombre')
+                    let puesto = $('input:radio[name=remitente]:checked').data('puesto')
+                    $('input#nombreRemitente').val(nombre);
+                    $('input#puestoRemitente').val(puesto)
+                    */
+
+                }},
+            cancel:{
+                btnClass:'btn-danger',
+                text:'Cancelar',
+                action:function(){
+                   
+                }},
+                
+            }
+        })
+ }
 
 
 module.exports = modals

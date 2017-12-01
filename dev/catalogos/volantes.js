@@ -36,6 +36,9 @@ function nota(){
         {
            modals.nota()
         }
+        else if(texto == 'DICTAMEN'){
+            modals.dictamen()
+        }
         else{
             $('input#notaConfronta').val('NO')
         }
@@ -93,6 +96,7 @@ function order(){
         $('form#form-order').toggle();
     })
 }
+
 
 
 function cerrarVolante(){

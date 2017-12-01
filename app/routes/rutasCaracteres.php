@@ -2,6 +2,7 @@
 
 use  App\Controllers\Catalogs\CaracteresController;
 
+
 $get = new CaracteresController();
 
 
@@ -25,3 +26,4 @@ $app->get('/juridico/Caracteres/update/:id',function($id) use ($app,$get){
 $app->post('/juridico/Caracteres/update',function() use ($app,$get){
      $get->update($app->request->post(),$app);
 });
+

@@ -6,26 +6,51 @@ use App\Models\Volantes;
 use App\Models\PuestosJuridico;
 use App\Models\Turnos;
 class DocumentosUploadController extends BaseController {
-    public function getIndex() {
+    public function getIndex($app) {
+              $this->permisoModulos('DOCUMENTOSGRAL');
+            if(empty($app->request->get()))
+            {
+                $campo = 'folio';
+                $tipo = 'desc';
+            }else{
+                $get = $app->request->get();
+                $campo = $get['campo'];
+                $tipo = $get['tipo'];
+            }
+
+
         $documentos = Volantes::select('sia_volantes.idVolante','sia_volantes.folio','sia_volantes.subFolio','sia_volantes.numDocumento',
             'sub.nombre','sia_volantes.idRemitente','sia_volantes.anexoDoc','t.estadoProceso')
             ->join('sia_VolantesDocumentos as vd','vd.idVolante','=','sia_volantes.idVolante')
             ->join('sia_catSubTiposDocumentos as sub','sub.idSubTipoDocumento','=','vd.idSubTipoDocumento')
             ->join('sia_turnosJuridico as t','t.idVolante','=','sia_volantes.idVolante')
+            ->orderBy("$campo","$tipo")
             ->get();
 
-        return $this->render('/documentos/tabla.twig',['documentos' => $documentos,'sesiones'=> $_SESSION]);
+        return $this->render('/documentos/tabla.twig',[
+            'documentos' => $documentos,
+            'sesiones'=> $_SESSION,
+            'modulo' => 'Archivos',
+            'notifica' => $this->getNotificaciones()
+            ]);
     }
 
-    public function getCreate($err) {
+    public function getCreate($err,$id) {
+        $this->permisoModulos('DOCUMENTOSGRAL');
+        $nombre = Volantes::where('idVolante','=',"$id")->get();
         return $this->render('/documentos/insert.twig',[
             'sesiones'=> $_SESSION,
-            'err' => $err
+            'err' => $err,
+            'nombre' => $nombre[0]['anexoDoc'],
+            'idVolante' => $id,
+              'modulo' => 'Archivos',
+            'notifica' => $this->getNotificaciones()
         ]);
     }
 
 
     public function update($post,$file,$app) {
+
         $id = $post['idVolante'];
         if($this->verificaVolante($id)){
             $nombre=$file['anexoDoc']['name'];

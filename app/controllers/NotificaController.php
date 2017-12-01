@@ -33,7 +33,7 @@ class NotificaController {
        $mensaje = 'Tienes un: '. $subTipo[0]['nombre'].' Asignado con el Folio: '.$post['folio'];
 
        $notifica = new Notificaciones([
-           'idNotificacion' => '11',
+           'idNotificacion' => '1',
            'idUsuario' => $idUsuario,
            'mensaje' => $mensaje,
            'idPrioridad' => 'ALTA',

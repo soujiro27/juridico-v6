@@ -1,6 +1,7 @@
 <?php
 
 use  App\Controllers\Documentos\IfaController;
+use App\Controllers\BaseController;
 
 $app->get('/juridico/Ifa',function(){
     $get = new IfaController();
@@ -50,4 +51,5 @@ $app->post('/juridico/CedulaIfa/update',function() use ($app){
     $get = new IfaController();
     echo $get->cedulaUpdate($app->request->post(),$app);
 });
+
 

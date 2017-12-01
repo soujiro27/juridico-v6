@@ -109,7 +109,9 @@ inner join sia_unidades u on u.idUnidad = au.idUnidad
        $idArea = $_SESSION['idArea'];
 
         $puestos = PuestosJuridico::where('idArea','=',"$idArea")
-            ->where('titular','=','NO')->get();
+            ->where('titular','=','NO')
+            ->where('estatus','=','ACTIVO')
+            ->get();
         echo json_encode($puestos);
     }
 
@@ -126,5 +128,12 @@ inner join sia_unidades u on u.idUnidad = au.idUnidad
         ]);
         $response = array ('response' => 'success');
         echo json_encode($response);
+    }
+
+
+    public function puestos(){
+        $puestos = PuestosJuridico::where('estatus','=','ACTIVO')->get();
+        echo json_encode($puestos);
+
     }
 }

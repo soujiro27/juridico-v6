@@ -1,6 +1,7 @@
 <?php
 
 use  App\Controllers\Catalogs\SubTiposDocumentosController;
+use App\Controllers\BaseController;
 
 $app->get('/juridico/SubTiposDocumentos',function(){
     $get = new SubTiposDocumentosController();
@@ -27,3 +28,4 @@ $app->post('/juridico/SubTiposDocumentos/update',function() use ($app){
     $get = new SubTiposDocumentosController();
     echo $get->update($app->request->post(),$app);
 });
+

@@ -14,7 +14,8 @@ var api = {
     firmas: firmas,
     doctosTextos: doctosTextos,
     remitentesPlantillas: remitentesPlantillas,
-    closeVolante: closeVolante
+    closeVolante: closeVolante,
+    puestos: puestos
 
 };
 
@@ -158,6 +159,18 @@ function closeVolante(data) {
     return datos;
 }
 
+function puestos() {
+    var datos = new Promise(function (resolve) {
+        $.get({
+            url: '/SIA/juridico/datos/puestos',
+            success: function success(json) {
+                resolve(JSON.parse(json));
+            }
+        });
+    });
+    return datos;
+}
+
 module.exports = api;
 
 },{"jquery":175}],2:[function(require,module,exports){
@@ -194,7 +207,8 @@ var modals = require('./../modals/modals');
 
 var documentosGral = {
     volantesByFolio: volantesByFolio,
-    download: download
+    download: download,
+    download_sub: download_sub
 };
 
 function volantesByFolio() {
@@ -231,34 +245,34 @@ function volantesByFolio() {
         }));
     });
 }
+/*
+function download(){
+    $('table#main-table-files tbody tr').click(function(){
+        let val = $(this).children().first().next().text()
+        let sub = $(this).children().first().next().next().text()
+        let promesa = co(function*(){
+            let volantes = yield api.volanteDocumentos({folio:val,subFolio:sub})
+            $('input#idVolante').val(volantes[0].idVolante)
+            if(volantes[0].anexoDoc != null){
+                window.open('/SIA/juridico/public/files/'+volantes[0].anexoDoc)
+
+            }
+           
+        })
+    })
+}*/
+
 function download() {
     $('table#main-table-files tbody tr').click(function () {
-        var val = $(this).children().first().next().text();
-        var sub = $(this).children().first().next().next().text();
-        var promesa = co( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            var volantes;
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-                while (1) {
-                    switch (_context2.prev = _context2.next) {
-                        case 0:
-                            _context2.next = 2;
-                            return api.volanteDocumentos({ folio: val, subFolio: sub });
+        var val = $(this).children().first().text();
+        location.href = '/SIA/juridico/DocumentosGral/update/' + val;
+    });
+}
 
-                        case 2:
-                            volantes = _context2.sent;
-
-                            $('input#idVolante').val(volantes[0].idVolante);
-                            if (volantes[0].anexoDoc != null) {
-                                window.open('/SIA/juridico/public/files/' + volantes[0].anexoDoc);
-                            }
-
-                        case 5:
-                        case 'end':
-                            return _context2.stop();
-                    }
-                }
-            }, _callee2, this);
-        }));
+function download_sub() {
+    $('table#main-table-files-sub tbody tr').click(function () {
+        var val = $(this).children().first().text();
+        location.href = '/SIA/juridico/Documentos/update/' + val;
     });
 }
 
@@ -398,6 +412,7 @@ module.exports = irac;
 require('babelify-es6-polyfill');
 window.CKEDITOR_BASEPATH = '/SIA/juridico/node_modules/ckeditor/';
 var $ = require('jquery');
+
 var utils = require('./utils');
 var volantes = require('./volantes');
 var documentos = require('./documentosGral');
@@ -405,6 +420,7 @@ var plantilla = require('./plantillas');
 var irac = require('./irac');
 var confronta = require('./confronta');
 var ifa = require('./ifa');
+
 utils.update();
 utils.cancel();
 utils.getSub();
@@ -426,12 +442,14 @@ volantes.cerrarVolante();
 
 documentos.volantesByFolio();
 documentos.download();
+documentos.download_sub();
 
 /*--------Plantillas------------------*/
 
 plantilla.getInsert();
 plantilla.internos();
 plantilla.externos();
+plantilla.puestos();
 
 /*----------IRAC--------------------*/
 
@@ -461,7 +479,8 @@ var modals = require('./../modals/modals');
 var plantilla = {
     getInsert: getInsert,
     internos: internos,
-    externos: externos
+    externos: externos,
+    puestos: puestos
 };
 
 function getInsert() {
@@ -534,6 +553,39 @@ function externos() {
                     }
                 }
             }, _callee2, this);
+        }));
+    });
+}
+
+function puestos() {
+    $('button#modalPuestoJuridico').click(function (e) {
+        e.preventDefault();
+        var promesa = co( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            var datos, template, td;
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                while (1) {
+                    switch (_context3.prev = _context3.next) {
+                        case 0:
+                            _context3.next = 2;
+                            return api.puestos();
+
+                        case 2:
+                            datos = _context3.sent;
+                            template = '<table class="table table-hover puestos">\n            <thead><tr><th>Escoger</th><th>Nombre</th><th>Puesto</th></thead>\n            <tbody>';
+                            td = '';
+
+                            $.each(datos, function (index, el) {
+                                td += '<tr> <td><input type="radio" name="puesto"\n                value="' + datos[index].idPuestoJuridico + '" data-id="' + datos[index].idPuestoJuridico + '"></td>\n                <td>' + datos[index].nombre + ' ' + datos[index].paterno + ' ' + datos[index].materno + '</td>\n                <td>' + datos[index].puesto + '</td>\n                </tr>';
+                            });
+                            template = template + td + '</tbody></table>';
+                            modals.puestos(template);
+
+                        case 8:
+                        case 'end':
+                            return _context3.stop();
+                    }
+                }
+            }, _callee3, this);
         }));
     });
 }
@@ -678,6 +730,8 @@ function nota() {
         var texto = $('select#subDocumento option:selected').text();
         if (texto == 'CONFRONTA') {
             modals.nota();
+        } else if (texto == 'DICTAMEN') {
+            modals.dictamen();
         } else {
             $('input#notaConfronta').val('NO');
         }
@@ -784,6 +838,7 @@ var volantes = require('./../catalogos/volantes');
 var modals = {
     nota: nota,
     auditoria: auditoria,
+    dictamen: dictamen,
     TableDatosAuditoria: TableDatosAuditoria,
     tableTurnados: tableTurnados,
     remitentes: remitentes,
@@ -791,7 +846,8 @@ var modals = {
     promocion: promocion,
     internos: internos,
     externos: externos,
-    closeVolante: closeVolante
+    closeVolante: closeVolante,
+    puestos: puestos
 };
 
 function nota() {
@@ -818,15 +874,41 @@ function nota() {
     });
 }
 
+function dictamen() {
+    $.alert({
+        title: 'Seleccione la Cuenta Publica',
+        theme: 'modern',
+        draggable: true,
+        dragWindowBorder: false,
+        content: '<select id="cta-publica">\n            <option value="">Seleccione Cuenta Publica </option>\n            <option value="CTA-2015">CTA-2015</option>\n            <option value="CTA-2016">CTA-2016</option>\n        ',
+        buttons: {
+            confirm: {
+                btnClass: 'btn-primary',
+                text: 'ACEPTAR',
+                action: function action() {
+                    var cta = $('select#cta-publica :selected').val();
+                    $('input#cta-publica').val(cta);
+                } },
+            cancel: {
+                btnClass: 'btn-danger',
+                text: 'CANCELAR',
+                action: function action() {} } },
+        columnClass: 'col-md-16'
+    });
+}
+
 function auditoria() {
     var self = this;
+    var cta = $('input#cta-publica').val();
+    var year = cta.substring(6);
+    var anio = cta.substring(4);
     $.confirm({
         title: 'Seleccione el Numero de Auditoria',
         theme: 'modern',
         draggable: true,
         dragWindowBorder: false,
         columnClass: 'col-md-12',
-        content: '<div class="auditoria-container">\n            <div class="auditoria">\n              <div class="cuenta">\n                <p class="cuenta">CUENTA PUBLICA 2016</p>\n              </div>\n              <div class="search"><span>ASCM/</span>\n                <input id="auditoria" type="text" name="auditoria"/><span>/16</span>\n              </div>\n            </div>\n            <div class="datosAuditoria"></div>\n            <div class="asignacion"></div>\n          </div>',
+        content: '<div class="auditoria-container">\n            <div class="auditoria">\n              <div class="cuenta">\n                <p class="cuenta">CUENTA PUBLICA ' + anio + '</p>\n              </div>\n              <div class="search"><span>ASCM/</span>\n                <input id="auditoria" type="text" name="auditoria"/><span>/' + year + '</span>\n              </div>\n            </div>\n            <div class="datosAuditoria"></div>\n            <div class="asignacion"></div>\n          </div>',
         buttons: {
             confirm: {
                 text: 'Aceptar',
@@ -839,10 +921,10 @@ function auditoria() {
             }
         },
         onOpenBefore: function onOpenBefore() {
-            $('div.jconfirm-box-container').removeClass('col-md-4');
-            $('div.jconfirm-box-container').addClass('col-md-12');
+            var cta = $('input#cta-publica').val();
+            var year = cta.substring(6);
             $('input#auditoria').keyup(function () {
-                var cve = 'ASCM/' + $(this).val() + '/16';
+                var cve = 'ASCM/' + $(this).val() + '/' + year;
                 if (cve != '') {
 
                     var datosAuditoria = co( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
@@ -946,15 +1028,14 @@ function remitentes(template) {
 
         },
         onOpenBefore: function onOpenBefore() {
-            $('div.jconfirm-box-container').removeClass('col-md-4');
-            $('div.jconfirm-box-container').addClass('col-md-12');
+            $('div.jconfirm-holder').addClass('firmasModal');
         }
     });
 }
 
 function firmas(template) {
     $.alert({
-        title: 'Personal que Firma',
+        title: 'Personal que Firma la Cedula',
         theme: 'modern',
         draggable: true,
         dragWindowBorder: false,
@@ -978,8 +1059,8 @@ function firmas(template) {
             }
         },
         onOpenBefore: function onOpenBefore() {
-            $('div.jconfirm-box-container').removeClass('col-md-4');
-            $('div.jconfirm-box-container').addClass('col-md-12');
+            $('div.jconfirm-holder').addClass('firmasModal');
+
             var val = $('input#idPuestosJuridico').val();
             if (val) {
                 var puestosArray = val.split(',');
@@ -988,6 +1069,7 @@ function firmas(template) {
                 }
             }
         }
+
     });
 }
 
@@ -1014,8 +1096,7 @@ function promocion(template) {
             }
         },
         onOpenBefore: function onOpenBefore() {
-            $('div.jconfirm-box-container').removeClass('col-md-4');
-            $('div.jconfirm-box-container').addClass('col-md-12');
+            $('div.jconfirm-holder').addClass('firmasModal');
             var id = $('input#idDocumentoTexto').val();
             $('input[value="' + id + '"]#textoPromocion').prop('checked', true);
         }
@@ -1122,6 +1203,38 @@ function closeVolante(idVolante, ruta) {
                 text: 'Cancelar',
                 btnClass: 'btn-danger'
             }
+        }
+    });
+}
+
+function puestos(template) {
+    $.alert({
+        title: 'Seleccione Puesto',
+        theme: 'modern',
+        draggable: true,
+        dragWindowBorder: false,
+        columnClass: 'col-md-12',
+        content: template,
+        buttons: {
+            confirm: {
+                btnClass: 'btn-primary',
+                text: 'Aceptar',
+                action: function action() {
+                    var val = $('input:radio[name=puesto]:checked').val();
+                    var id = $('input:radio[name=remitente]:checked').data('id');
+                    $('input#puesto').val(val);
+                    /* $('input#idRemitenteJuridico').val(id)
+                     let nombre = $('input:radio[name=remitente]:checked').data('nombre')
+                     let puesto = $('input:radio[name=remitente]:checked').data('puesto')
+                     $('input#nombreRemitente').val(nombre);
+                     $('input#puestoRemitente').val(puesto)
+                     */
+                } },
+            cancel: {
+                btnClass: 'btn-danger',
+                text: 'Cancelar',
+                action: function action() {} }
+
         }
     });
 }

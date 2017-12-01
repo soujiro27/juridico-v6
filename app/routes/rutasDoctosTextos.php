@@ -1,6 +1,7 @@
 <?php
 
 use  App\Controllers\Catalogs\DoctosTextosController;
+use App\Controllers\BaseController;
 $get = new DoctosTextosController();
 $app->get('/juridico/DoctosTextos',function() use($get){
      echo $get->getIndex();

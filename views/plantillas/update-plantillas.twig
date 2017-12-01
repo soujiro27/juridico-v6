@@ -3,9 +3,16 @@
 {% block title %}Generar Cedula{% endblock %}
 
 {% block btnHeader %}
-    <a id="addRegister" href="/SIA/juridico/public/OficioGenerico.php/?param={{ idVolante }}" target="_blank" class="btn btn-warning btn-add" role="button">
-        Imprimir Cedula
-    </a>
+    {% if tipo == 'NOTA' %}
+        <a id="addRegister" href="/SIA/juridico/public/NotaGenerico.php/?param={{ idVolante }}" target="_blank" class="btn btn-warning btn-add" role="button">
+            Imprimir Cedula
+        </a>
+    {% else %}
+        <a id="addRegister" href="/SIA/juridico/public/OficioGenerico.php/?param={{ idVolante }}" target="_blank" class="btn btn-warning btn-add" role="button">
+            Imprimir Cedula
+        </a>
+    {% endif %}
+
 
 {% endblock %}
 {% block form %}
@@ -24,10 +31,12 @@
                 <label for="numFolio" class="col-lg-2">Numero de Folio</label>
                 <input type="text" class="col-lg-2" name="numFolio" placeholder="Numero de Folio" id="numFolio" value="{{ plantillas[0].numFolio }}" />
             </div>
+            {% if tipo != 'NOTA' %}
             <div class="form-group asunto row">
                 <label for="asunto" class="col-lg-2">Asunto</label>
                 <input type="text" class="col-lg-6" name="asunto" placeholder="Asunto" id="asunto" value="{{ plantillas[0].asunto }}">
             </div>
+            {% endif %}
             <div class="form-group fOficio row">
                 <label for="fOficio" class="col-lg-2">Fecha Documento</label>
                 <input type="text" class="col-lg-2 fechaInput" name="fOficio" placeholder="Fecha Oficio" id="fOficio" value="{{ plantillas[0].fOficio }}">
@@ -39,7 +48,14 @@
                 <input type="hidden" name="idPlantillaJuridico" value="{{ plantillas[0].idPlantillaJuridico }}">
                 <input type="hidden" name="internos" id="internos" value="{{ internos }}">
                 <input type="hidden" name="externos" id="externos" value="{{ externos }}">
+                <input type="hidden" name="idPuestoJuridico" id="puesto" value="{{ plantillas[0].idPuestoJuridico }}">
             </div>
+            {% if tipo == 'NOTA' %}
+                <div class="form-group puesto row">
+                    <label for="puesto" class="col-lg-2">De:</label>
+                    <button class="btn btn-info col-lg-2" id="modalPuestoJuridico">Añadir</button>
+                </div>
+            {% endif %}
             <div class="form-group row">
                 <label for="siglas" class="col-lg-2">Copia Internos</label>
                 <button class="btn btn-info col-lg-2" id="modalInternos">Añadir</button>

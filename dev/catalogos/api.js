@@ -11,7 +11,8 @@ const api = {
     firmas,
     doctosTextos,
     remitentesPlantillas,
-    closeVolante
+    closeVolante,
+    puestos
 
 }
 
@@ -158,5 +159,17 @@ function closeVolante(data){
     return datos
 }
 
+
+function puestos(){
+    let datos = new Promise(resolve =>{
+        $.get({
+            url:`/SIA/juridico/datos/puestos`,
+            success: function(json){
+                resolve(JSON.parse(json))
+            }
+        })
+    })
+    return datos
+}
 
 module.exports = api

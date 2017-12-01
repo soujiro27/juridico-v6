@@ -26,21 +26,36 @@ function consultaRetorno($sql,$db){
 $sql = "select * from sia_plantillasJuridico where idVolante ='$idVolante'";
 $db=conecta();
 $datos=consultaRetorno($sql, $db);
-
 $id = $datos[0]['idRemitente'];
+$puestojuri = $datos[0]['idPuestoJuridico'];
+
+
 
 $sql = "select * from sia_RemitentesJuridico where idRemitenteJuridico='$id'";
 $db=conecta();
 $datosNombre=consultaRetorno($sql, $db);
-//var_dump($datosNombre);
-$saludo=$datosNombre[0]['saludo'];
+
+
+
+$sql = "SELECT * FROM sia_PuestosJuridico  where idPuestoJuridico='$puestojuri'";
+$db=conecta();
+$datosJuri=consultaRetorno($sql, $db);
+
+$saludo  = $datosNombre[0]['saludo'];
 $nombrel = mb_strtoupper($datosNombre[0]['nombre'],'utf-8');
-$name = $saludo.' '.$nombrel;
-$puesto = mb_strtoupper($datosNombre[0]['puesto'],'utf-8');
-$texto = $datos[0]['texto'];
-$siglas = $datos[0]['siglas'];
-$asunto = $datos[0]['asunto'];
-$folio = $datos[0]['numFolio'];
+$name    = $saludo.' '.$nombrel;
+$puesto  = mb_strtoupper($datosNombre[0]['puesto'],'utf-8');
+
+$texto   = $datos[0]['texto'];
+$siglas  = $datos[0]['siglas'];
+$asunto  = $datos[0]['asunto'];
+$folio   = $datos[0]['numFolio'];
+
+$nomde   = $datosJuri[0]['saludo'] . ' ' .$datosJuri[0]['nombre'] . ' ' .$datosJuri[0]['paterno'] . ' ' .$datosJuri[0]['materno'];
+$puesde  = $datosJuri[0]['puesto'];
+
+
+
 //var_dump($datos);
 
 function convierte($cadena){
@@ -75,7 +90,7 @@ $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Auditoria Superior de la Ciudad de México');
-$pdf->SetTitle('Oficio -'.$asunto);
+$pdf->SetTitle('Nota Informativa - '.$folio);
  
  $pdf->setPrintHeader(false);
 //$pdf->setPrintFooter(false);
@@ -89,7 +104,7 @@ $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
 // set margins
 $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-$pdf->SetHeaderMargin(3);
+//$pdf->SetHeaderMargin(3);
 $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
 // set auto page breaks
@@ -114,9 +129,8 @@ $pdf->AddPage();
 $text1 = '
 <table cellspacing="0" cellpadding="0" border="0">
     <tr>
-        <td colspan="3"><img width="1100%" height="1600%" src="img/asamblea.png"/></td>
-        <td colspan="1"></td>
-        <td colspan="4"><p><font size="10"><b>AUDITORÍA SUPERIOR DE LA CIUDAD DE MÉXICO<br><br>DIRECCIÓN GENERAL DE ASUNTOS JURÍDICOS<br><br>OFICIO NÚM.</b><b> '.$datos[0]['numFolio'].' <br><br>ASUNTO: </b> '.$datos[0]['asunto'].' <br><br>Ciudad de México, a '. $feoficio[2] . ' de ' .$mes2 . ' de ' . $feoficio[0].'.'.'<br><br><i>"Fiscalizar con Integridad para Prevenir y Mejorar".</i></p></font></td>
+        <td colspan="4"><img src="img/logo-top.png"/></td>
+        <td colspan="4"><p><font size="10"><b>DIRECCIÓN GENERAL DE ASUNTOS JURÍDICOS<br>NOTA INFORMATIVA</b><br><br>Ciudad de México, a '. $feoficio[2] . ' de ' .$mes2 . ' de ' . $feoficio[0].'.'.'<br><br><i>"Fiscalizar con Integridad para Prevenir y Mejorar".</i></p></font></td>
     </tr>
 </table>';
 
@@ -129,9 +143,15 @@ $tbl = <<<EOD
 <table cellspacing="0" cellpadding="0" border="0">
     
     <tr>
-        <td colspan="4"><b>$name</b><br><b>$puesto</b><br><b>PRESENTE</b></td>
-        <td colspan="2"></td>
-        <td colspan="1"></td>
+        <td rowspan="1"><b>PARA: </b></td>
+        <td rowspan="4"></td>
+        <td colspan="8"><b>$name<br>$puesto</b></td>
+        <td colspan="6"></td>
+    </tr>
+    <tr>
+        <td rowspan="2"><b><br>DE: </b></td>
+        <td colspan="8"><b><br>$nomde <br>$puesde</b></td>
+        <td colspan="6"></td>
     </tr>
 
 </table>
@@ -163,11 +183,9 @@ $tbl = <<<EOD
         <td>Sin otro particular por el momento, hago propicia la ocasión para enviarle un cordial saludo.<br><br></td>
     </tr>
     <tr>
-        <td><b>ATENTAMENTE<br>El DIRECTOR GENERAL<br><br><br><br><br></b></td>
+        <td><b>ATENTAMENTE<br><br></b></td>
     </tr>
-    <tr>
-        <td><b>DR. IVÁN DE JESÚS OLMOS CANSINO<br></b></td>
-    </tr>
+    
 </table>
 EOD;
 
@@ -237,7 +255,10 @@ $pdf->writeHTML($tbl, true, false, false, false, '');
 
 $tbl = <<<EOD
   <table cellspacing="0" cellpadding="0" border="0">
-    <tr><td colspan="6" align="left">$siglas<br><br></td></tr>
+    <tr>
+        <td colspan="6" align="left">$siglas<br><br></td>
+        <td colspan="6" align="right">$folio</td>
+    </tr>
   </table>
 EOD;
 
